@@ -14,7 +14,7 @@ class CreateRatiosTable extends Migration
     public function up()
     {
         Schema::create('ratios', function (Blueprint $table) {
-            $table->increments('id');
+            $table->Bigincrements('id');
             $table->string('nombre');
             $table->string('monto');
             $table->string('descripcion');
@@ -22,8 +22,7 @@ class CreateRatiosTable extends Migration
             $table->unsignedBigInteger('tiporatios_id')->unsigned();
             $table->foreign('tiporatios_id')->references('id')->on('tiporatios')->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unsignedBigInteger('comparaciones_id')->unsigned();
-            $table->foreign('comparaciones_id')->references('id')->on('comparaciones')->onUpdate('cascade')->onDelete('cascade');
+           
             $table->timestamps();
         });
     }

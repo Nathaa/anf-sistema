@@ -14,7 +14,7 @@ class CreateHorizontalesTable extends Migration
     public function up()
     {
         Schema::create('horizontales', function (Blueprint $table) {
-            $table->increments('id');
+            $table->Bigincrements('id');
             $table->date('año');
             $table->float('absoluta');
             $table->timestamps();

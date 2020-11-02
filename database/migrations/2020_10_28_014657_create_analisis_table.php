@@ -14,7 +14,7 @@ class CreateAnalisisTable extends Migration
     public function up()
     {
         Schema::create('analisis', function (Blueprint $table) {
-            $table->increments('id');
+            $table->Bigincrements('id');
             $table->string('descripcion');
 
             $table->unsignedBigInteger('horizontales_id')->unsigned();

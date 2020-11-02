@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBalancesTable extends Migration
+class CreateComparacionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateBalancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('balances', function (Blueprint $table) {
+        Schema::create('comparaciones', function (Blueprint $table) {
             $table->Bigincrements('id');
-            $table->string('nombre');
-            $table->date('fecha_inicio');
-            $table->date('fecha_final');
+            $table->string('descripcion');
+            $table->unsignedBigInteger('ratios_id')->unsigned();
+            $table->foreign('ratios_id')->references('id')->on('ratios')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateBalancesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('balances');
+        Schema::dropIfExists('comparaciones');
     }
 }

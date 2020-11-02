@@ -14,7 +14,7 @@ class CreateVerticalesTable extends Migration
     public function up()
     {
         Schema::create('verticales', function (Blueprint $table) {
-            $table->increments('id');
+            $table->Bigincrements('id');
             $table->date('año');
             $table->float('variacion');
             $table->float('porcentaje');

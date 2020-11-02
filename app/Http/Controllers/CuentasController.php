@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Cuenta;
+
 class CuentasController extends Controller
 {
     //
@@ -22,6 +24,16 @@ class CuentasController extends Controller
     public function index(Request $request)
     {
     
+        $cuentas=Cuenta::paginate();
+
+        if ($request)
+       {
+        $query=trim($request->get('search'));
+           $cuentas= Cuenta::where('nombre', 'LIKE', '%' . $query . '%')
+          ->orderBy('id','asc')
+          ->get();
+          return view('cuentas.index', ['cuentas' => $cuentas, 'search' => $query]);
+        }
 
     }
 
@@ -34,6 +46,7 @@ class CuentasController extends Controller
     public function create()
     {
         //
+        return view('cuentas.create');
     
     }
 
@@ -46,6 +59,12 @@ class CuentasController extends Controller
     public function store(Request $request)
     {
         //
+        $cuentas = Cuenta::create($request->all());
+
+        $cuentas->save();
+
+        Session::flash('success_message', 'Cuenta guardado con éxito');
+        return redirect()->route('cuentas.index', compact('cuentas'));
        
     }
 
@@ -58,7 +77,8 @@ class CuentasController extends Controller
     public function show($id)
     {
         //
-        
+        $Cuenta=Cuenta::findOrFail($id);
+        return view('cuentas.show', compact('Cuenta'));
     }
 
     /**
@@ -71,7 +91,8 @@ class CuentasController extends Controller
     {
         //
         
-       
+        $Cuenta=Cuenta::findOrFail($id);
+        return view('cuentas.edit',compact('Cuenta'));
     }
 
     /**
@@ -84,7 +105,14 @@ class CuentasController extends Controller
     public function update(Request $request,$id)
     {
 
-        
+        $Cuenta=Cuenta::findOrFail($id);
+        $Cuenta->fill($request->all())->save();
+
+
+        $Cuenta->update($request->all());
+
+        Session::flash('info_message', 'Cuenta actualizado con éxito');
+        return redirect()->route('cuentas.index',compact('Cuenta'));
     }
 
     /**
@@ -96,7 +124,12 @@ class CuentasController extends Controller
     public function destroy($id)
     {
         //
+  // $Cuenta=Cuenta::findOrFail($id);
+  Cuenta::destroy($id);
 
-      
-    }
+  Session::flash('danger_message', 'Cuenta eliminado correctamente');
+  return back();
+ }
+
+
 }

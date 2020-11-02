@@ -14,9 +14,10 @@ class CreateTipocuentasTable extends Migration
     public function up()
     {
         Schema::create('tipocuentas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->Bigincrements('id');
             $table->string('nombre');
             $table->string('descripcion');
+            $table->string('subtipo');
             $table->timestamps();
         });
     }
