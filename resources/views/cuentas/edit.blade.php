@@ -14,13 +14,7 @@
                     </div>
                 @endif
 
-                <form method="POST"
-                {!! Form::model($cuenta, ['route'=> ['cuentas.update', $cuenta->id],
-                'method' =>'PUT'])  !!}
-                <enctype="multipart/form-data">
-
-                @include('cuentas.form')
-                {!! Form::close() !!}
+               
             </table>
         </div>
     </div>

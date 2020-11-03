@@ -9,10 +9,7 @@ use App\Cuenta;
 class CuentasController extends Controller
 {
     //
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
 
 
     /**
@@ -23,17 +20,10 @@ class CuentasController extends Controller
 
     public function index(Request $request)
     {
-    
-        $cuentas=Cuenta::paginate();
 
-        if ($request)
-       {
-        $query=trim($request->get('search'));
-           $cuentas= Cuenta::where('nombre', 'LIKE', '%' . $query . '%')
-          ->orderBy('id','asc')
-          ->get();
-          return view('cuentas.index', ['cuentas' => $cuentas, 'search' => $query]);
-        }
+        $cuentas['cuentas']=Cuenta::paginate(5);
+        return view('cuentas.index',$cuentas);
+
 
     }
 
@@ -59,13 +49,13 @@ class CuentasController extends Controller
     public function store(Request $request)
     {
         //
-        $cuentas = Cuenta::create($request->all());
+        //$cuentas = Cuenta::create($request->all());
 
-        $cuentas->save();
+        $cuentas=request()->except('_token');
 
-        Session::flash('success_message', 'Cuenta guardado con éxito');
-        return redirect()->route('cuentas.index', compact('cuentas'));
-       
+        Cuenta::insert($cuentas);
+
+        return response()->json($cuentas);
     }
 
     /**
@@ -91,8 +81,8 @@ class CuentasController extends Controller
     {
         //
         
-        $Cuenta=Cuenta::findOrFail($id);
-        return view('cuentas.edit',compact('Cuenta'));
+        $cuenta=Cuenta::findOrFail($id);
+        return view('cuentas.edit',compact('cuenta'));
     }
 
     /**
@@ -127,7 +117,7 @@ class CuentasController extends Controller
   // $Cuenta=Cuenta::findOrFail($id);
   Cuenta::destroy($id);
 
-  Session::flash('danger_message', 'Cuenta eliminado correctamente');
+ 
   return back();
  }
 

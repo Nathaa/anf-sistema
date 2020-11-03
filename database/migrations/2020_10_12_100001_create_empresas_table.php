@@ -21,8 +21,7 @@ class CreateEmpresasTable extends Migration
             $table->string('rubro');
             $table->timestamps();
 
-            $table->unsignedBigInteger('users_id')->unsigned();
-            $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            
         });
     }
 

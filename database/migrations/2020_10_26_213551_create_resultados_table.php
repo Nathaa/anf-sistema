@@ -19,7 +19,12 @@ class CreateResultadosTable extends Migration
             $table->date('fecha_inicio');
             $table->date('fecha_final');
             $table->timestamps();
+
+            $table->unsignedBigInteger('cuentas_id')->unsigned();
+            $table->foreign('cuentas_id')->references('id')->on('cuentas')->onUpdate('cascade')->onDelete('cascade');
         });
+
+        
     }
 
     /**

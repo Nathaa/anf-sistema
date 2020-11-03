@@ -1,13 +1,8 @@
-
+@extends('template.plantilla2')
+@section('content')
 <div class="container">
 
-    <h6>
-   @if($search)
-  <div class="alert alert-info" role="alert">
-    Los resultados de tu busqueda {{ $search }} son
-  </div>
-  @endif
- </h6>
+    
  
  <div class="container-fluid">
     <div class="card">
@@ -35,31 +30,27 @@
              <td>{{$cuenta->nombre}}</td>
              <td>{{$cuenta->descripcion}}</td>
              <td width="10px">
-                @can('cuentas.edit')
-
-                <a href="{{ route('cuentas.edit', $cuenta->id) }}" class="btn btn-default btn-flat" title="Editar">
+    
+                <a href="{{ url('/cuentas/'.$cuenta->id.'/edit') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
-                  @endcan
+                  
                 </td>
                 <td width="10px">
-                @can('cuentas.show')
-
                 <a href="{{ route('cuentas.show', $cuenta->id) }}" class="btn btn-info btn-flat" title="Visualizar">
                     <i class="fas fa-eye" aria-hidden="true"></i>
                   </a>
-
-                @endcan
                 </td>
                 <td width="10px">
-                @can('cuentas.destroy')
-                {!! Form::open(['route' => ['cuentas.destroy', $cuenta->id],
-  'method' =>'DELETE','onsubmit' => 'return confirm("¿Desea eliminar el expediente?")']) !!}
-  <button class="btn btn-danger" class="btn btn-info btn-flat" title="Eliminar">
-    <i class="fas fa-trash" aria-hidden="true"></i>
-  </button>
-{!! Form::close() !!}
-                @endcan
+                <form method="POST" action="{{ url('/cuentas/'.$cuenta->id) }}">
+               {{ csrf_field() }}
+               {{ method_field('DELETE') }}
+               <button class="btn btn-danger" class="btn btn-info btn-flat" onclick="return confirm('¿Borrar?')" title="Eliminar">
+                <i class="fas fa-trash" aria-hidden="true"></i>
+              </button> 
+              </form>
+                
+    
                 </td>
            </tr>
 
@@ -72,4 +63,4 @@
 </div>
 </div>
 </div>
-
+@endsection

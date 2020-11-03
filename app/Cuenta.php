@@ -8,7 +8,7 @@ class Cuenta extends Model
 {
     //
     protected $fillable = [
-        'codigo','codigo_padre','nombre', 'descripcion',
+        'codigo','codigo_padre','nombre', 'descripcion','empresas_id', 'tipocuentas_id',
 
     ];
 
