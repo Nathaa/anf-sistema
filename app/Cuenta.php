@@ -12,14 +12,7 @@ class Cuenta extends Model
 
     ];
 
-    public function balances()
-    {
-        return $this->hasMany(Balance::class);
-    }
-    public function resultados()
-    {
-        return $this->hasMany(Resultado::class);
-    }
+   
 
     public function empresas()
     {

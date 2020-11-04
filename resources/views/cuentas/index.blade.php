@@ -1,11 +1,15 @@
 @extends('template.plantilla2')
+
 @section('content')
 <div class="container">
-
-    
- 
  <div class="container-fluid">
     <div class="card">
+      <div class="card-header">
+      
+          <a href="{{ route('cuentas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
+          <i class="fas fa-plus"></i>Crear Catalogo </button> </a>
+       
+      </div>
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-md-6">

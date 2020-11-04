@@ -21,8 +21,9 @@ class CuentasController extends Controller
     public function index(Request $request)
     {
 
-        $cuentas['cuentas']=Cuenta::paginate(5);
-        return view('cuentas.index',$cuentas);
+        $cuentas=Cuenta::paginate(5);
+
+        return view('cuentas.index',compact('cuentas'));
 
 
     }
@@ -55,7 +56,7 @@ class CuentasController extends Controller
 
         Cuenta::insert($cuentas);
 
-        return response()->json($cuentas);
+        return redirect('cuentas');
     }
 
     /**
@@ -81,8 +82,8 @@ class CuentasController extends Controller
     {
         //
         
-        $cuenta=Cuenta::findOrFail($id);
-        return view('cuentas.edit',compact('cuenta'));
+        $cuentas=Cuenta::findOrFail($id);
+        return view('cuentas.edit',compact('cuentas'));
     }
 
     /**
@@ -95,14 +96,17 @@ class CuentasController extends Controller
     public function update(Request $request,$id)
     {
 
-        $Cuenta=Cuenta::findOrFail($id);
-        $Cuenta->fill($request->all())->save();
+       $cuentas=request()->except(['_token','_method']);
 
 
-        $Cuenta->update($request->all());
+        Cuenta::where('id','=',$id)->update($cuentas);
 
-        Session::flash('info_message', 'Cuenta actualizado con éxito');
-        return redirect()->route('cuentas.index',compact('Cuenta'));
+        $cuentas=Cuenta::findOrFail($id);
+        //$cuentas->update($request->all());
+        return view('cuentas.edit',compact('cuentas'));
+
+            
+        
     }
 
     /**
@@ -118,7 +122,7 @@ class CuentasController extends Controller
   Cuenta::destroy($id);
 
  
-  return back();
+  return redirect('cuentas');
  }
 
 
