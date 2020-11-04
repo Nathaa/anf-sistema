@@ -52,3 +52,14 @@ Route::put('tipocuentas/{tipocuenta}', 'Tipocuentas@update')->name('tipocuentas.
 ->middleware('can:tipocuentas.update');
 Route::delete('tipocuentas/tipocuenta}', 'Tipocuentas@destroy')->name('tipocuentas.destroy')
 ->middleware('can:tipocuentas.destroy');
+
+//Empresas
+Route::get('empresas', 'EmpresasController@index')->name('empresas.index');
+Route::get('empresas/empresa', 'EmpresasController@create')->name('empresas.create');
+Route::get('empresas/{empresa}', 'EmpresasController@show')->name('empresas.show');
+Route::post('empresas', 'EmpresasController@store')->name('empresas.store');
+Route::get('empresas/{empresa}/edit', 'EmpresasController@edit')->name('empresas.edit');
+Route::put('empresas/{empresa}', 'EmpresasController@update')->name('empresas.update');
+Route::delete('empresas/{empresa}', 'EmpresasController@destroy')->name('empresas.destroy');
+
+});
