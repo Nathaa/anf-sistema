@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Cuenta;
+use App\Empresa;
 
 class CuentasController extends Controller
 {
@@ -21,9 +22,10 @@ class CuentasController extends Controller
     public function index(Request $request)
     {
 
-        $cuentas=Cuenta::paginate(5);
+        $cuentas=Cuenta::paginate(4);
+        $empresas = Empresa::get();
 
-        return view('cuentas.index',compact('cuentas'));
+        return view('cuentas.index',compact('cuentas','empresas'));
 
 
     }

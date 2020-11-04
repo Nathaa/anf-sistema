@@ -1,6 +1,7 @@
+@extends('template.plantilla2')
 
-
-
+@section('content')
+<div class="container">
 
 <form action="{{ url('/cuentas/'.$cuentas->id) }}" method="POST">
     <input type="hidden" name="_method" value="PUT">
@@ -9,3 +10,5 @@
     @include('cuentas.form',['Modo'=>'editar'])
 </form>
 
+</div>
+@endsection

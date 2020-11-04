@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function(){
+    return view('auth.login');
+});
 
 
 Route::get('/principal', 'PrincipalController@index')->name('template.plantilla2');

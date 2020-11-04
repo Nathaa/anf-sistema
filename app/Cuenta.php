@@ -16,7 +16,7 @@ class Cuenta extends Model
 
     public function empresas()
     {
-        return $this->hasMany(Empresa::class);
+        return $this->belongsTo('App\Empresa', 'empresas_id');
     }
     public function tipocuentas()
     {
