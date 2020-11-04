@@ -36,7 +36,7 @@ class EmpresasController extends Controller
    
         public function create()
         {
-           // $usuarios = DB::table('users')->get() , ["usuarios"=> $usuarios];
+           
             return view("empresas.create");
         
         }
@@ -54,34 +54,13 @@ class EmpresasController extends Controller
                 'rubro' => $request->rubro
             ]);
             } else{
-                Session::flash('flash_message','ya se agrego una empresa con este usuario');
-                //return 'ya se agrego una empresa con este usuario';
+                Session::flash('info','Este usuario, ya tiene asignada una empresa');
+              
             }
 
-            /*$request->user()->empresa()->create([
-                'nombre' => $request->nombre,
-                'codigo' => $request->codigo,
-                'descripcion' => $request->descripcion,
-                'rubro' => $request->rubro
-
-                
-            ]);*/
-
+           
             return redirect('empresas');
-            /*$empresa->nombre = $request->get('nombre');
-                $empresa->codigo = $request->get('codigo');
-                $empresa->descripcion = $request->get('descripcion');
-                $empresa->rubro = $request->get('rubro');*/
-
-           /* $empresa = new Empresa();
-           // $empresas->create($request->all());
-            $empresa->nombre = $request->get('nombre');
-            $empresa->codigo = $request->get('codigo');
-            $empresa->descripcion = $request->get('descripcion');
-            $empresa->rubro = $request->get('rubro');
-            $empresa->users_id = $request->input('users_id');
-            $empresa->save();
-            return redirect('empresas');*/
+          
            
            
         }
@@ -106,12 +85,8 @@ class EmpresasController extends Controller
     
         public function update(Request $request,$id)
         {
-            $empresa=empresa::findOrFail($id);
-            $empresa->nombre = $request->input('nombre');
-            $empresa->codigo = $request->input('codigo');
-            $empresa->descripcion = $request->input('descripcion');
-            $empresa->rubro = $request->input('rubro');
-            $empresa->update();
+            $empresa=Empresa::findOrFail($id);
+            $empresa->update($request->all());
             return redirect()->route('empresas.index',compact('empresa'));
             
         }
@@ -119,8 +94,8 @@ class EmpresasController extends Controller
      
         public function destroy($id)
         {
-            
-            Empresa::destroy($id);
+        
+           Empresa::destroy($id);
             return back();
     
         }

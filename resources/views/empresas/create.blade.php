@@ -1,10 +1,30 @@
-@extends('pantilla')
+@extends('template.plantilla2')
+
+@section('crear')
+<div class="col-sm">
+    <ol class="breadcrumb float-sm-right">
+      <li class="breadcrumb-item active"><a href="{{ route('empresas.index')}}" ><button type="button" class="btn btn-dark  btn-m"><i class="fas fa-arrow-alt-circle-left"></i>Regresar atras</button></a></li>
+  
+    </ol>
+  </div>
+
+
+ 
+
+@endsection
+
 
 @section('content')
 <div class="container">
     <div class="card">
 
+    
      <div class="card-body">
+       
+        <div class="alert alert-primary" role="alert">
+            <strong>Datos de la Empresa</strong>
+        </div>
+        
         <table class="table table-bordered table-hover">
 
                 
@@ -14,12 +34,6 @@
             {{ csrf_field() }}
 
             
-            @if(Session::has('flash_message'))
-            <div class="alert alert-success alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              {{ Session::get('flash_message') }}
-            </div>
-          @endif
 
             <div class="form-group">
                 <label for="nombre">Nombre </label>
