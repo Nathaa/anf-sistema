@@ -1,6 +1,7 @@
 <?php
 
 use App\Empresa;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class EmpresasSeeder extends Seeder
@@ -18,6 +19,7 @@ class EmpresasSeeder extends Seeder
             'codigo' => '000A',
             'descripcion' => 'empresa de luz',
             'rubro' => 'industrial',
+            'users_id' => '1'
 
 
            ]);
@@ -27,6 +29,7 @@ class EmpresasSeeder extends Seeder
             'codigo' => '000B',
             'descripcion' => 'TEXTILERA',
             'rubro' => 'mercantil',
+            'users_id' => '1'
 
 
            ]);
@@ -36,6 +39,7 @@ class EmpresasSeeder extends Seeder
             'codigo' => '000C',
             'descripcion' => 'ni idea',
             'rubro' => 'comercial',
+            'users_id' => '1'
 
             ]);
     }
