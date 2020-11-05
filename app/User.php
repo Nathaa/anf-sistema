@@ -30,4 +30,6 @@ class User extends Authenticatable
     public function empresa() {
         return $this->hasOne(Empresa::class);
       }
+
+    
 }
