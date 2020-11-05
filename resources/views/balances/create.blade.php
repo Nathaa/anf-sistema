@@ -23,7 +23,6 @@
                <td>{{$balance->monto}}</td>
                <td>{{$balance->fecha_inicio}}</td>
                <td>{{$balance->fecha_fin}}</td>
-               <!--<td>{{$cuenta->empresas['nombre']}}</td>-->
               </tr>
             @endforeach
    
