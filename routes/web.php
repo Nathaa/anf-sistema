@@ -59,3 +59,4 @@ Route::delete('empresas/{empresa}', 'EmpresasController@destroy')->name('empresa
 //Empresas
 Route::get('balances', 'BalancesController@index')->name('balances.index');
 Route::get('balances/balance', 'BalancesController@create')->name('balances.create');
+Route::post('balances', 'BalancesController@store')->name('balances.store');
