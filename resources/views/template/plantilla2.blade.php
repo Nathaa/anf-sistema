@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-    <title>Sistema Academico</title>
+    <title>Sistema Financiero</title>
   
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css')}}">
@@ -134,7 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-book"></i>
               <p>
                 Catalogos
                 <i class="right fas fa-angle-left"></i>
@@ -142,36 +142,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-
-                <li><a href="{{ route ('cuentas.index') }}" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
+                  <li><a href="{{ route ('cuentas.index') }}" class="nav-link">
+                  <i class="fas fa-donate"></i>
                   <p>Nuevo Catalogo</p>
                 </a></li>
               </li>
               <li class="nav-item">
-                <li><a href="{{ route ('tipocuentas.index') }}" class="nav-link active">
+                <li><a href="{{ route ('tipocuentas.index') }}" class="nav-link">
                   <i class="fas fa-file-invoice-dollar"></i>
                   <p>Tipo Cuentas</p>
-                </a><li>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route ('empresas.index') }}" class="nav-link">
-                  <i class="fa fa-building nav-icon"></i>
-                  <p>Empresas</p>
                 </a>
               </li>
+              </li>
+              
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+        </ul>
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fa fa-user"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                Usuarios
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          </li>
-        </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <li><a href="{{ route ('empresas.index') }}" class="nav-link">
+                  <i class="fas fa-building"></i>
+                  <p>Empresas</p>
+                </a></li>
+              </li>
+              
+            </ul>
+            
+    
+          </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
