@@ -21,7 +21,7 @@ class EmpresasController extends Controller
         {
             if($request){
                 $query = trim($request->get('search'));
-                //$empresas=Empresa::where('nombre','LIKE','%'.$query.'%')
+            
                 $empresas=DB::table('empresas as emp')
                 ->join('users as us', 'us.id', '=', 'emp.user_id')
                 ->select('emp.id','emp.nombre', 'emp.codigo', 'emp.rubro', 'emp.descripcion', 'us.name as nombre_usu')
@@ -51,7 +51,8 @@ class EmpresasController extends Controller
                 'nombre' => $request->nombre,
                 'codigo' => $request->codigo,
                 'descripcion' => $request->descripcion,
-                'rubro' => $request->rubro,
+                'rubro' => $request->rubro
+               
             ]);
             } else{
                 Session::flash('info','Este usuario, ya tiene asignada una empresa');
