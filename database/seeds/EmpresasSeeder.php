@@ -19,7 +19,7 @@ class EmpresasSeeder extends Seeder
             'codigo' => '000A',
             'descripcion' => 'empresa de luz',
             'rubro' => 'industrial',
-            'users_id' => '1'
+            'user_id' => '1'
 
 
            ]);
@@ -29,7 +29,7 @@ class EmpresasSeeder extends Seeder
             'codigo' => '000B',
             'descripcion' => 'TEXTILERA',
             'rubro' => 'mercantil',
-            'users_id' => '1'
+            'user_id' => '2'
 
 
            ]);
@@ -39,7 +39,7 @@ class EmpresasSeeder extends Seeder
             'codigo' => '000C',
             'descripcion' => 'ni idea',
             'rubro' => 'comercial',
-            'users_id' => '1'
+            'user_id' => '3'
 
             ]);
     }

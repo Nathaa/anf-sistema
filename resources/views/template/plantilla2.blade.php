@@ -149,14 +149,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a></li>
               </li>
               <li class="nav-item">
-                <li><a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
+                <li><a href="{{ route ('tipocuentas.index') }}" class="nav-link active">
+                  <i class="fas fa-file-invoice-dollar"></i>
                   <p>Tipo Cuentas</p>
                 </a><li>
               </li>
               <li class="nav-item">
                 <a href="{{ route ('empresas.index') }}" class="nav-link">
-                  <i class="fa fa-building"></i>
+                  <i class="fa fa-building nav-icon"></i>
                   <p>Empresas</p>
                 </a>
               </li>

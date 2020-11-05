@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Tipocuenta;
+
 
 class TipocuentasController extends Controller
 {
@@ -21,7 +22,17 @@ class TipocuentasController extends Controller
 
     public function index(Request $request)
     {
-    
+
+        
+        if ($request)
+       {
+        $query=trim($request->get('search'));
+        $tipocuenta= TipoCuenta::where('nombre', 'LIKE', '%' . $query . '%')
+        ->orderBy('id','asc')
+        ->paginate(5);
+        return view('tipocuentas.index', ['tipocuenta' => $tipocuenta, 'search' => $query]);
+        }
+
 
     }
 
@@ -33,20 +44,20 @@ class TipocuentasController extends Controller
      */
     public function create()
     {
-        //
+        return view('tipocuentas.create');
     
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function store(Request $request)
     {
-        //
-       
+            $tipocuenta = new Tipocuenta();
+            $tipocuenta->nombre = $request->get('nombre');
+            $tipocuenta->subtipo = $request->get('subtipo');
+            $tipocuenta->descripcion = $request->get('descripcion');
+            $tipocuenta->save();
+            return redirect('tipocuentas');
+          
     }
 
     /**
@@ -57,7 +68,8 @@ class TipocuentasController extends Controller
      */
     public function show($id)
     {
-        //
+        $tipocuenta=TipoCuenta::findOrFail($id);
+        return view('tipocuentas.show', compact('tipocuenta'));
         
     }
 
@@ -69,8 +81,9 @@ class TipocuentasController extends Controller
      */
     public function edit($id)
     {
-        //
         
+        $tipocuenta=Tipocuenta::findOrFail($id);
+        return view('tipocuentas.edit',compact('tipocuenta'));
        
     }
 
@@ -83,7 +96,13 @@ class TipocuentasController extends Controller
      */
     public function update(Request $request,$id)
     {
-
+        
+        $tipocuenta=Tipocuenta::findOrFail($id);
+        $tipocuenta->nombre = $request->input('nombre');
+        $tipocuenta->subtipo = $request->input('subtipo');
+        $tipocuenta->descripcion = $request->input('descripcion');
+        $tipocuenta->update();
+        return redirect()->route('tipocuentas.index',compact('tipocuenta'));
         
     }
 
@@ -95,8 +114,9 @@ class TipocuentasController extends Controller
      */
     public function destroy($id)
     {
-        //
-
+        
+        Tipocuenta::destroy($id);
+        return back();
       
     }
 }

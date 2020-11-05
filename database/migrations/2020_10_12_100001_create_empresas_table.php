@@ -22,8 +22,8 @@ class CreateEmpresasTable extends Migration
             $table->timestamps();
 
             
-            $table->unsignedBigInteger('users_id')->unique();
-            $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

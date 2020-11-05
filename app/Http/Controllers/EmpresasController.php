@@ -51,7 +51,7 @@ class EmpresasController extends Controller
                 'nombre' => $request->nombre,
                 'codigo' => $request->codigo,
                 'descripcion' => $request->descripcion,
-                'rubro' => $request->rubro
+                'rubro' => $request->rubro,
             ]);
             } else{
                 Session::flash('info','Este usuario, ya tiene asignada una empresa');
