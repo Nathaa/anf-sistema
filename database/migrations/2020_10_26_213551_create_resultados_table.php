@@ -16,6 +16,7 @@ class CreateResultadosTable extends Migration
         Schema::create('resultados', function (Blueprint $table) {
             $table->Bigincrements('id');
             $table->string('nombre');
+            $table->float('monto');
             $table->date('fecha_inicio');
             $table->date('fecha_final');
             $table->timestamps();

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Cuenta;
 use App\Empresa;
+use App\Tipocuenta;
 
 class CuentasController extends Controller
 {
@@ -39,7 +40,8 @@ class CuentasController extends Controller
     public function create()
     {
         //
-        return view('cuentas.create');
+        $tipocuentas = Tipocuenta::get();
+        return view('cuentas.create',compact('tipocuentas'));
     
     }
 
@@ -58,7 +60,7 @@ class CuentasController extends Controller
 
         Cuenta::insert($cuentas);
 
-        return redirect('cuentas');
+        return view('cuentas.create');
     }
 
     /**

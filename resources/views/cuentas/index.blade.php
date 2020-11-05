@@ -1,5 +1,6 @@
 @extends('template.plantilla2')
 
+
 @section('content')
 <div class="container">
  <div class="container-fluid">
@@ -20,8 +21,8 @@
          <tr>
 
            
-           <th scope="col">Nombre</th>
-           <th scope="col">Empresas</th>
+           <th scope="col">Catalogo</th>
+           
            <th colspan="3">&nbsp;Opciones</th>
          </tr>
        </thead>
@@ -30,7 +31,7 @@
            <tr>
             
             <td>{{$cuenta->descripcion}}</td>
-             <td>{{$cuenta->empresas['nombre']}}</td>
+            <!--<td>{{$cuenta->empresas['nombre']}}</td>-->
              
              <td width="10px">
     

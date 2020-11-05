@@ -1,4 +1,10 @@
 
+<div class="container">
+    <div class="card">
+
+    
+     <div class="card-body">
+       
 <div class="form-group">
     <div class="row">
         <div class="col">
@@ -26,7 +32,7 @@
 <div class="form-group">
     <div class="row">
         <div class="col">
-<label for="descripcion" class="control-label">{{'Descripcion'}}:</label><br>
+<label for="descripcion" class="control-label">{{'Catalogo'}}:</label><br>
 <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ isset($cuentas->descripcion)?$cuentas->descripcion:'' }}"><br>
 </div>
 <div class="col">
@@ -36,5 +42,9 @@
 </div>
 
 
-<input type="submit" class="btn btn-success" value="{{ $Modo=='crear' ? 'Agregar':'Modificar' }}">
+<input type="submit" class="btn btn-success" value="{{ $Modo=='crear' ? 'Agregar nueva cuenta':'Modificar Cuenta' }}">
 <a class="btn btn-primary" href="{{ url('cuentas') }}">Regresar</a>
+
+</div>
+</div>
+     </div>

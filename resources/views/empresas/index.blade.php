@@ -26,11 +26,11 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-                <a href="{{ route('empresas.create') }}"> <button type="button" class="btn btn-dark btn-xm">
+                <a href="{{ route('empresas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
                 <i class="fas fa-plus"></i>Crear Empresa</button> </a>
-                <a href=""> <button type="button" class="btn btn-warning btn-xm">
+                <a href="{{ route('balances.create') }}"> <button type="button" class="btn btn-warning btn-xs">
                     <i class="fas fa-plus"></i>Crear Catálogo de Cuentas del Balance General </button> </a>
-                <a href=""> <button type="button" class="btn btn-info btn-xm">
+                <a href="#"> <button type="button" class="btn btn-info btn-xs">
                 <i class="fas fa-plus"></i>Crear Catálogo de Cuentas del Estado de Resultados</button> </a>
               
         </div>
@@ -45,8 +45,7 @@
             <table class="table table-bordered thead-dark table-hover table-sm">
          <tr>
            <th scope="col">Nombre</th>
-           <th scope="col">Código</th>
-           <th scope="col">Descripción</th>
+           
            <th scope="col">Rubro</th>
            <th scope="col">Representante de Empresa</th>
            <th colspan="3">&nbsp;Opciones</th>
@@ -56,8 +55,6 @@
      @foreach ($empresas as $empresa)
         <tr>
             <td>{{$empresa->nombre}}</td>
-            <td>{{ $empresa->codigo }}</td>
-            <td>{{$empresa->descripcion}}</td>
             <td>{{$empresa->rubro}}</td>
             <td>{{$empresa->nombre_usu}}</td>
             <td width="10px">

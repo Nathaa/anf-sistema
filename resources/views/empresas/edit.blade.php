@@ -4,7 +4,7 @@
 @section('crear')
 <div class="col-sm">
     <ol class="breadcrumb float-sm-right">
-      <li class="breadcrumb-item active"><a href="{{ route('empresas.index')}}" ><button type="button" class="btn btn-dark  btn-m"><i class="fas fa-arrow-alt-circle-left"></i>Regresar atras</button></a></li>
+      <li class="breadcrumb-item active"><a href="{{ route('empresas.index')}}" ><button type="button" class="btn btn-dark  btn-xs"><i class="fas fa-arrow-alt-circle-left"></i>Regresar atras</button></a></li>
   
     </ol>
   </div>
@@ -21,9 +21,6 @@
         
          <div class="card-body">
            
-            <div class="alert alert-primary" role="alert">
-                <strong>Datos de la Empresa</strong>
-            </div>
             
             <table class="table table-bordered table-hover">
     
