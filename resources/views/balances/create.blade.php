@@ -8,8 +8,7 @@
      <div class="card-body">
         <table class="table table-bordered thead-dark table-hover table-sm">
             <form action="{{route('balances.store') }}" method="POST" role="form">
-
-                {{ csrf_field() }}
+              {{ csrf_field() }}
             <tr>
    
               <th scope="col">Cuentas</th>
@@ -23,7 +22,6 @@
              @foreach ($balances as $balance)
               <tr>
                <td>{{$balance->nombre}}</td>
-               
                <td><input type="float" class="form-control" id="monto" name="monto" value=""><br></td>
                <td><input type="text" class="form-control" id="" name="" value=""><br></td>
                <td><input type="text" class="form-control" id="" name="" value=""><br></td>

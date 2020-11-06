@@ -38,32 +38,25 @@ class BalancesController extends Controller
         return view('balances.create',compact('balances'));
     
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 
     public function store(Request $request)
     {
         //
-        //$cuentas = Cuenta::create($request->all());
+        //$balances = balance::create($request->all());
 
         $balances=request()->except('_token');
-        
-     
-        $balances = new balance;
-
-    $balances->nombre = $request->nombre;
-    $balances->monto = $request->monto;
-    $balances->suburb = $request->suburb;
-    $balances->street = $request->street;
-    $balances->o_number = $request->onumber;
-    $balances->i_number = $request->inumber;
-    $balances->postal_code = $request->postal_code;
-    $balances->phone_s = $request->phone_s;
-    $balances->email_s = $request->email_s;
-    $balances->google_map = $request->map;
-    $balances->customer_id = $customer_id;
-
-    $success = $balances->save()
+    
         Balance::insert($balances);
 
         return view('cuentas.create');
     }
+
+
+    
 }
