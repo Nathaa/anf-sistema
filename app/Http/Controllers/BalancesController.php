@@ -34,7 +34,7 @@ class BalancesController extends Controller
     {
         //
         DB::select("CALL micursor()");  
-        $balances = balance::get();
+        $balances=balance::get();
         return view('balances.create',compact('balances'));
     
     }
