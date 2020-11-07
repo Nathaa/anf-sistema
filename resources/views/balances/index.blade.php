@@ -15,7 +15,7 @@
    
               <th scope="col">Cuentas</th>
               
-              <th scope="col">monto</th>
+              <th scope="col">Monto</th>
               
     
             </tr>
@@ -23,11 +23,13 @@
           <tbody>
              @foreach ($balances as $balance)
               <tr>
+              <?php if($balance->nombre == "ACTIVO" || $balance->nombre == "ACTIVO CORRIENTE" || $balance->nombre == "ACTIVO NO CORRIENTE"){ ?>
+               <td style="font-weight:bold; font-family: cursive;">{{$balance->nombre}}</td>
+               <td align="right" style="font-family: cursive;" >$ {{$balance->monto}}</td>
+               <?php }else{ ?>
                <td>{{$balance->nombre}}</td>
-               <td>{{$balance->monto}}</td>
-              
-               
-            
+               <td align="right">$ {{$balance->monto}}</td>
+               <?php } ?>   
               </tr>
             @endforeach
    
