@@ -15,8 +15,8 @@ class CreateBalancesTable extends Migration
     {
         Schema::create('balances', function (Blueprint $table) {
             $table->Bigincrements('id');
-            $table->string('nombre');
-            $table->float('monto');
+            $table->string('nombre')->nullable();
+            $table->float('monto')->nullable();
             $table->date('fecha_inicio');
             $table->date('fecha_final');
             $table->timestamps();
