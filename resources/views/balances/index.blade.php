@@ -4,18 +4,22 @@
 
 
 <div class="container">
+    
     <div class="card">
      <div class="card-body">
+        <tr>
+        <th scope="col">Fecha Inicio</th>
+        <th scope="col">Fecha Finalizacion</th>
+        </tr>
         <table class="table table-bordered thead-dark table-hover table-sm">
-            <form action="{{route('balances.store') }}" method="POST" role="form">
+            <form action="" method="get" role="form">
               {{ csrf_field() }}
             <tr>
    
               <th scope="col">Cuentas</th>
               
-              <th scope="col"><label for="monto[]" class="control-label">{{'Monto'}}:</label></th>
-              <th scope="col">Fecha Inicio</th>
-              <th scope="col">Fecha Finalizacion</th>
+              <th scope="col">monto</th>
+              
     
             </tr>
           </thead>
@@ -23,10 +27,9 @@
              @foreach ($balances as $balance)
               <tr>
                <td>{{$balance->nombre}}</td>
+               <td>{{$balance->monto}}</td>
               
-               <td><input type="float" class="form-control" id="monto[]" name="monto[]" value=""><br></td>
-               <td><input type="text" class="form-control" id="" name="" value=""><br></td>
-               <td><input type="text" class="form-control" id="" name="" value=""><br></td>
+               
             
               </tr>
             @endforeach

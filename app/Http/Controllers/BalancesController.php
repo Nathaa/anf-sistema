@@ -19,9 +19,11 @@ class BalancesController extends Controller
     public function index(Request $request)
     {
 
+        
+          $balances=balance::get();
        
 
-
+          return view('balances.index',compact('balances'));
     }
 
 
@@ -53,8 +55,8 @@ class BalancesController extends Controller
         $balances=request()->except('_token');
     
         Balance::insert($balances);
-
-        return view('cuentas.create');
+       
+        return view('balances.index');
     }
 
 

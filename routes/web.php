@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('balances', function () {
+    return view('balances.index');
 });
 
 Auth::routes();
@@ -56,7 +56,7 @@ Route::get('empresas/{empresa}/edit', 'EmpresasController@edit')->name('empresas
 Route::put('empresas/{empresa}', 'EmpresasController@update')->name('empresas.update');
 Route::delete('empresas/{empresa}', 'EmpresasController@destroy')->name('empresas.destroy');
 
-//Empresas
+//balances
 Route::get('balances', 'BalancesController@index')->name('balances.index');
 Route::get('balances/balance', 'BalancesController@create')->name('balances.create');
 Route::post('balances', 'BalancesController@store')->name('balances.store');
