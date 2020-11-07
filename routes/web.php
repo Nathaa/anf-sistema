@@ -61,3 +61,4 @@ Route::get('balances', 'BalancesController@index')->name('balances.index');
 Route::get('balances/balance', 'BalancesController@create')->name('balances.create');
 Route::post('balances', 'BalancesController@store')->name('balances.store');
 Route::put('balances/{balance}', 'BalancesController@update')->name('balances.update');
+Route::post('balances', 'BalancesController@store')->name('balances.store');

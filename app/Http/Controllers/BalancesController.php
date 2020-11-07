@@ -8,13 +8,6 @@ use DB;
 
 class BalancesController extends Controller
 {
-    //
-
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     public function index(Request $request)
     {
@@ -25,38 +18,40 @@ class BalancesController extends Controller
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        /*
         DB::select("CALL micursor()");  
         $balances=balance::get();
-        return view('balances.create',compact('balances'));
+        return view('balances.create',compact('balances'));*/
+         $cuentas = DB::table('cuentas')->get();
+         return view('balances.create', ["cuentas"=> $cuentas]);
+         
     
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
 
     public function store(Request $request)
     {
-        //
-        //$balances = balance::create($request->all());
+        
+        
+        if( count($request->nombre) > 0){
+            foreach ($request->nombre as $key => $value) {
+               $balance = new Balance();
 
-        $balances=request()->except('_token');
-    
-        Balance::insert($balances);
+               $balance->nombre = $value;
+               $balance->monto = $request->monto[$key];
+               $balance->fecha_inicio = $request->get('fecha_inicio');
+               $balance->fecha_final = $request->get('fecha_final');
+               $balance->cuenta_id = $request->cuenta_id[$key];
+               $balance->save();
+              
+            }
+        }
+        
+        return redirect('balances.index');
 
-        return view('cuentas.create');
     }
-
-
+   
     
 }

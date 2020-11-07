@@ -22,6 +22,8 @@ class CreateBalancesTable extends Migration
             $table->timestamps();
             
            
+            $table->unsignedBigInteger('cuenta_id')->unsigned();
+            $table->foreign('cuenta_id')->references('id')->on('cuentas')->onUpdate('cascade')->onDelete('cascade');
         });
 
         

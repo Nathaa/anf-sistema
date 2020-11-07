@@ -8,7 +8,7 @@ class Cuenta extends Model
 {
     //
     protected $fillable = [
-        'codigo','codigo_padre','nombre', 'descripcion','empresas_id', 'tipocuentas_id',
+'codigo','codigo_padre','nombre', 'descripcion','empresas_id', 'tipocuentas_id',
 
     ];
 
@@ -21,5 +21,10 @@ class Cuenta extends Model
     public function tipocuentas()
     {
         return $this->hasMany(Tipocuentas::class);
+    }
+
+    public function balance()
+    {
+        return $this->belongsTo(Balance::class);
     }
 }

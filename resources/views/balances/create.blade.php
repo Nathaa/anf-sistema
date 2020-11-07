@@ -19,16 +19,18 @@
             </tr>
           </thead>
           <tbody>
-             @foreach ($balances as $balance)
+             @foreach ($cuentas as $cuenta)
               <tr>
-               <td>{{$balance->nombre}}</td>
-               <td><input type="float" class="form-control" id="monto" name="monto" value=""><br></td>
+               <!--<td>{{$cuenta->nombre}}</td>-->
+               <td><input type="text"  name="nombre[]" value="{{$cuenta->nombre}}"><br></td>
+               <td><input type="float" class="form-control" id="monto" name="monto[]" value=""><br></td>
                <td><input type="text" class="form-control" id="" name="" value=""><br></td>
                <td><input type="text" class="form-control" id="" name="" value=""><br></td>
-            
+               <td><input type="text" name="cuenta_id[]" value="{{$cuenta->id}}"></td>
               </tr>
             @endforeach
-   
+          
+
           </tbody>
          </table>
          <div class="form-group">

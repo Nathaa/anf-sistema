@@ -9,8 +9,13 @@ class Balance extends Model
     //
 
     protected $fillable = [
-        'nombre','monto','fecho_inicio','fecha_final',
+    'nombre','monto','fecha_inicio','fecha_final','cuenta_id'
 
     ];
+
+    public function cuentas()
+    {
+        return $this->hasMany(Cuentas::class);
+    }
 
 }
