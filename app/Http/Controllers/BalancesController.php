@@ -54,16 +54,19 @@ class BalancesController extends Controller
             //balance::updateOrCreate($request->cuentas_id[$key]);
             $balance->nombre= $value;
             $balance->monto = $request->monto[$key];
-            $balance->fecha_inicio= $request->get('fecha_inicio');
+            $balance->fecha_inicio = $request->get('fecha_inicio');
             $balance->fecha_final = $request->get('fecha_final');
-            $balance->cuenta_id = $request->cuenta_id[$key];
+            $balance->cuentas_id = $request->cuentas_id[$key];
             $balance->save();
         }
 	    
 } 
-        DB::select("CALL micursor2('fecha_inicio', 'fecha_final')"); 
-        DB::select("CALL micursor2('fecha_inicio', 'fecha_final')"); 
-        dd($request->all());
+        /*$i = $request->fecha_inicio;
+        $f = $request->fecha_final;*/
+        DB::select("CALL micursor2()"); 
+        DB::select("CALL micursor2()"); 
+
+        
         //return view('balances.create');
         //Balance::insert($balances);
         return redirect('balances');
