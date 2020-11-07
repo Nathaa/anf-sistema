@@ -28,7 +28,7 @@ class BalancesController extends Controller
      */
     public function create()
     {
-        //
+        
         DB::select("CALL micursor()");  
 
         $cuentas=DB::table('cuentas')->get();
@@ -36,6 +36,7 @@ class BalancesController extends Controller
         return view('balances.create',["cuentas"=>$cuentas]);
     
     }
+
 
     public function store(Request $request)
     {

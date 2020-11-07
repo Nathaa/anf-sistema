@@ -8,8 +8,7 @@
      <div class="card-body">
         <table class="table table-bordered thead-dark table-hover table-sm">
             <form action="{{route('balances.store') }}" method="POST" role="form">
-
-                {{ csrf_field() }}
+              {{ csrf_field() }}
             <tr>
    
               <th scope="col">Cuentas</th>
@@ -41,7 +40,8 @@
                
               </tr>
             @endforeach
-   
+          
+
           </tbody>
          </table>
          <div class="form-group">
