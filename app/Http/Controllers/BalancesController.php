@@ -24,10 +24,11 @@ class BalancesController extends Controller
     {
         /*
         DB::select("CALL micursor()");  
-        $balances=balance::get();
+        
         return view('balances.create',compact('balances'));*/
+        $balances=balance::get();
          $cuentas = DB::table('cuentas')->get();
-         return view('balances.create', ["cuentas"=> $cuentas]);
+         return view('balances.create', ["cuentas"=> $cuentas],["balances"=> $balances]);
          
     
     }
@@ -51,7 +52,7 @@ class BalancesController extends Controller
             }
         }
         
-        return redirect('balances.index');
+        return redirect('balances');
 
     }
    

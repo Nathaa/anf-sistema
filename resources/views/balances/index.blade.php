@@ -7,10 +7,7 @@
     
     <div class="card">
      <div class="card-body">
-        <tr>
-        <th scope="col">Fecha Inicio</th>
-        <th scope="col">Fecha Finalizacion</th>
-        </tr>
+        
         <table class="table table-bordered thead-dark table-hover table-sm">
             <form action="" method="get" role="form">
               {{ csrf_field() }}
