@@ -21,6 +21,9 @@ Route::get('/', function(){
     return view('auth.login');
 });
 
+Route::get('balances', function () {
+    return view('balances.index');
+});
 
 Route::get('/principal', 'PrincipalController@index')->name('template.plantilla2');
 
@@ -60,3 +63,6 @@ Route::delete('empresas/{empresa}', 'EmpresasController@destroy')->name('empresa
 Route::get('balances', 'BalancesController@index')->name('balances.index');
 Route::get('balances/balance', 'BalancesController@create')->name('balances.create');
 Route::post('balances', 'BalancesController@store')->name('balances.store');
+Route::get('balances/{balance}/edit', 'BalancesController@edit')->name('balances.edit');
+Route::put('balances/{balance}', 'BalancesController@update')->name('balances.update');
+

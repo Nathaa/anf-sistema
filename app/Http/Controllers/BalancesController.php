@@ -8,23 +8,19 @@ use DB;
 
 class BalancesController extends Controller
 {
-    //
-
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
+    
     public function index(Request $request)
     {
 
+        
+          $balances=balance::get();
        
 
-
+          return view('balances.index',compact('balances'));
     }
-
-
+    
+    
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -34,8 +30,10 @@ class BalancesController extends Controller
     {
         //
         DB::select("CALL micursor()");  
-        $balances=balance::get();
-        return view('balances.create',compact('balances'));
+
+        $cuentas=DB::table('cuentas')->get();
+        
+        return view('balances.create',["cuentas"=>$cuentas]);
     
     }
 
@@ -44,26 +42,58 @@ class BalancesController extends Controller
         //
         //$cuentas = Cuenta::create($request->all());
 
-        $balances=request()->except('_token');
         
-     
-        $balances = new balance;
+        //$balances=$request->except('_method', '_token');
+        // $balance = new balance;
+        if(count($request->nombre)>0){
+        
 
-    $balances->nombre = $request->nombre;
-    $balances->monto = $request->monto;
-    $balances->suburb = $request->suburb;
-    $balances->street = $request->street;
-    $balances->o_number = $request->onumber;
-    $balances->i_number = $request->inumber;
-    $balances->postal_code = $request->postal_code;
-    $balances->phone_s = $request->phone_s;
-    $balances->email_s = $request->email_s;
-    $balances->google_map = $request->map;
-    $balances->customer_id = $customer_id;
-
-    $success = $balances->save()
-        Balance::insert($balances);
-
-        return view('cuentas.create');
+        foreach ($request->nombre as $key=>$value) {
+            $balance = new balance;
+            //balance::updateOrCreate($request->cuentas_id[$key]);
+            $balance->nombre= $value;
+            $balance->monto = $request->monto[$key];
+            $balance->fecha_inicio = $request->get('fecha_inicio');
+            $balance->fecha_final = $request->get('fecha_final');
+            $balance->cuentas_id = $request->cuentas_id[$key];
+            $balance->save();
+        }
+	    
+} 
+        DB::select("CALL micursor2()"); 
+        DB::select("CALL micursor2()"); 
+        //return view('balances.create');
+        //Balance::insert($balances);
+        return redirect('balances');
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+       
+        
+
+            
+        
+    }
+
+
+   
 }
