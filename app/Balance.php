@@ -9,7 +9,7 @@ class Balance extends Model
     //
 
     protected $fillable = [
-    'nombre','monto','fecha_inicio','fecha_final','cuenta_id'
+    'nombre','monto','fecha_inicio','fecha_final','cuentas_id'
 
     ];
 

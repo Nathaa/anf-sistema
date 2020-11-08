@@ -61,12 +61,16 @@ class BalancesController extends Controller
         }
 	    
 } 
+<<<<<<< HEAD
+      
+=======
         /*$i = $request->fecha_inicio;
         $f = $request->fecha_final;*/
         DB::select("CALL micursor2()"); 
         DB::select("CALL micursor2()"); 
 
         
+>>>>>>> 3a4538ed13999265b463e1b876abfb9297671a57
         //return view('balances.create');
         //Balance::insert($balances);
         return redirect('balances');
