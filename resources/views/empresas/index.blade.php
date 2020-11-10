@@ -28,10 +28,8 @@
         <div class="card-header">
                 <a href="{{ route('empresas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
                 <i class="fas fa-plus"></i>Crear Empresa</button> </a>
-                <a href="{{ route('balances.create') }}"> <button type="button" class="btn btn-warning btn-xs">
-                    <i class="fas fa-plus"></i>Crear Catálogo de Cuentas del Balance General </button> </a>
-                <a href="#"> <button type="button" class="btn btn-info btn-xs">
-                <i class="fas fa-plus"></i>Crear Catálogo de Cuentas del Estado de Resultados</button> </a>
+               
+                
               
         </div>
 
@@ -47,7 +45,10 @@
            <th scope="col">Nombre</th>
            
            <th scope="col">Rubro</th>
-           <th scope="col">Representante de Empresa</th>
+    
+          
+           
+           <th colspan="2">&nbsp;Informe Financiero</th>
            <th colspan="3">&nbsp;Opciones</th>
          </tr>
     </thead>
@@ -56,8 +57,16 @@
         <tr>
             <td>{{$empresa->nombre}}</td>
             <td>{{$empresa->rubro}}</td>
-            <td>{{$empresa->nombre_usu}}</td>
-            <td width="10px">
+           
+            <td width="">
+            <a href="{{ route('balances.create', $empresa->id) }}"> <button type="button" class="btn btn-warning btn-xs">
+                <i class="fas fa-plus"></i>Crear Balance General </button> </a>
+            </td>
+            <td width="">
+                <a href="#"> <button type="button" class="btn btn-info btn-xs">
+                    <i class="fas fa-plus"></i>Crear Estado de Resultados</button> </a>
+            </td>
+                <td width="10px">
             
                 <a href="{{ url('/empresas/'.$empresa->id.'/edit') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
