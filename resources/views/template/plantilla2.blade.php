@@ -136,7 +136,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
               <p>
-                Catalogos
+                Cuentas
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -144,7 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item">
                   <li><a href="{{ route ('cuentas.index') }}" class="nav-link">
                   <i class="fas fa-donate"></i>
-                  <p>Nuevo Catalogo</p>
+                  <p>Añadir Cuentas a un catalogo</p>
                 </a></li>
               </li>
               <li class="nav-item">
@@ -161,20 +161,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fa fa-user"></i>
+              <i class="nav-icon fas fa-building"></i>
               <p>
-                Usuarios
+                Empresas
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                   <li><a href="{{ route ('empresas.index') }}" class="nav-link">
-                  <i class="fas fa-building"></i>
+                  <i class="fas fa-industry"></i>
                   <p>Empresas</p>
                 </a></li>
               </li>
-              
+              <li class="nav-item">
+                <li><a href="{{ route ('empresas.index2') }}" class="nav-link">
+                <i class="fas fa-money-check-alt"></i>
+                <p>Listado de Catalogos</p>
+              </a></li>
+            </li>
             </ul>
             
     

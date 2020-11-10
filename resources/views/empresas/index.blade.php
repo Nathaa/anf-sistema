@@ -59,7 +59,7 @@
             <td>{{$empresa->rubro}}</td>
            
             <td width="">
-            <a href="{{ route('balances.create', $empresa->id) }}"> <button type="button" class="btn btn-warning btn-xs">
+            <a href="{{ url('/balances/'.$empresa->id.'/edit') }}"> <button type="button" class="btn btn-warning btn-xs">
                 <i class="fas fa-plus"></i>Crear Balance General </button> </a>
             </td>
             <td width="">

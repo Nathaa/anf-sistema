@@ -9,6 +9,9 @@
      <div class="card-body">
         <tr>
         <td scope="col">Fecha Inicio</td>
+        <td scope="col">Fecha Fin</td>
+        
+       
         <th scope="col">Fecha Finalizacion</th>
         </tr>
         <table class="table table-bordered thead-dark table-hover table-sm">

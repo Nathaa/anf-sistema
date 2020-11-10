@@ -33,6 +33,23 @@ class EmpresasController extends Controller
             }
     
         }
+
+        public function index2(Request $request)
+        {
+            if($request){
+                $query = trim($request->get('search'));
+            
+                $empresas=DB::table('empresas as emp')
+                ->join('users as us', 'us.id', '=', 'emp.user_id')
+                ->select('emp.id','emp.nombre', 'emp.codigo', 'emp.rubro', 'emp.descripcion', 'us.name as nombre_usu')
+                ->where('emp.nombre','LIKE','%'.$query.'%')
+                ->orderBy('emp.id','asc')
+                ->paginate(5);
+                return view("empresas.index2", ["empresas"=>$empresas, "search"=>$query]);
+            
+            }
+    
+        }
    
         public function create()
         {

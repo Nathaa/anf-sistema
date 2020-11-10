@@ -52,6 +52,7 @@ Route::delete('tipocuentas/{tipocuenta}', 'TipocuentasController@destroy')->name
 
 //Empresas
 Route::get('empresas', 'EmpresasController@index')->name('empresas.index');
+Route::get('empresas2', 'EmpresasController@index2')->name('empresas.index2');
 Route::get('empresas/empresa', 'EmpresasController@create')->name('empresas.create');
 Route::get('empresas/{empresa}', 'EmpresasController@show')->name('empresas.show');
 Route::post('empresas', 'EmpresasController@store')->name('empresas.store');
@@ -61,7 +62,9 @@ Route::delete('empresas/{empresa}', 'EmpresasController@destroy')->name('empresa
 
 //balances
 Route::get('balances', 'BalancesController@index')->name('balances.index');
+Route::get('balances2', 'BalancesController@index2')->name('balances.index2');
 Route::get('balances/balance', 'BalancesController@create')->name('balances.create');
+Route::get('balances/{balance}', 'BalancesController@show')->name('balances.show');
 Route::post('balances', 'BalancesController@store')->name('balances.store');
 Route::get('balances/{balance}/edit', 'BalancesController@edit')->name('balances.edit');
 Route::put('balances/{balance}', 'BalancesController@update')->name('balances.update');
