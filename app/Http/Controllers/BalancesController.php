@@ -153,7 +153,8 @@ class BalancesController extends Controller
     public function update(Request $request, $id)
     {
        
-        if(count($request->nombre)>0){
+        if(count($request->nombre)>0)
+        {
         
 
             foreach ($request->nombre as $key=>$value) {
@@ -167,17 +168,14 @@ class BalancesController extends Controller
                 $balance->save();
             }
             
-         } 
-         DB::select("CALL micursor2($id)"); 
-         DB::select("CALL micursor2($id)"); 
+        } 
+    
+            DB::select("CALL micursor2($id)"); 
+          DB::select("CALL micursor2($id)"); 
  
-         
-        
-         return redirect('empresas');
-
-            
-        
+          return redirect('empresas');
     }
+
     /**
      * Display the specified resource.
      *

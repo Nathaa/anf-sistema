@@ -63,7 +63,7 @@
                 <i class="fas fa-plus"></i>Crear Balance General </button> </a>
             </td>
             <td width="">
-                <a href="#"> <button type="button" class="btn btn-info btn-xs">
+                <a href="{{ url('/resultados/'.$empresa->id.'/edit') }}"> <button type="button" class="btn btn-info btn-xs">
                     <i class="fas fa-plus"></i>Crear Estado de Resultados</button> </a>
             </td>
                 <td width="10px">

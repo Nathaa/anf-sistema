@@ -60,7 +60,7 @@
                 <i class="fas fa-plus"></i>Balances General </button> </a>
             </td>
             <td width="">
-                <a href="#"> <button type="button" class="btn btn-info btn-xs">
+                <a href="{{ route('resultados.index2') }}"> <button type="button" class="btn btn-info btn-xs">
                     <i class="fas fa-plus"></i>Estados de Resultados</button> </a>
             </td>
             

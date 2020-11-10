@@ -27,4 +27,9 @@ class Cuenta extends Model
     {
         return $this->belongsTo(Balance::class);
     }
+
+    public function resultado()
+    {
+        return $this->belongsTo(Resultado::class);
+    }
 }

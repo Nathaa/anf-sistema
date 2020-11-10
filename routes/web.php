@@ -31,13 +31,13 @@ Route::get('cuentas', 'CuentasController@index')->name('cuentas.index');
 
 Route::get('cuentas/cuenta', 'CuentasController@create')->name('cuentas.create');
 
-Route::get('cuentas/{cuenta}', 'CuentasController@show')->name('cuentas.show')
-->middleware('can:cuentas.show');
+Route::get('cuentas/{cuenta}', 'CuentasController@show')->name('cuentas.show');
 Route::post('cuentas', 'CuentasController@store')->name('cuentas.store');
 
 Route::get('cuentas/{cuenta}/edit', 'CuentasController@edit')->name('cuentas.edit');
 Route::put('cuentas/{cuenta}', 'CuentasController@update')->name('cuentas.update');
 Route::delete('cuentas/{cuenta}', 'CuentasController@destroy')->name('cuentas.destroy');
+
 
 //tipo cuentas
 Route::get('tipocuentas', 'TipocuentasController@index')->name('tipocuentas.index');
@@ -67,4 +67,14 @@ Route::get('balances/{balance}', 'BalancesController@show')->name('balances.show
 Route::post('balances', 'BalancesController@store')->name('balances.store');
 Route::get('balances/{balance}/edit', 'BalancesController@edit')->name('balances.edit');
 Route::put('balances/{balance}', 'BalancesController@update')->name('balances.update');
+
+//Resultados
+
+Route::get('resultados', 'ResultadosController@index')->name('resultados.index');
+Route::get('resultados2', 'ResultadosController@index2')->name('resultados.index2');
+Route::get('resultados/resultado', 'ResultadosController@create')->name('resultados.create');
+Route::get('resultados/{resultado}', 'ResultadosController@show')->name('resultados.show');
+Route::post('resultados', 'ResultadosController@store')->name('resultados.store');
+Route::get('resultados/{resultado}/edit', 'ResultadosController@edit')->name('resultados.edit');
+Route::put('resultados/{resultado}', 'ResultadosController@update')->name('resultados.update');
 
