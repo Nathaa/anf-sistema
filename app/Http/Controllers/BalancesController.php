@@ -133,7 +133,7 @@ class BalancesController extends Controller
    
       $cuentas=DB::table('cuentas')
       ->join('empresas','cuentas.empresas_id','=', 'empresas.id')
-      ->select('cuentas.nombre','cuentas.id')
+      ->select('cuentas.nombre','cuentas.id','cuentas.codigo_padre')
       ->where('cuentas.empresas_id', $empresas)
       ->get();
       
