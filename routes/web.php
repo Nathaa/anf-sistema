@@ -21,9 +21,8 @@ Route::get('/', function(){
     return view('auth.login');
 });
 
-Route::get('balances', function () {
-    return view('balances.index');
-});
+
+//Route::resource('balances/balance','CuentasController@store') ;
 
 Route::get('/principal', 'PrincipalController@index')->name('template.plantilla2');
 

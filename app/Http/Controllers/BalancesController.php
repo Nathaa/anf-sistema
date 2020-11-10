@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Balance;
 use Illuminate\Http\Request;
+use Session;
+use App\Http\Controllers\HomeController;
 use DB;
+Use Redirect;
+use Illuminate\Support\Facades\Input;
 
 class BalancesController extends Controller
 {
@@ -29,7 +33,7 @@ class BalancesController extends Controller
     public function create()
     {
         
-        DB::select("CALL micursor()");  
+        //DB::select("CALL micursor()");  
 
         $cuentas=DB::table('cuentas')->get();
         
@@ -40,36 +44,63 @@ class BalancesController extends Controller
 
     public function store(Request $request)
     {
-        //
-        //$cuentas = Cuenta::create($request->all());
+       
 
         
-        //$balances=$request->except('_method', '_token');
-        // $balance = new balance;
+
         if(count($request->nombre)>0){
         
 
-        foreach ($request->nombre as $key=>$value) {
-            $balance = new balance;
-            //balance::updateOrCreate($request->cuentas_id[$key]);
-            $balance->nombre= $value;
-            $balance->monto = $request->monto[$key];
-            $balance->fecha_inicio = $request->get('fecha_inicio');
-            $balance->fecha_final = $request->get('fecha_final');
-            $balance->cuentas_id = $request->cuentas_id[$key];
-            $balance->save();
-        }
+            foreach ($request->nombre as $key=>$value) {
+                $balance = new balance;
+                //balance::updateOrCreate($request->cuentas_id[$key]);
+                $balance->nombre= $value;
+                $balance->monto = $request->monto[$key];
+                $balance->fecha_inicio = $request->get('fecha_inicio');
+                $balance->fecha_final = $request->get('fecha_final');
+                $balance->cuentas_id = $request->cuentas_id[$key];
+                $balance->save();
+                
+            }
 	    
-} 
-        /*$i = $request->fecha_inicio;
-        $f = $request->fecha_final;*/
-        DB::select("CALL micursor2()"); 
-        DB::select("CALL micursor2()"); 
+        } 
+
+        $input = Input::all(); 
+        //Input::flash($input));  //ESTABLECE VARIABLE DE SESIÓN
+        
+        DB::select("CALL micursor2(1)"); 
+        DB::select("CALL micursor2(1)"); 
 
         
-        //return view('balances.create');
-        //Balance::insert($balances);
-        return redirect('balances');
+
+       // $diferencia=DB::selectone("select micursor3() as valor");
+
+        
+        
+       /* if ($diferencia->valor != 0) {
+            
+            
+            return Redirect::route('balances.create')  //vale con: Redirect::
+                    ->with('message', '<h4>There were validation errors<h4>')
+                    ->withInput(Input::all());  
+
+            //Session::flash('message','El Balance General tiene una diferencia de: $'. $diferencia->valor.' favor revisar.');
+            //return Redirect::to('balances/balance')->withInput();
+            //return redirect()->route('balances.create')->withInput();
+            //return Redirect::back()->withInput();
+            
+              
+        }*/
+
+       
+       // else{
+
+            return redirect('balances');
+            
+       // }
+
+
+       
     }
 
     /**
