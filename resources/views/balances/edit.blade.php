@@ -14,10 +14,11 @@
                 @endif
         <table class="table table-bordered thead-dark table-hover table-sm">
         
-          <form action="{{route('balances.store') }}"  method="POST" role="form">
+          <form action="{{ url('/balances/'.$empresas) }}"  method="POST" role="form">
         
-
-                {{ csrf_field() }}
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        
 
                 <div class="form-group">
                 <div class="row">
