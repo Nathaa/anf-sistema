@@ -16,11 +16,7 @@
 
 @section('content')
 <h6>
-    @if($search)
-   <div class="alert alert-info" role="alert">
-     Los resultados de tu búsqueda : {{ $search }} 
-   </div>
-   @endif
+
 </h6>
 
 <div class="container-fluid">
@@ -37,7 +33,6 @@
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-md-6">
-                    <a href="{{ route('empresas.index') }}"><i class="fa fa-align-justify"></i> Listado de Empresas</a>
                 </div>
             </div>
             <table class="table table-bordered thead-dark table-hover table-sm">
@@ -53,7 +48,7 @@
          </tr>
     </thead>
        <tbody>
-     @foreach ($empresas as $empresa)
+
         <tr>
             <td>{{$empresa->nombre}}</td>
             <td>{{$empresa->rubro}}</td>
@@ -93,7 +88,7 @@
             </td>
         </tr>
 
-    @endforeach
+
 
             </tbody>
     </table>

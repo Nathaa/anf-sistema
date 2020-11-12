@@ -34,7 +34,7 @@
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-md-6">
-                    <a href="{{ route('empresas.index') }}"><i class="fa fa-align-justify"></i> Informes Finanzieros</a>
+                    <a href="#"><i class="fa fa-align-justify"></i> Informes Finanzieros</a>
                 </div>
             </div>
             <table class="table table-bordered thead-dark table-hover table-sm">

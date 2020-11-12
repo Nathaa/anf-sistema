@@ -5,7 +5,7 @@
 <div class="col-sm-6">
   <ol class="breadcrumb float-right">
     <li class="breadcrumb-item active"><a href="{{ route('empresas.edit', $empresa->id)}}"><button type="button" class="btn btn-secondary "><i class="fas fa-edit"></i>Editar Empresa</button></a></li>
-  <li class="breadcrumb-item active"><a href="{{ route('empresas.index')}}" ><button type="button" class="btn btn-dark  "><i class="fas fa-arrow-alt-circle-left"></i>Regresar atras</button></a></li>
+  <li class="breadcrumb-item active"><a href="{{url()->previous()}}" ><button type="button" class="btn btn-dark  "><i class="fas fa-arrow-alt-circle-left"></i>Regresar atras</button></a></li>
   </ol>
 </div>
 @endsection

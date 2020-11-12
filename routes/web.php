@@ -50,10 +50,10 @@ Route::delete('tipocuentas/{tipocuenta}', 'TipocuentasController@destroy')->name
 
 
 //Empresas
-Route::get('empresas', 'EmpresasController@index')->name('empresas.index');
+Route::get('empresas/{user_id}', 'EmpresasController@index')->name('empresas.index');
 Route::get('empresas2', 'EmpresasController@index2')->name('empresas.index2');
-Route::get('empresas/empresa', 'EmpresasController@create')->name('empresas.create');
-Route::get('empresas/{empresa}', 'EmpresasController@show')->name('empresas.show');
+Route::get('create', 'EmpresasController@create')->name('empresas.create');
+Route::get('empresas/ver/{empresa}', 'EmpresasController@show')->name('empresas.show');
 Route::post('empresas', 'EmpresasController@store')->name('empresas.store');
 Route::get('empresas/{empresa}/edit', 'EmpresasController@edit')->name('empresas.edit');
 Route::put('empresas/{empresa}', 'EmpresasController@update')->name('empresas.update');
