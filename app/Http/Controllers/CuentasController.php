@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Cuenta;
 use App\Empresa;
 use App\Tipocuenta;
+use DB;
 
 class CuentasController extends Controller
 {
@@ -72,8 +73,17 @@ class CuentasController extends Controller
     public function show($id)
     {
         //
-        $Cuenta=Cuenta::findOrFail($id);
-        return view('cuentas.show', compact('Cuenta'));
+        
+        $empresas=$id;
+   
+      $cuentas=DB::table('cuentas')
+      ->join('empresas','cuentas.empresas_id','=', 'empresas.id')
+      ->select('cuentas.nombre','cuentas.codigo','cuentas.codigo_padre','cuentas.id')
+      ->where('cuentas.empresas_id', $empresas)
+      ->get();
+
+        
+      return view('cuentas.show',["cuentas"=>$cuentas],["empresas"=>$empresas]);
     }
 
     /**
@@ -123,7 +133,11 @@ class CuentasController extends Controller
     {
         //
   // $Cuenta=Cuenta::findOrFail($id);
-  Cuenta::destroy($id);
+  $empresas=$id;
+   
+   $cuentas = cuenta::where('cuentas.empresas_id', $empresas);
+   $cuentas->delete();
+   
 
  
   return redirect('cuentas');
