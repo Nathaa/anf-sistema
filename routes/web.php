@@ -67,7 +67,7 @@ Route::get('balances/{balance}', 'BalancesController@show')->name('balances.show
 Route::post('balances', 'BalancesController@store')->name('balances.store');
 Route::get('balances/{balance}/edit', 'BalancesController@edit')->name('balances.edit');
 Route::put('balances/{balance}', 'BalancesController@update')->name('balances.update');
-
+Route::delete('balances/{balance}', 'BalancesController@destroy')->name('balances.destroy');
 //Resultados
 
 Route::get('resultados', 'ResultadosController@index')->name('resultados.index');

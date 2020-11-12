@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Balance;
-use App\Cuenta;
+
 use Illuminate\Http\Request;
 use Session;
 use App\Http\Controllers\HomeController;
@@ -47,9 +47,9 @@ class BalancesController extends Controller
         
         //DB::select("CALL micursor()");  
 
-        $cuentas=DB::table('cuentas')->get();
+        $balances=DB::table('balances')->get();
         
-        return view('balances.create',["cuentas"=>$cuentas]);
+        return view('balances.create',["balances"=>$balances]);
     
     }
 
@@ -65,12 +65,12 @@ class BalancesController extends Controller
 
             foreach ($request->nombre as $key=>$value) {
                 $balance = new balance;
-                //balance::updateOrCreate($request->cuentas_id[$key]);
+                //balance::updateOrCreate($request->balances_id[$key]);
                 $balance->nombre= $value;
                 $balance->monto = $request->monto[$key];
                 $balance->fecha_inicio = $request->get('fecha_inicio');
                 $balance->fecha_final = $request->get('fecha_final');
-                $balance->cuentas_id = $request->cuentas_id[$key];
+                $balance->balances_id = $request->balances_id[$key];
                 $balance->save();
                 
             }
@@ -126,7 +126,7 @@ class BalancesController extends Controller
         
         //DB::select("CALL micursor()");  
 
-        //$cuentas=DB::table('cuentas')->get();
+        //$balances=DB::table('balances')->get();
        
  
        $empresas=$id;
@@ -137,7 +137,7 @@ class BalancesController extends Controller
       ->where('cuentas.empresas_id', $empresas)
       ->get();
       
-        //$cuentas=Cuenta::findOrFail($id);
+        //$balances=balance::findOrFail($id);
         
         
         return view('balances.edit',["cuentas"=>$cuentas],["empresas"=>$empresas]);
@@ -159,7 +159,7 @@ class BalancesController extends Controller
 
             foreach ($request->nombre as $key=>$value) {
                 $balance = new balance;
-                //balance::updateOrCreate($request->cuentas_id[$key]);
+                //balance::updateOrCreate($request->balances_id[$key]);
                 $balance->nombre= $value;
                 $balance->monto = $request->monto[$key];
                 $balance->fecha_inicio = $request->get('fecha_inicio');
@@ -186,6 +186,31 @@ class BalancesController extends Controller
     {
        
     }
+
+    public function destroy($id)
+    {
+        //
+  // $balance=balance::findOrFail($id);
+   $inden=($id);
+   $inicio=DB::table('balances')
+      ->select('balances.fecha_inicio')
+      ->where('balances.id', $inden)
+      ->get();
+
+    $final=DB::table('balances')
+      ->select('balances.fecha_final')
+      ->where('balances.id', $inden)
+      ->get();
+      
+      $borrar=DB::table('balances')
+      ->where('balances.fecha_inicio', $inicio)
+      ->where('balances.fecha_final', $final);
+      
+      $borrar->delete();
+     
+ 
+  return redirect('balances2');
+ }
 
 
    
