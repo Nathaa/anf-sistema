@@ -19,18 +19,10 @@ class EmpresasController extends Controller
     
         public function index(Request $request)
         {
-            if($request){
-                $query = trim($request->get('search'));
-            
-                $empresas=DB::table('empresas as emp')
-                ->join('users as us', 'us.id', '=', 'emp.user_id')
-                ->select('emp.id','emp.nombre', 'emp.codigo', 'emp.rubro', 'emp.descripcion', 'us.name as nombre_usu')
-                ->where('emp.nombre','LIKE','%'.$query.'%')
-                ->orderBy('emp.id','asc')
-                ->paginate(5);
-                return view("empresas.index", ["empresas"=>$empresas, "search"=>$query]);
-            
-            }
+            $empresas = Empresa::paginate(1);
+            //$empresas = $builder->paginate(5);
+            //$empresas = Empresa::paginate(5);
+            return view("empresas.index", ["empresas"=>$empresas]);
     
         }
 
@@ -117,4 +109,6 @@ class EmpresasController extends Controller
             return back();
     
         }
+
+  
 }

@@ -61,15 +61,15 @@
           </tr>
 
          @endforeach
-
+       
        </tbody>
       </table>
-    
-            <div class="row">
-              <div class="mr-auto">
-                {{$tipocuenta->links()}}
-              </div>
-            </div>
+      <div class="row">
+        <div class="mr-auto">
+          {{$tipocuenta->links()}}
+        </div>
+      </div>
+         
         </div>
      </div>
   </div>

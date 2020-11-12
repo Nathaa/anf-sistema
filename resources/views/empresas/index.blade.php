@@ -1,5 +1,6 @@
 @extends('template.plantilla2')
 
+
 @section('crear')
 <div class="col-sm-6">
         @if(Session::has('info'))
@@ -15,22 +16,19 @@
 
 
 @section('content')
-<h6>
-    @if($search)
-   <div class="alert alert-info" role="alert">
-     Los resultados de tu búsqueda : {{ $search }} 
-   </div>
-   @endif
-</h6>
+
 
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
                 <a href="{{ route('empresas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
-                <i class="fas fa-plus"></i>Crear Empresa</button> </a>
-               
-                
-              
+                <i class="fas fa-plus"></i>Crear Empresa</button> </a>         
+        </div>
+
+        <div class="row">
+            <div>
+                {{ $empresas->links() }}
+            </div>
         </div>
 
 
@@ -94,13 +92,19 @@
         </tr>
 
     @endforeach
-
+    <div class="row">
+        <div class="mr-auto">
+          {{$empresas->links()}}
+        </div>
+      </div>
             </tbody>
     </table>
+  
       <br>
-            
-            </div>
+     
+        </div>
     </div>
 </div>
+
 
 @endsection
