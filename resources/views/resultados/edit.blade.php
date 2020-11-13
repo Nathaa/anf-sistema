@@ -72,10 +72,10 @@ function suma() {
                 @endif
         <table class="table table-bordered thead-dark table-hover table-sm">
         
-          <form action="{{route('balances.store') }}"  method="POST" role="form">
+          <form action="{{ url('/resultados/'.$empresas) }}"  method="POST" role="form">
         
-
-                {{ csrf_field() }}
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group">
                 <div class="row">
@@ -142,7 +142,11 @@ function suma() {
               
           </tbody>
          </table>
-
+         <br>
+         <div class="form-group">
+            <button class="btn btn-primary" type="submit" onclick="validar();"> Guardar </button>
+            <a class="btn btn-primary" href="">Regresar</a>
+        </div>
      </div>
     </div>
 </div>

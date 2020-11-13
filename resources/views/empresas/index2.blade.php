@@ -57,7 +57,7 @@
             </td>
            
             <td width="">
-                <a href="#"> <button type="button" class="btn btn-info btn-xs">
+                <a href="{{ url('/resultados/'.$empresa->id) }}"> <button type="button" class="btn btn-info btn-xs">
                     <i class="fas fa-plus"></i>Estados de Resultados</button> </a>
             </td>
             

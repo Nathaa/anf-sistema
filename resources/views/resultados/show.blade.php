@@ -12,7 +12,7 @@
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-md-6">
-                    <a href="{{ route('resultados.index2') }}"><i class="fa fa-align-justify"></i> Listado de Catalogos de Estado de Resultados</a>
+                    <a href=""><i class="fa fa-align-justify"></i> Listado de Catalogos de resultados</a>
                 </div>
             </div>
             <table class="table table-bordered thead-dark table-hover table-sm">
@@ -33,18 +33,18 @@
              
              <td width="10px">
     
-                <a href="{{ route('resultados.edit', $resultado->id) }}" class="btn btn-default btn-flat" title="Editar">
+                <a href="{{ url('/resultados/'.$empress .'|'.$resultado->fecha_inicio .'|'.$resultado->fecha_final.'/edit2') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
                   
                 </td>
                 <td width="10px">
-                <a href="{{ url('resultados') }}" class="btn btn-info btn-flat" title="Visualizar">
+                <a href="{{ url('/resultadosh/'.$empress .'|'.$resultado->fecha_inicio .'|'.$resultado->fecha_final) }}" class="btn btn-info btn-flat" title="Visualizar">
                     <i class="fas fa-eye" aria-hidden="true"></i>
                   </a>
                 </td>
                 <td width="10px">
-                <form method="POST" action="{{ url('/resultados/'.$resultado->id) }}">
+                <form method="POST" action="{{ url('/resultados/'.$empress .'|'. $resultado->fecha_inicio .'|'.$resultado->fecha_final) }}">
                {{ csrf_field() }}
                {{ method_field('DELETE') }}
                <button class="btn btn-danger" class="btn btn-info btn-flat" onclick="return confirm('¿Borrar?')" title="Eliminar">
@@ -61,9 +61,7 @@
        </tbody>
       </table>
       <div class="row">
-        <div class="mr-auto">
-          {{$resultados->links()}}
-        </div>
+   
       </div>
 </div>
 </div>

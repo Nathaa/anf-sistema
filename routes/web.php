@@ -74,10 +74,13 @@ Route::delete('balances/{balance}', 'BalancesController@destroy')->name('balance
 //Resultados
 
 Route::get('resultados', 'ResultadosController@index')->name('resultados.index');
-Route::get('resultados2', 'ResultadosController@index2')->name('resultados.index2');
+
 Route::get('resultados/resultado', 'ResultadosController@create')->name('resultados.create');
 Route::get('resultados/{resultado}', 'ResultadosController@show')->name('resultados.show');
+Route::get('resultadosh/{resultado}', 'ResultadosController@show1')->name('resultados.show1');
 Route::post('resultados', 'ResultadosController@store')->name('resultados.store');
 Route::get('resultados/{resultado}/edit', 'ResultadosController@edit')->name('resultados.edit');
 Route::put('resultados/{resultado}', 'ResultadosController@update')->name('resultados.update');
-
+Route::get('resultados/{resultado}/edit2', 'ResultadosController@edit2')->name('resultados.edit2');
+Route::put('resultadosup/{resultadoup}', 'ResultadosController@update2')->name('resultados.update2');
+Route::delete('resultados/{resultado}', 'ResultadosController@destroy')->name('resultados.destroy');
