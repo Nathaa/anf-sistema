@@ -16,11 +16,7 @@
 
 @section('content')
 <h6>
-    @if($search)
-   <div class="alert alert-info" role="alert">
-     Los resultados de tu búsqueda : {{ $search }} 
-   </div>
-   @endif
+
 </h6>
 
 <div class="container-fluid">
@@ -50,7 +46,7 @@
          </tr>
     </thead>
        <tbody>
-     @foreach ($empresas as $empresa)
+    
         <tr>
             <td>{{$empresa->nombre}}</td>
            
@@ -66,7 +62,7 @@
             
         </tr>
 
-    @endforeach
+
 
             </tbody>
     </table>

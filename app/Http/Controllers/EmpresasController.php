@@ -48,8 +48,9 @@ class EmpresasController extends Controller
 
         }
 
-        public function index2(Request $request)
+        public function index2($user_id)
         {
+            /*
             if($request){
                 $query = trim($request->get('search'));
             
@@ -61,6 +62,22 @@ class EmpresasController extends Controller
                 ->paginate(5);
                 return view("empresas.index2", ["empresas"=>$empresas, "search"=>$query]);
             
+            }
+
+            */
+
+            $empresa = Empresa::where("user_id", $user_id)->first();
+
+            if($empresa){
+
+            return view('empresas.index2', compact('empresa'));
+        
+            }
+            else{
+
+
+                return view("empresas.create");
+
             }
     
         }
