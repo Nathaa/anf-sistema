@@ -1,12 +1,6 @@
 @extends('template.plantilla2')
 
 @section('crear')
-<div class="col-sm">
-    <ol class="breadcrumb float-sm-right">
-      <li class="breadcrumb-item active"><a href="empresas/{{Auth::user()->id}}" ><button type="button" class="btn btn-dark  btn-xs"><i class="fas fa-arrow-alt-circle-left"></i>Regresar atras</button></a></li>
-  
-    </ol>
-  </div>
 
 @endsection
 
@@ -50,6 +44,7 @@
             
             <div class="form-group">
             <button class="btn btn-primary" type="submit"> Guardar </button>
+            <a class="btn btn-primary" href="{{ url('cuentas') }}">Regresar</a>
         </div>
 
     </form>

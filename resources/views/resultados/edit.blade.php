@@ -143,7 +143,9 @@ function suma() {
           </tbody>
          </table>
 
-
+     </div>
+    </div>
+</div>
 
 @endsection
 

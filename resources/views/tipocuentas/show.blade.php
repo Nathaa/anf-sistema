@@ -2,12 +2,7 @@
 
 
 @section('crear')
-<div class="col-sm-6">
-  <ol class="breadcrumb float-right">
-    <li class="breadcrumb-item active"><a href="{{ route('tipocuentas.edit', $tipocuenta->id)}}"><button type="button" class="btn btn-secondary btn-xs "><i class="fas fa-edit"></i>Editar Tipo de Cuenta</button></a></li>
-  <li class="breadcrumb-item active"><a href="{{ route('tipocuentas.index')}}" ><button type="button" class="btn btn-dark btn-xs"><i class="fas fa-arrow-alt-circle-left"></i>Regresar atras</button></a></li>
-  </ol>
-</div>
+
 @endsection
 
 
@@ -54,8 +49,12 @@
         </tr>
             </tbody>
     </table>
-
-
+  <br>
+    <form>
+      <div align="left">
+        <input type="button" value="VOLVER ATRÁS" name="Back2" onclick="history.back()" />
+        </div>
+       </form>
             </div>
     </div>
 </div>

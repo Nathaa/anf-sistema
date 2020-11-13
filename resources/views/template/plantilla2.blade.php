@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu"  role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('template.plantilla2') }}" class="nav-link">Pagina Principal</a>
+        <a href="#" class="nav-link">Pagina Principal</a>
       </li>
     </ul>
 
@@ -126,6 +126,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
       </div>
 
+    @php
+      $id = Auth::user()->id;
+    @endphp
+
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -168,13 +172,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                  <li><a href="{{ route ('empresas.index', 1) }}" class="nav-link">
+                  <li><a href="{{ route ('empresas.index', $id) }}" class="nav-link">
                   <i class="fas fa-industry"></i>
                   <p>Empresas</p>
                 </a></li>
               </li>
               <li class="nav-item">
-                <li><a href="{{ route ('empresas.index2') }}" class="nav-link">
+                <li><a href="{{ route ('empresas.index2', $id) }}" class="nav-link">
                 <i class="fas fa-money-check-alt"></i>
                 <p>Listado de Catalogos</p>
               </a></li>
