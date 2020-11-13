@@ -17,9 +17,9 @@ class EmpresasController extends Controller
         }
     
     
-        public function index(Request $request)
+        public function index($user_id)
         {
-            if($request){
+            /*if($request){
                 $query = trim($request->get('search'));
             
                 $empresas=DB::table('empresas as emp')
@@ -30,8 +30,22 @@ class EmpresasController extends Controller
                 ->paginate(5);
                 return view("empresas.index", ["empresas"=>$empresas, "search"=>$query]);
             
+            }*/
+
+            $empresa = Empresa::where("user_id", $user_id)->first();
+
+            if($empresa){
+
+            return view('empresas.index', compact('empresa'));
+        
             }
-    
+            else{
+
+
+                return view("empresas.create");
+
+            }
+
         }
 
         public function index2(Request $request)
@@ -77,7 +91,7 @@ class EmpresasController extends Controller
             }
 
            
-            return redirect('empresas');
+            return redirect()->to('empresas/'.$user->id);
           
            
            
@@ -117,4 +131,6 @@ class EmpresasController extends Controller
             return back();
     
         }
+
+  
 }

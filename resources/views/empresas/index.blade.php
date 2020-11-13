@@ -1,5 +1,6 @@
 @extends('template.plantilla2')
 
+
 @section('crear')
 <div class="col-sm-6">
         @if(Session::has('info'))
@@ -16,28 +17,22 @@
 
 @section('content')
 <h6>
-    @if($search)
-   <div class="alert alert-info" role="alert">
-     Los resultados de tu búsqueda : {{ $search }} 
-   </div>
-   @endif
+
 </h6>
 
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
                 <a href="{{ route('empresas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
-                <i class="fas fa-plus"></i>Crear Empresa</button> </a>
-               
-                
-              
+                <i class="fas fa-plus"></i>Crear Empresa</button> </a>         
         </div>
+
+      
 
 
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-md-6">
-                    <a href="{{ route('empresas.index') }}"><i class="fa fa-align-justify"></i> Listado de Empresas</a>
                 </div>
             </div>
             <table class="table table-bordered thead-dark table-hover table-sm">
@@ -53,7 +48,7 @@
          </tr>
     </thead>
        <tbody>
-     @foreach ($empresas as $empresa)
+
         <tr>
             <td>{{$empresa->nombre}}</td>
             <td>{{$empresa->rubro}}</td>
@@ -93,14 +88,18 @@
             </td>
         </tr>
 
-    @endforeach
+    
+
+
 
             </tbody>
     </table>
+  
       <br>
-            
-            </div>
+     
+        </div>
     </div>
 </div>
+
 
 @endsection

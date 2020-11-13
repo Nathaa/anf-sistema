@@ -2,6 +2,7 @@
 
 
 @section('content')
+
 <div class="container">
  <div class="container-fluid">
     <div class="card">
@@ -11,13 +12,14 @@
           <i class="fas fa-plus"></i>Crear Catalogo </button> </a>
        
       </div>
+
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-md-6">
                     <a href="{{ route('cuentas.index') }}"><i class="fa fa-align-justify"></i> Listado de Catalogos</a>
                 </div>
             </div>
-            <table class="table table-bordered thead-dark table-hover table-sm">
+            <table class="table table-bordered thead-dark table-hover table-sm" id="demo">
          <tr>
 
            
@@ -30,7 +32,7 @@
           @foreach ($cuentas as $cuenta)
            <tr>
             
-            <td>{{$cuenta->descripcion}}</td>
+            <td>{{$cuenta->nombre}}</td>
             <!--<td>{{$cuenta->empresas['nombre']}}</td>-->
              
             
@@ -47,7 +49,6 @@
                 <i class="fas fa-trash" aria-hidden="true"></i>
               </button> 
               </form>
-                
     
                 </td>
            </tr>
@@ -61,8 +62,12 @@
           {{$cuentas->links()}}
         </div>
       </div>
+  
+        </div>
+      </div>
+    </div>
 </div>
-</div>
-</div>
-</div>
+
 @endsection
+
+
