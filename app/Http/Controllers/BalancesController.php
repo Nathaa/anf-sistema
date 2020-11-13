@@ -24,7 +24,7 @@ class BalancesController extends Controller
           
     }
 
-    public function index2(Request $request, $id)
+    public function index2(Request $request)
     {
 
        
@@ -156,7 +156,7 @@ class BalancesController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+        
         if(count($request->nombre)>0)
         {
         
@@ -170,14 +170,18 @@ class BalancesController extends Controller
                 $balance->fecha_final = $request->get('fecha_final');
                 $balance->cuentas_id = $request->cuentas_id[$key];
                 $balance->save();
+
+                $fini =  $request->get('fecha_inicio');
+                $ffin =  $request->get('fecha_final');
             }
             
         } 
         
-          DB::select("CALL micursor2($id)"); 
-          DB::select("CALL micursor2($id)"); 
- 
-          return redirect('empresas');
+          DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
+          DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
+          
+          return redirect('empresas2');
+          //return view('empresas2');
     }
 
     
@@ -239,9 +243,9 @@ class BalancesController extends Controller
         } 
     
             DB::select("CALL micursor2($id)"); 
-          DB::select("CALL micursor2($id)"); 
+            DB::select("CALL micursor2($id)"); 
  
-          return redirect('balances2');
+          return redirect('empresas2');
     }
 
 
@@ -300,30 +304,7 @@ class BalancesController extends Controller
 
    
 
-   public function destroy($id)
-    {
-    $str_arr = preg_split("/\|/", $id);
-    $inicio = $str_arr[0];
-    $final = $str_arr[1];
-     dd($inicio . "-" . $final);
-
-
-     $borrar=DB::table('balances')
-     ->where('balances.fecha_inicio', $inicio/*->fecha_inicio*/)
-    ->where('balances.fecha_final', $final/*->fecha_final*/);
-     
-     $borrar->delete();
-    
-
-     return redirect('balances2');
-    }
-      
-      //dd($inicio);
-    
- 
-
-
-
+  
     public function destroy($id)
     {
         //
@@ -332,16 +313,19 @@ class BalancesController extends Controller
       //dd($fecha);
 
     $str_arr = preg_split("/\|/", $id);
-    $id = $str_arr[0];
+    $ids = $str_arr[0];
     $inicio = $str_arr[1];
     $final = $str_arr[2];
-     //dd($inicio,$final);
+     //dd($ids,$inicio,$final);
 
      $borrar=DB::table('balances')
      ->where('balances.fecha_inicio', $inicio)
      ->where('balances.fecha_final', $final)
-	 ->wherein('balances.cuentas_id','select id from cuentas where empresas_id = $id');
+     ->whereIn('balances.cuentas_id',function($query) use ($ids){
+        $query->select('id')->from('cuentas')->where('cuentas.empresas_id',$ids);
+     });
+     
      $borrar->delete();
-  return redirect('balances2');
+    return redirect()->back();
  }
 }
