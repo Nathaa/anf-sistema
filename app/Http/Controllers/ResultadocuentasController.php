@@ -84,8 +84,23 @@ class ResultadoresultadoresultadocuentasController extends Controller
     {
         //
         
-        $resultadocuentas=resultadocuenta::findOrFail($id);
-        return view('resultadocuentas.edit',compact('resultadocuentas'));
+        //$resultadocuentas=resultadocuenta::findOrFail($id);
+        
+
+
+        $empresas=$id;
+   
+        $cuentas=DB::table('cuentas')
+        ->join('empresas','cuentas.empresas_id','=', 'empresas.id')
+        ->select('cuentas.nombre','cuentas.id','cuentas.codigo_padre')
+        ->where('cuentas.empresas_id', $empresas)
+        ->and('cuentas.tipocuentas_id', 6)
+        ->get();
+        
+          //$cuentas=Cuenta::findOrFail($id);
+          
+          
+          return view('resultadocuentas.edit',compact('resultadocuentas'));
     }
 
     /**

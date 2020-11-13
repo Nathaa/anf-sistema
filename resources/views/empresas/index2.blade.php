@@ -56,7 +56,7 @@
            
            
             <td width="">
-            <a href="{{ route('balances.index2') }}"> <button type="button" class="btn btn-warning btn-xs">
+            <a href="{{ route('balances.index2'),$empresa->id }}"> <button type="button" class="btn btn-warning btn-xs">
                 <i class="fas fa-plus"></i>Balances General </button> </a>
             </td>
             <td width="">

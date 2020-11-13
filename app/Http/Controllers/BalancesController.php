@@ -24,14 +24,19 @@ class BalancesController extends Controller
           return view('balances.index',compact('balances'));
     }
 
-    public function index2(Request $request)
+    public function index2(Request $request, $id)
     {
 
        
-          $balances=balance::paginate(4);
+        $balances=DB::table('balances')
+        ->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
+        ->select('balances.fecha_inicio','balances.fecha_final','balances.id')
+        ->where('cuentas.empresas_id', $id)
+        ->groupBy('balances.fecha_inicio','balances.fecha_final','balances.id')
+        ->get();
        
 
-          return view('balances.index2',compact('balances'));
+          return view('balances2',compact('balances'));
     }
     
     
@@ -85,7 +90,7 @@ class BalancesController extends Controller
 
         
 
-       // $diferencia=DB::selectone("select micursor3() as valor");
+       $diferencia=DB::selectone("select micursor3() as valor");
 
         
         
@@ -138,8 +143,7 @@ class BalancesController extends Controller
       ->get();
       
         //$cuentas=Cuenta::findOrFail($id);
-        
-        
+                
         return view('balances.edit',["cuentas"=>$cuentas],["empresas"=>$empresas]);
     }
 
@@ -169,8 +173,8 @@ class BalancesController extends Controller
             }
             
         } 
-    
-            DB::select("CALL micursor2($id)"); 
+        
+          DB::select("CALL micursor2($id)"); 
           DB::select("CALL micursor2($id)"); 
  
           return redirect('empresas');
@@ -186,6 +190,30 @@ class BalancesController extends Controller
     {
        
     }
+
+   
+
+   public function destroy($id)
+    {
+    $str_arr = preg_split("/\|/", $id);
+    $inicio = $str_arr[0];
+    $final = $str_arr[1];
+     dd($inicio . "-" . $final);
+
+
+     $borrar=DB::table('balances')
+     ->where('balances.fecha_inicio', $inicio/*->fecha_inicio*/)
+    ->where('balances.fecha_final', $final/*->fecha_final*/);
+     
+     $borrar->delete();
+    
+
+     return redirect('balances2');
+    }
+      
+      //dd($inicio);
+    
+ 
 
 
    
