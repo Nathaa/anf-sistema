@@ -27,6 +27,12 @@ class CuentasController extends Controller
         $cuentas=Cuenta::paginate(4);
         $empresas = Empresa::get();
 
+
+     
+        //dd($balan);
+
+      
+
         return view('cuentas.index',compact('cuentas','empresas'));
 
 
@@ -40,9 +46,9 @@ class CuentasController extends Controller
      */
     public function create()
     {
-        //
+        $empresa = Empresa::get();
         $tipocuentas = Tipocuenta::get();
-        return view('cuentas.create',compact('tipocuentas'));
+        return view('cuentas.create', ["empresa"=>$empresa, "tipocuentas" => $tipocuentas]);
     
     }
 
@@ -54,14 +60,10 @@ class CuentasController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //$cuentas = Cuenta::create($request->all());
+        $cuentas = Cuenta::create($request->all());
+        $cuentas->save();
 
-        $cuentas=request()->except('_token');
-
-        Cuenta::insert($cuentas);
-
-        return view('cuentas.create');
+        return redirect()->route('cuentas.index', ["cuentas" => $cuentas]);
     }
 
     /**
@@ -94,10 +96,11 @@ class CuentasController extends Controller
      */
     public function edit($id)
     {
-        //
-        
         $cuentas=Cuenta::findOrFail($id);
-        return view('cuentas.edit',compact('cuentas'));
+        $empresa = Empresa::get();
+        $tipocuentas = Tipocuenta::get();
+      
+        return view('cuentas.edit',['cuentas'=> $cuentas,'tipocuentas' => $tipocuentas, 'empresa' => $empresa]);
     }
 
     /**
@@ -110,14 +113,15 @@ class CuentasController extends Controller
     public function update(Request $request,$id)
     {
 
-       $cuentas=request()->except(['_token','_method']);
-
-
-        Cuenta::where('id','=',$id)->update($cuentas);
-
         $cuentas=Cuenta::findOrFail($id);
-        //$cuentas->update($request->all());
-        return view('cuentas.edit',compact('cuentas'));
+        $cuentas->codigo = $request->input('codigo');
+        $cuentas->codigo_padre = $request->input('codigo_padre');
+        $cuentas->nombre = $request->input('nombre');
+        $cuentas->descripcion = $request->input('descripcion');
+        $cuentas->empresas_id = $request->get('empresas_id');
+        $cuentas->tipocuentas_id = $request->get('tipocuentas_id');
+        $cuentas->update();
+        return redirect()->route('cuentas.index',['cuentas'=> $cuentas]);
 
             
         

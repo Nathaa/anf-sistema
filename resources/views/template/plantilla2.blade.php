@@ -18,9 +18,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bulma.min.css') }}">
-    <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
-    <script src="{{ asset('js/funciones.js') }}"></script>
+
+   
     @yield('css_role_page')
   </head>
 <body class="hold-transition sidebar-mini">
@@ -236,7 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         ANF115
     </div>
     <!-- Default to the left -->
-    <strong>Sistema Analisis Financiero <a href="https://adminlte.io"></a>.</strong>
+    <strong>Sistema Analisis Financiero</strong>
   </footer>
 </div>
 <!-- ./wrapper -->

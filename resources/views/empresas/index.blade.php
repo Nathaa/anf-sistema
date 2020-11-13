@@ -1,5 +1,6 @@
 @extends('template.plantilla2')
 
+
 @section('crear')
 <div class="col-sm-6">
         @if(Session::has('info'))
@@ -23,11 +24,10 @@
     <div class="card">
         <div class="card-header">
                 <a href="{{ route('empresas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
-                <i class="fas fa-plus"></i>Crear Empresa</button> </a>
-               
-                
-              
+                <i class="fas fa-plus"></i>Crear Empresa</button> </a>         
         </div>
+
+      
 
 
         <div class="card-body">
@@ -88,14 +88,18 @@
             </td>
         </tr>
 
+    
+
 
 
             </tbody>
     </table>
+  
       <br>
-            
-            </div>
+     
+        </div>
     </div>
 </div>
+
 
 @endsection
