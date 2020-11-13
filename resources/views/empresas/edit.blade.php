@@ -4,7 +4,7 @@
 @section('crear')
 <div class="col-sm">
     <ol class="breadcrumb float-sm-right">
-      <li class="breadcrumb-item active"><a href="{{ route('empresas.index')}}" ><button type="button" class="btn btn-dark  btn-xs"><i class="fas fa-arrow-alt-circle-left"></i>Regresar atras</button></a></li>
+      <li class="breadcrumb-item active"><a href="{{url()->previous()}}" ><button type="button" class="btn btn-dark  btn-xs"><i class="fas fa-arrow-alt-circle-left"></i>Regresar atras</button></a></li>
   
     </ol>
   </div>

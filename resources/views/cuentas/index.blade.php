@@ -35,20 +35,14 @@
             <td>{{$cuenta->nombre}}</td>
             <!--<td>{{$cuenta->empresas['nombre']}}</td>-->
              
-             <td width="10px">
-    
-                <a href="{{ url('/cuentas/'.$cuenta->id.'/edit') }}" class="btn btn-default btn-flat" title="Editar">
-                    <i class="fa fa-wrench" aria-hidden="true"></i>
-                  </a>
-                  
-                </td>
+            
                 <td width="10px">
-                <a href="{{ route('cuentas.show', $cuenta->id) }}" class="btn btn-info btn-flat" title="Visualizar">
+                <a href="{{ url('/cuentas/'.$cuenta->empresas_id) }}" class="btn btn-info btn-flat" title="Visualizar">
                     <i class="fas fa-eye" aria-hidden="true"></i>
                   </a>
                 </td>
                 <td width="10px">
-                <form method="POST" action="{{ url('/cuentas/'.$cuenta->id) }}">
+                <form method="POST" action="{{ url('/cuentas/'.$cuenta->empresas_id) }}">
                {{ csrf_field() }}
                {{ method_field('DELETE') }}
                <button class="btn btn-danger" class="btn btn-info btn-flat" onclick="return confirm('¿Borrar?')" title="Eliminar">

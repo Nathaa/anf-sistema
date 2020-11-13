@@ -16,7 +16,9 @@
 
 
 @section('content')
+<h6>
 
+</h6>
 
 <div class="container-fluid">
     <div class="card">
@@ -25,17 +27,12 @@
                 <i class="fas fa-plus"></i>Crear Empresa</button> </a>         
         </div>
 
-        <div class="row">
-            <div>
-                {{ $empresas->links() }}
-            </div>
-        </div>
+      
 
 
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-md-6">
-                    <a href="{{ route('empresas.index') }}"><i class="fa fa-align-justify"></i> Listado de Empresas</a>
                 </div>
             </div>
             <table class="table table-bordered thead-dark table-hover table-sm">
@@ -51,7 +48,7 @@
          </tr>
     </thead>
        <tbody>
-     @foreach ($empresas as $empresa)
+
         <tr>
             <td>{{$empresa->nombre}}</td>
             <td>{{$empresa->rubro}}</td>
@@ -61,7 +58,7 @@
                 <i class="fas fa-plus"></i>Crear Balance General </button> </a>
             </td>
             <td width="">
-                <a href="#"> <button type="button" class="btn btn-info btn-xs">
+                <a href="{{ url('/resultados/'.$empresa->id.'/edit') }}"> <button type="button" class="btn btn-info btn-xs">
                     <i class="fas fa-plus"></i>Crear Estado de Resultados</button> </a>
             </td>
                 <td width="10px">
@@ -91,12 +88,10 @@
             </td>
         </tr>
 
-    @endforeach
-    <div class="row">
-        <div class="mr-auto">
-          {{$empresas->links()}}
-        </div>
-      </div>
+    
+
+
+
             </tbody>
     </table>
   

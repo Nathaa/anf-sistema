@@ -12,7 +12,7 @@
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-md-6">
-                    <a href="{{ route('balances.index2') }}"><i class="fa fa-align-justify"></i> Listado de Catalogos de Balances</a>
+                    <a href="{{ route('resultados.index2') }}"><i class="fa fa-align-justify"></i> Listado de Catalogos de Estado de Resultados</a>
                 </div>
             </div>
             <table class="table table-bordered thead-dark table-hover table-sm">
@@ -25,26 +25,26 @@
          </tr>
        </thead>
        <tbody>
-          @foreach ($balances as $balance)
+          @foreach ($resultados as $resultado)
            <tr>
             
-            <td>{{$balance->fecha_inicio}} a {{$balance->fecha_final}}</td>
+            <td>{{$resultado->fecha_inicio}} a {{$resultado->fecha_final}}</td>
           
              
              <td width="10px">
     
-                <a href="{{ route('balances.edit', $balance->id) }}" class="btn btn-default btn-flat" title="Editar">
+                <a href="{{ route('resultados.edit', $resultado->id) }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
                   
                 </td>
                 <td width="10px">
-                <a href="{{ url('balances') }}" class="btn btn-info btn-flat" title="Visualizar">
+                <a href="{{ url('resultados') }}" class="btn btn-info btn-flat" title="Visualizar">
                     <i class="fas fa-eye" aria-hidden="true"></i>
                   </a>
                 </td>
                 <td width="10px">
-                <form method="POST" action="{{ url('/balances/'.$balance->id) }}">
+                <form method="POST" action="{{ url('/resultados/'.$resultado->id) }}">
                {{ csrf_field() }}
                {{ method_field('DELETE') }}
                <button class="btn btn-danger" class="btn btn-info btn-flat" onclick="return confirm('¿Borrar?')" title="Eliminar">
@@ -62,7 +62,7 @@
       </table>
       <div class="row">
         <div class="mr-auto">
-          {{$balances->links()}}
+          {{$resultados->links()}}
         </div>
       </div>
 </div>
