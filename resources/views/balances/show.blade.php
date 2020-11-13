@@ -6,7 +6,9 @@
  <div class="container-fluid">
     <div class="card">
       <div class="card-header">
-      
+        <a href="{{ url('/analisis/'.$empress) }}"> <button type="button" class="btn btn-info btn-xs">
+            <i class="fas fa-plus"></i>Analisis Horizontal y Vertical</button> </a>
+
           
       </div>
         <div class="card-body">
