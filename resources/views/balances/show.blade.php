@@ -33,18 +33,18 @@
              
              <td width="10px">
     
-                <a href="{{ url('/balances2/'.$balance->id.'/edit2') }}" class="btn btn-default btn-flat" title="Editar">
+                <a href="{{ url('/balances/'.$balance->fecha_inicio .'|'.$balance->fecha_final.'/edit2') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
                   
                 </td>
                 <td width="10px">
-                <a href="{{ route('balances.index') }}" class="btn btn-info btn-flat" title="Visualizar">
+                <a href="{{ url('/balancesh/'.$empress .'|'.$balance->fecha_inicio .'|'.$balance->fecha_final) }}" class="btn btn-info btn-flat" title="Visualizar">
                     <i class="fas fa-eye" aria-hidden="true"></i>
                   </a>
                 </td>
                 <td width="10px">
-                <form method="POST" action="{{ url('/balances/'.$balance->id) }}">
+                <form method="POST" action="{{ url('/balances/'.$empress .'|'. $balance->fecha_inicio .'|'.$balance->fecha_final) }}">
                {{ csrf_field() }}
                {{ method_field('DELETE') }}
                <button class="btn btn-danger" class="btn btn-info btn-flat" onclick="return confirm('¿Borrar?')" title="Eliminar">

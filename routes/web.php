@@ -64,9 +64,12 @@ Route::get('balances', 'BalancesController@index')->name('balances.index');
 Route::get('balances2', 'BalancesController@index2')->name('balances.index2');
 Route::get('balances/balance', 'BalancesController@create')->name('balances.create');
 Route::get('balances/{balance}', 'BalancesController@show')->name('balances.show');
+Route::get('balancesh/{balance}', 'BalancesController@show1')->name('balances.show1');
 Route::post('balances', 'BalancesController@store')->name('balances.store');
 Route::get('balances/{balance}/edit', 'BalancesController@edit')->name('balances.edit');
 Route::put('balances/{balance}', 'BalancesController@update')->name('balances.update');
+Route::get('balances/{balance}/edit2', 'BalancesController@edit2')->name('balances.edit2');
+Route::put('balances/{balance}', 'BalancesController@update2')->name('balances.update2');
 Route::delete('balances/{balance}', 'BalancesController@destroy')->name('balances.destroy');
 //Resultados
 

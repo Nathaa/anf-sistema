@@ -34,7 +34,7 @@
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-md-6">
-                    <a href="{{ route('empresas.index') }}"><i class="fa fa-align-justify"></i> Informes Finanzieros</a>
+                    <a href=""><i class="fa fa-align-justify"></i> Informes Finanzieros</a>
                 </div>
             </div>
             <table class="table table-bordered thead-dark table-hover table-sm">
@@ -54,11 +54,12 @@
         <tr>
             <td>{{$empresa->nombre}}</td>
            
-           
             <td width="">
-            <a href="{{ route('balances.index2') }}"> <button type="button" class="btn btn-warning btn-xs">
-                <i class="fas fa-plus"></i>Balances General </button> </a>
+                <a href="{{ url('/balances/'.$empresa->id) }}" > <button type="button" class="btn btn-warning btn-xs">
+                    <i class="fas fa-plus"></i>Balances General </button> </a>
+                  </a>
             </td>
+           
             <td width="">
                 <a href="{{ route('resultados.index2') }}"> <button type="button" class="btn btn-info btn-xs">
                     <i class="fas fa-plus"></i>Estados de Resultados</button> </a>

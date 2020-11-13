@@ -27,6 +27,12 @@ class CuentasController extends Controller
         $cuentas=Cuenta::paginate(4);
         $empresas = Empresa::get();
 
+
+     
+        //dd($balan);
+
+      
+
         return view('cuentas.index',compact('cuentas','empresas'));
 
 
