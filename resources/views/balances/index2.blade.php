@@ -12,7 +12,7 @@
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-md-6">
-                    <a href="{{ route('balances.index2') }}"><i class="fa fa-align-justify"></i> Listado de Catalogos de Balances</a>
+                    <a href=""><i class="fa fa-align-justify"></i> Listado de Catalogos de Balances</a>
                 </div>
             </div>
             <table class="table table-bordered thead-dark table-hover table-sm">
@@ -33,13 +33,13 @@
              
              <td width="10px">
     
-                <a href="{{ route('balances.edit', $balance->id) }}" class="btn btn-default btn-flat" title="Editar">
+                <a href="{{ url('/balances2/'.$balance->id.'/edit2') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
                   
                 </td>
                 <td width="10px">
-                <a href="{{ url('balances') }}" class="btn btn-info btn-flat" title="Visualizar">
+                <a href="{{ route('balances.index') }}" class="btn btn-info btn-flat" title="Visualizar">
                     <i class="fas fa-eye" aria-hidden="true"></i>
                   </a>
                 </td>
@@ -61,9 +61,7 @@
        </tbody>
       </table>
       <div class="row">
-        <div class="mr-auto">
-          {{$balances->links()}}
-        </div>
+   
       </div>
 </div>
 </div>

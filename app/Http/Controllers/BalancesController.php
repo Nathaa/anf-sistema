@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Balance;
-use App\Cuenta;
+
 use Illuminate\Http\Request;
 use Session;
 use App\Http\Controllers\HomeController;
 use DB;
 Use Redirect;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades;
 
 class BalancesController extends Controller
 {
@@ -20,8 +20,8 @@ class BalancesController extends Controller
         
           $balances=balance::get();
        
-
-          return view('balances.index',compact('balances'));
+          return redirect('balances');
+          
     }
 
     public function index2(Request $request, $id)
@@ -52,9 +52,9 @@ class BalancesController extends Controller
         
         //DB::select("CALL micursor()");  
 
-        $cuentas=DB::table('cuentas')->get();
+        $balances=DB::table('balances')->get();
         
-        return view('balances.create',["cuentas"=>$cuentas]);
+        return view('balances.create',["balances"=>$balances]);
     
     }
 
@@ -70,12 +70,12 @@ class BalancesController extends Controller
 
             foreach ($request->nombre as $key=>$value) {
                 $balance = new balance;
-                //balance::updateOrCreate($request->cuentas_id[$key]);
+                //balance::updateOrCreate($request->balances_id[$key]);
                 $balance->nombre= $value;
                 $balance->monto = $request->monto[$key];
                 $balance->fecha_inicio = $request->get('fecha_inicio');
                 $balance->fecha_final = $request->get('fecha_final');
-                $balance->cuentas_id = $request->cuentas_id[$key];
+                $balance->balances_id = $request->balances_id[$key];
                 $balance->save();
                 
             }
@@ -131,7 +131,7 @@ class BalancesController extends Controller
         
         //DB::select("CALL micursor()");  
 
-        //$cuentas=DB::table('cuentas')->get();
+        //$balances=DB::table('balances')->get();
        
  
        $empresas=$id;
@@ -163,7 +163,7 @@ class BalancesController extends Controller
 
             foreach ($request->nombre as $key=>$value) {
                 $balance = new balance;
-                //balance::updateOrCreate($request->cuentas_id[$key]);
+                //balance::updateOrCreate($request->balances_id[$key]);
                 $balance->nombre= $value;
                 $balance->monto = $request->monto[$key];
                 $balance->fecha_inicio = $request->get('fecha_inicio');
@@ -180,6 +180,73 @@ class BalancesController extends Controller
           return redirect('empresas');
     }
 
+    
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit2($id)
+    {
+        
+        //DB::select("CALL micursor()");  
+
+        //$balances=DB::table('balances')->get();
+       
+ 
+       $empresas=$id;
+   
+     
+       $balances=DB::table('balances')
+       ->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
+       ->select('balances.nombre','balances.monto')
+       ->where('cuentas.empresas_id', $id)
+       ->get();
+ 
+
+       // $balances=balance::findOrFail($id);
+        
+        
+        return view('balances.edit2',["balances"=>$balances],["empresas"=>$empresas]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update2(Request $request, $id)
+    {
+       
+        if(count($request->nombre)>0)
+        {
+        
+
+            foreach ($request->nombre as $key=>$value) {
+                $balance = new balance;
+                //balance::updateOrCreate($request->balances_id[$key]);
+                $balance->nombre= $value;
+                $balance->monto = $request->monto[$key];
+                $balance->fecha_inicio = $request->get('fecha_inicio');
+                $balance->fecha_final = $request->get('fecha_final');
+                $balance->cuentas_id = $request->cuentas_id[$key];
+                $balance->save();
+            }
+            
+        } 
+    
+            DB::select("CALL micursor2($id)"); 
+          DB::select("CALL micursor2($id)"); 
+ 
+          return redirect('balances2');
+    }
+
+
+
+
     /**
      * Display the specified resource.
      *
@@ -188,7 +255,47 @@ class BalancesController extends Controller
      */
     public function show($id)
     {
-       
+        //
+     
+     $empress=($id);
+    // dd($empress);
+
+      $balances=DB::table('balances')
+      ->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
+      ->select('balances.fecha_inicio','balances.fecha_final')
+      ->where('cuentas.empresas_id', $id)
+      ->groupBy('balances.fecha_inicio','balances.fecha_final')
+      ->get();
+
+          return view('balances.show',compact('balances','empress'));
+    }
+
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show1($id)
+    {
+        $fecha=($id);
+       // dd($fecha);
+        $str_arr = preg_split("/\|/", $id);
+        $id = $str_arr[0];
+        $inicio = $str_arr[1];
+        $final = $str_arr[2];
+
+        //dd($id,$inicio,$final);
+      
+        $balances=DB::table('balances')
+        ->join('cuentas','cuentas.id' ,'=', 'balances.cuentas_id')
+        ->where('cuentas.empresas_id', $id)
+     ->where('balances.fecha_inicio', $inicio)
+    ->where('balances.fecha_final', $final)
+    ->get();
+         
+         
+         return view('balances.show1',["balances"=>$balances]);
     }
 
    
@@ -216,5 +323,25 @@ class BalancesController extends Controller
  
 
 
-   
+
+    public function destroy($id)
+    {
+        //
+  // $balance=balance::findOrFail($id);
+      //$fecha=($id);
+      //dd($fecha);
+
+    $str_arr = preg_split("/\|/", $id);
+    $id = $str_arr[0];
+    $inicio = $str_arr[1];
+    $final = $str_arr[2];
+     //dd($inicio,$final);
+
+     $borrar=DB::table('balances')
+     ->where('balances.fecha_inicio', $inicio)
+     ->where('balances.fecha_final', $final)
+	 ->wherein('balances.cuentas_id','select id from cuentas where empresas_id = $id');
+     $borrar->delete();
+  return redirect('balances2');
+ }
 }

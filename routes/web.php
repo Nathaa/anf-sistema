@@ -50,10 +50,10 @@ Route::delete('tipocuentas/{tipocuenta}', 'TipocuentasController@destroy')->name
 
 
 //Empresas
-Route::get('empresas', 'EmpresasController@index')->name('empresas.index');
+Route::get('empresas/{user_id}', 'EmpresasController@index')->name('empresas.index');
 Route::get('empresas2', 'EmpresasController@index2')->name('empresas.index2');
-Route::get('empresas/empresa', 'EmpresasController@create')->name('empresas.create');
-Route::get('empresas/{empresa}', 'EmpresasController@show')->name('empresas.show');
+Route::get('create', 'EmpresasController@create')->name('empresas.create');
+Route::get('empresas/ver/{empresa}', 'EmpresasController@show')->name('empresas.show');
 Route::post('empresas', 'EmpresasController@store')->name('empresas.store');
 Route::get('empresas/{empresa}/edit', 'EmpresasController@edit')->name('empresas.edit');
 Route::put('empresas/{empresa}', 'EmpresasController@update')->name('empresas.update');
@@ -61,14 +61,16 @@ Route::delete('empresas/{empresa}', 'EmpresasController@destroy')->name('empresa
 
 //balances
 Route::get('balances', 'BalancesController@index')->name('balances.index');
-Route::get('balances2/id', 'BalancesController@index2')->name('balances.index2');
+Route::get('balances2', 'BalancesController@index2')->name('balances.index2');
 Route::get('balances/balance', 'BalancesController@create')->name('balances.create');
 Route::get('balances/{balance}', 'BalancesController@show')->name('balances.show');
+Route::get('balancesh/{balance}', 'BalancesController@show1')->name('balances.show1');
 Route::post('balances', 'BalancesController@store')->name('balances.store');
 Route::get('balances/{balance}/edit', 'BalancesController@edit')->name('balances.edit');
 Route::put('balances/{balance}', 'BalancesController@update')->name('balances.update');
+Route::get('balances/{balance}/edit2', 'BalancesController@edit2')->name('balances.edit2');
+Route::put('balances/{balance}', 'BalancesController@update2')->name('balances.update2');
 Route::delete('balances/{balance}', 'BalancesController@destroy')->name('balances.destroy');
-
 //Resultados
 
 Route::get('resultados', 'ResultadosController@index')->name('resultados.index');
