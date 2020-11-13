@@ -44,8 +44,12 @@
           </tbody>
          </table>
     
-         <input type="submit" class="btn btn-success" value="">
-         <a class="btn btn-primary" href="{{ url('cuentas') }}">Regresar</a>
+         <br>
+         <form>
+          <div align="left">
+            <input type="button" value="VOLVER ATRÁS" name="Back2" onclick="history.back()" />
+            </div>
+           </form>
     </form>
         </div>
     </div>

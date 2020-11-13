@@ -52,7 +52,11 @@
         </table>
         
         <br>
-        <a class="btn btn-primary" href="{{ url('/balances/') }}">Regresar</a>
+        <form>
+            <div align="left">
+              <input type="button" value="VOLVER ATRÁS" name="Back2" onclick="history.back()" />
+              </div>
+             </form>
    </form>
        </div>
    </div>

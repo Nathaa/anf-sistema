@@ -129,9 +129,9 @@
          <!--<span>El resultado es: </span> <span id="spTotal"></span>-->
          <div class="form-group">
             <button class="btn btn-primary" type="submit" onclick="validar();"> Guardar </button>
+            <a class="btn btn-primary" href="{{ url('cuentas') }}">Regresar</a>
         </div>
-         <input type="submit" class="btn btn-success" value="">
-         <a class="btn btn-primary" href="{{ url('cuentas') }}">Regresar</a>
+       
     </form>
         </div>
         

@@ -188,23 +188,29 @@ class BalancesController extends Controller
         
         //DB::select("CALL micursor()");  
 
-        //$balances=DB::table('balances')->get();
-       
+        $fechas=DB::table('balances')->get();
  
-       $empresas=$id;
-   
-     
+       //$empresas=$id;
+        $str_arr = preg_split("/\|/", $id);
+        $id = $str_arr[0];
+        $inicio = $str_arr[1];
+        $final = $str_arr[2];
+
+        //dd($id,$inicio,$final);
+
        $balances=DB::table('balances')
-       ->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
-       ->select('balances.nombre','balances.monto')
+       ->join('cuentas','cuentas.id' ,'=', 'balances.cuentas_id')
        ->where('cuentas.empresas_id', $id)
-       ->get();
+    ->where('balances.fecha_inicio', $inicio)
+   ->where('balances.fecha_final', $final)
+   ->get();
+        
  
 
        // $balances=balance::findOrFail($id);
         
         
-        return view('balances.edit2',["balances"=>$balances],["empresas"=>$empresas]);
+        return view('balances.edit2',["balances"=>$balances],["id"=>$id]);
     }
 
     /**
@@ -217,27 +223,22 @@ class BalancesController extends Controller
     public function update2(Request $request, $id)
     {
        
-        if(count($request->nombre)>0)
-        {
         
-
-            foreach ($request->nombre as $key=>$value) {
-                $balance = new balance;
-                //balance::updateOrCreate($request->balances_id[$key]);
-                $balance->nombre= $value;
-                $balance->monto = $request->monto[$key];
-                $balance->fecha_inicio = $request->get('fecha_inicio');
-                $balance->fecha_final = $request->get('fecha_final');
-                $balance->cuentas_id = $request->cuentas_id[$key];
-                $balance->save();
-            }
-            
-        } 
+        foreach ($request->get('balances') as $key => $value) 
+        {
+            $balance = balance::find($request->get('id')[$key]);
+            $balance->id = $request->get('id')[$key];
+            $balance->monto = $value;
+            $balance->fecha_inicial = $request->get('fecha_inicial')[$key];
+            $balance->fecha_final = $request->get('fecha_final')[$key];
+            $balance->cuentas_id = $request->get('cuentas_id')[$key];
+            $balance->update();
+        }
     
-            DB::select("CALL micursor2($id)"); 
+          DB::select("CALL micursor2($id)"); 
           DB::select("CALL micursor2($id)"); 
  
-          return redirect('balances2');
+          return redirect('empresas2');
     }
 
 
