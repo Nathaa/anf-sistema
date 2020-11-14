@@ -7,7 +7,7 @@
  <div class="container-fluid">
     <div class="card">
       <div class="card-header">
-          @can('crear')
+          @can('create')
 
 
           <a href="{{ route('cuentas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
@@ -48,7 +48,7 @@
                 </td>
                 <td width="10px">
 
-               @can('destro')   
+               @can('destroy')   
                 <form method="POST" action="{{ url('/cuentas/'.$cuenta->empresas_id) }}">
                {{ csrf_field() }}
                {{ method_field('DELETE') }}
