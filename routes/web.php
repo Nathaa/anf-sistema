@@ -69,7 +69,7 @@ Route::post('balances', 'BalancesController@store')->name('balances.store');
 Route::get('balances/{balance}/edit', 'BalancesController@edit')->name('balances.edit');
 Route::put('balances/{balance}', 'BalancesController@update')->name('balances.update');
 Route::get('balances/{balance}/edit2', 'BalancesController@edit2')->name('balances.edit2');
-Route::put('balancesup/{balanceup}', 'BalancesController@update2')->name('balances.update2');
+Route::put('balancesup/{balancesup}', 'BalancesController@update2')->name('balances.update2');
 Route::delete('balances/{balance}', 'BalancesController@destroy')->name('balances.destroy');
 //Resultados
 
