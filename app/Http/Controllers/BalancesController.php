@@ -180,7 +180,7 @@ class BalancesController extends Controller
           DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
           DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
 
-          return redirect('empresas2');
+          return redirect('principal');
           //return view('empresas2');
     }
 
@@ -246,7 +246,7 @@ class BalancesController extends Controller
             DB::select("CALL micursor2($id)"); 
             DB::select("CALL micursor2($id)"); 
  
-          return redirect('empresas2');
+          return redirect('cuentas');
     }
 
 

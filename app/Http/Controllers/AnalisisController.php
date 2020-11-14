@@ -16,7 +16,11 @@ class AnalisisController extends Controller
         //
      
      $empress=($id);
-    // dd($empress);
+     //dd($empress);
+
+    //$fi=$id->fecha_inicial;
+    
+    //dd($fecha_inicial);
 
       $balances=DB::table('balances')
       ->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
@@ -28,11 +32,13 @@ class AnalisisController extends Controller
           return view('analisis.show',compact('balances','empress'));
     }
 
-    public function show1($id)
+    public function show1(Request $request,$id)
     {
         //
-     
+     $fi= $request->fecha_inicial->get();
      //aqui ira analisis horizonal
+
+     dd($fi);
 
           return view('analisis.show1');
     }
