@@ -16,7 +16,7 @@ class AnalisisController extends Controller
         //
      
      $empress=($id);
-     //dd($empress);
+     dd($empress);
 
     //$fi=$id->fecha_inicial;
     

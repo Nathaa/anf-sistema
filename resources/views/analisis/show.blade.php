@@ -53,7 +53,7 @@
             <div class="form-group">
                 <div align="center">
                     <div class="form-group">
-                        <a href="{{ url('/analisish/'.$empress) }}" > <button type="button" class="btn btn-warning btn-sm">
+                        <a href="{{ url('/analisish/'.$empress.'|'.$balance->fecha_inicio .'|'.$balance->fecha_final) }}" > <button type="button" class="btn btn-warning btn-sm">
                             <i class="fas fa-plus"></i>Generar Analisis Horizontal </button> </a>
                           </a>
                  
