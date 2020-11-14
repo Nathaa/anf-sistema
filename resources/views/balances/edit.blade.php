@@ -64,51 +64,51 @@ document.onkeydown=checkKeyCode;
                <?php if($cuenta->nombre == "ACTIVO"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spTotal" name="monto[]" value="0" placeholder="0.00"><br></td>
-                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                 <?php }if($cuenta->nombre == "ACTIVO CORRIENTE"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control act2" id="spSubTotal" name="monto[]" value="0" placeholder="0.00"><br></td>
-                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                 <?php }if($cuenta->codigo_padre ==10){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input type="float" class="form-control act" id="monto" name="monto[]" value="0" onChange="suma();" required placeholder="0.00"><br></td>
-                <!--<td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                <?php } if($cuenta->nombre == "ACTIVO NO CORRIENTE"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control act2" id="spSubTotalAC" name="monto[]" value="0" placeholder="0.00"><br></td>
-                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                 <?php }if($cuenta->codigo_padre ==11){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input type="float" class="form-control act3" id="monto" name="monto[]" value="0" onChange="suma();" required placeholder="0.00"><br></td>
-                <!--<td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                <?php } if($cuenta->nombre == "PASIVO"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spTotalP" name="monto[]" value="0" placeholder="0.00"><br></td>
-                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                 <?php }if($cuenta->nombre == "PASIVO CORRIENTE"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control act5" id="spSubTotalP" name="monto[]" value="0" placeholder="0.00"><br></td>
-                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                 <?php }if($cuenta->codigo_padre ==20){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input type="float" class="form-control act4" id="monto" name="monto[]" value="0" onChange="suma2();" required placeholder="0.00"><br></td>
-                <!--<td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                <?php } if($cuenta->nombre == "PASIVO NO CORRIENTE"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control act5" id="spSubTotalAP" name="monto[]" value="0" placeholder="0.00"><br></td>
-                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                 <?php }if($cuenta->codigo_padre ==21){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input type="float" class="form-control act6" id="monto" name="monto[]" value="0" onChange="suma2();" required placeholder="0.00"><br></td>
-                <!--<td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                <?php } if($cuenta->nombre == "PATRIMONIO"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spSubTotalC" name="monto[]" value="0" placeholder="0.00"><br></td>
-                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                 <?php }if($cuenta->codigo_padre ==3){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input type="float" class="form-control act7" id="monto" name="monto[]" value="0" onChange="suma3();" required placeholder="0.00"><br></td>
-                <!--<td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                <?php } ?>                      
                              
               </tr>

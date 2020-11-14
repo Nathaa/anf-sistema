@@ -14,111 +14,32 @@ use Illuminate\Support\Facades;
 class BalancesController extends Controller
 {
     
-    public function index(Request $request)
-    {
+    //public function index(Request $request)
+   // {
 
         
-          $balances=balance::get();
+      //    $balances=balance::get();
        
-          return redirect('balances');
+        //  return redirect('balances');
           
-    }
+    //}
 
-    public function index2(Request $request)
-    {
-
-       
-        $balances=DB::table('balances')
-        ->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
-        ->select('balances.fecha_inicio','balances.fecha_final','balances.id')
-        ->where('cuentas.empresas_id', $id)
-        ->groupBy('balances.fecha_inicio','balances.fecha_final','balances.id')
-        ->get();
-       
-
-          return view('balances2',compact('balances'));
-    }
-    
-    
-    
-    
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-        //DB::select("CALL micursor()");  
-
-        $balances=DB::table('balances')->get();
-        
-        return view('balances.create',["balances"=>$balances]);
-    
-    }
-
-
-    public function store(Request $request)
-    {
-       
-
-        
-
-        if(count($request->nombre)>0){
-        
-
-            foreach ($request->nombre as $key=>$value) {
-                $balance = new balance;
-                //balance::updateOrCreate($request->balances_id[$key]);
-                $balance->nombre= $value;
-                $balance->monto = $request->monto[$key];
-                $balance->fecha_inicio = $request->get('fecha_inicio');
-                $balance->fecha_final = $request->get('fecha_final');
-                $balance->balances_id = $request->balances_id[$key];
-                $balance->save();
-                
-            }
-	    
-        } 
-
-        $input = Input::all(); 
-        //Input::flash($input));  //ESTABLECE VARIABLE DE SESIÓN
-        
-        DB::select("CALL micursor2(1)"); 
-        DB::select("CALL micursor2(1)"); 
-
-        
-
-       $diferencia=DB::selectone("select micursor3() as valor");
-
-        
-        
-       /* if ($diferencia->valor != 0) {
-            
-            
-            return Redirect::route('balances.create')  //vale con: Redirect::
-                    ->with('message', '<h4>There were validation errors<h4>')
-                    ->withInput(Input::all());  
-
-            //Session::flash('message','El Balance General tiene una diferencia de: $'. $diferencia->valor.' favor revisar.');
-            //return Redirect::to('balances/balance')->withInput();
-            //return redirect()->route('balances.create')->withInput();
-            //return Redirect::back()->withInput();
-            
-              
-        }*/
+   // public function index2(Request $request)
+    //{
 
        
-       // else{
-
-            return redirect('balances');
-            
-       // }
-
-
+      //  $balances=DB::table('balances')
+        //->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
+        //->select('balances.fecha_inicio','balances.fecha_final','balances.id')
+        //->where('cuentas.empresas_id', $id)
+        //->groupBy('balances.fecha_inicio','balances.fecha_final','balances.id')
+       // ->get();
        
-    }
+
+         // return view('balances2',compact('balances'));
+    //}
+    
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -180,8 +101,9 @@ class BalancesController extends Controller
           DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
           DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
 
-          return redirect('principal');
-          //return view('empresas2');
+          
+          return redirect()->route('cuentas.index',compact('balance'));
+         // return view('empresas.index',compact('balance'));
     }
 
     
@@ -246,12 +168,10 @@ class BalancesController extends Controller
             DB::select("CALL micursor2($id)"); 
             DB::select("CALL micursor2($id)"); 
  
-          return redirect('cuentas');
+            return redirect('principal')->compact('balance');
+
+
     }
-
-
-
-
     /**
      * Display the specified resource.
      *
