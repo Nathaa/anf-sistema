@@ -26,6 +26,10 @@ Route::get('/', function(){
 
 Route::get('/principal', 'PrincipalController@index')->name('template.plantilla2');
 
+//Grupo de rutas que van a necesitar autentificacion
+//Route::middleware(['auth'])->group(function () {
+
+
 //cuentas
 Route::get('cuentas', 'CuentasController@index')->name('cuentas.index');
 
@@ -84,3 +88,6 @@ Route::put('resultados/{resultado}', 'ResultadosController@update')->name('resul
 Route::get('resultados/{resultado}/edit2', 'ResultadosController@edit2')->name('resultados.edit2');
 Route::put('resultadosup/{resultadoup}', 'ResultadosController@update2')->name('resultados.update2');
 Route::delete('resultados/{resultado}', 'ResultadosController@destroy')->name('resultados.destroy');
+
+
+//});

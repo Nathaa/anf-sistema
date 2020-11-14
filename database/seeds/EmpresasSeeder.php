@@ -23,7 +23,7 @@ class EmpresasSeeder extends Seeder
 
 
            ]);
-
+/*
            Empresa::create([
             'nombre' => 'American Park',
             'codigo' => '000B',
@@ -42,5 +42,6 @@ class EmpresasSeeder extends Seeder
             'user_id' => '3'
 
             ]);
+    */
     }
 }
