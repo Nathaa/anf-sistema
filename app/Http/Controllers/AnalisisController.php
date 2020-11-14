@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Balance;
+use Illuminate\Support\Facades\Input;
 
 class AnalisisController extends Controller
 {
@@ -16,7 +17,6 @@ class AnalisisController extends Controller
         //
      
      $empress=($id);
-     dd($empress);
 
     //$fi=$id->fecha_inicial;
     
@@ -29,16 +29,16 @@ class AnalisisController extends Controller
       ->groupBy('balances.fecha_inicio','balances.fecha_final')
       ->get();
 
-          return view('analisis.show',compact('balances','empress'));
+       return view('analisis.show',compact('balances','empress'));
     }
 
     public function show1(Request $request,$id)
     {
         //
-     $fi= $request->fecha_inicial;
+        dd(Input::all());
      //aqui ira analisis horizonal
 
-     dd($fi);
+     //dd($fi);
 
           return view('analisis.show1');
     }

@@ -32,11 +32,14 @@
                     <div class="col">
                         <label for="fecha_inicial" class="control-label">{{'Años Analizar'}}:</label><br>
                         <select class="form-control" id="fecha_inicial" name="fecha_inicial" >
-                          <option value="">Debe seleccionar año menor</option> 
+                          <option value="x">Debe seleccionar año menor</option> 
+                          <outgroup label="yyy">
                           @foreach ($balances as $balance)
                          <option value="{{$balance->fecha_inicio}}">{{$balance->fecha_inicio}}</option>
                             @endforeach
+                            </outgroup>
                         </select>
+                        <input id="Tipo" name="Tipo" type="hidden" value=" ">
                     </div>
                     <div class="col">
                         <label for="fecha_final" class="control-label">{{'Años Analizar'}}:</label><br>
@@ -73,3 +76,21 @@
       </div>
 @endsection
                 
+<script>
+$(document).ready(function(){
+$('#fecha_inicial').change(function(){
+
+
+
+    var selected = $(':selected',this);
+
+    $('#Tipo').val(selected.parent().attr('label'));
+
+    alert($('#Tipo').val());
+});
+
+
+
+
+});
+</script>
