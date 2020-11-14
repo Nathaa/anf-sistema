@@ -49,88 +49,88 @@
                <!--<td></td>-->
                <?php if($balance->nombre == "ACTIVO"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
-                <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spTotal" name="monto[]" value={{$balance->monto}} placeholder="0.00"><br></td>
+                <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spTotal" name="monto[]" value="{{$balance->monto}}" placeholder="0.00"><br></td>
                 <!--<td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input readonly type="text" class="form-control" id="" name="" value="{{$balance->monto}}"><br></td>-->
-                <!--<td><input readonly type="hidden" name="balances_id[]" value="{{$balance->id}}"></td>-->
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>
+                <td><input readonly type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
+                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->nombre == "ACTIVO CORRIENTE"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spSubTotal" name="monto[]" value="{{$balance->monto}}" placeholder="0.00"><br></td>
                 <!--<td><input readonly type="text" class="form-control" id="" name="" value="{{$balance->monto}}"><br></td>
                 <td><input readonly type="text" class="form-control" id="" name="" value="{{$balance->monto}}"><br></td>-->
-                <!--<td><input readonly type="hidden" name="balances_id[]" value="{{$balance->id}}"></td>-->
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>
+                <td><input readonly type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
+                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->codigo_padre ==10){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
                 <td><input type="float" class="form-control" id="monto" name="monto[]" value="{{$balance->monto}}" onchange="sumar(this.value);sumar2();" required placeholder="0.00"><br></td>
                 <!--<td><input type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input type="text" class="form-control" id="" name="" value=""><br></td>-->
-                <!--<td><input type="hidden" name="balances_id[]" value="{{$balance->id}}"></td>-->
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>
+                <td><input type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
+                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                <?php } if($balance->nombre == "ACTIVO NO CORRIENTE"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spSubTotalAC" name="monto[]" value="{{$balance->monto}}" placeholder="0.00"><br></td>
                 <!--<td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>-->
-                <!--<td><input readonly type="hidden" name="balances_id[]" value="{{$balance->id}}"></td>-->
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>
+                <td><input readonly type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
+                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->codigo_padre ==11){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
                 <td><input type="float" class="form-control" id="monto" name="monto[]" value="{{$balance->monto}}" onchange="sumar3(this.value);sumar2();" required placeholder="0.00"><br></td>
                 <!--<td><input type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input type="text" class="form-control" id="" name="" value=""><br></td>-->
-                <!--<td><input type="hidden" name="balances_id[]" value="{{$balance->id}}"></td>-->
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>
+                <td><input type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
+                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                <?php } if($balance->nombre == "PASIVO"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spTotalP" name="monto[]" value="{{$balance->monto}}" placeholder="0.00"><br></td>
                 <!--<td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>-->
-                <!--<td><input readonly type="hidden" name="balances_id[]" value="{{$balance->id}}"></td>-->
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>
+                <td><input readonly type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
+                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->nombre == "PASIVO CORRIENTE"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spSubTotalP" name="monto[]" value="{{$balance->monto}}" placeholder="0.00"><br></td>
                 <!--<td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>-->
-                <!--<td><input readonly type="hidden" name="balances_id[]" value="{{$balance->id}}"></td>-->
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>
+                <td><input readonly type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
+                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->codigo_padre ==20){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
                 <td><input type="float" class="form-control" id="monto" name="monto[]" value="{{$balance->monto}}" onchange="sumar4(this.value);sumar5();" required placeholder="0.00"><br></td>
                 <!--<td><input type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input type="text" class="form-control" id="" name="" value=""><br></td>-->
-                <!--<td><input type="hidden" name="balances_id[]" value="{{$balance->id}}"></td>-->
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>
+                <td><input type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
+                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                <?php } if($balance->nombre == "PASIVO NO CORRIENTE"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spSubTotalAP" name="monto[]" value="{{$balance->monto}}" placeholder="0.00"><br></td>
                 <!--<td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>-->
-                <!--<td><input readonly type="hidden" name="balances_id[]" value="{{$balance->id}}"></td>-->
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>
+                <td><input readonly type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
+                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->codigo_padre ==21){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
                 <td><input type="float" class="form-control" id="monto" name="monto[]" value="{{$balance->monto}}" onchange="sumar6(this.value);sumar5();" required placeholder="0.00"><br></td>
                 <!--<td><input type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input type="text" class="form-control" id="" name="" value=""><br></td>-->
-                <!--<td><input type="hidden" name="balances_id[]" value="{{$balance->id}}"></td>-->
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>
+                <td><input type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
+                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                <?php } if($balance->nombre == "PATRIMONIO"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spSubTotalC" name="monto[]" value="{{$balance->monto}}" placeholder="0.00"><br></td>
                 <!--<td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>-->
-                <!--<td><input readonly type="hidden" name="balances_id[]" value="{{$balance->id}}"></td>-->
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>
+                <td><input readonly type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
+                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->codigo_padre ==3){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
                 <td><input type="float" class="form-control" id="monto" name="monto[]" value="{{$balance->monto}}" onchange="sumar7(this.value);" required placeholder="0.00"><br></td>
                 <!--<td><input type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input type="text" class="form-control" id="" name="" value=""><br></td>-->
-                <!--<td><input type="hidden" name="balances_id[]" value="{{$balance->id}}"></td>-->
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>
+                <td><input type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
+                <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                <?php } ?>                      
                              
               </tr>
