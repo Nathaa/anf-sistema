@@ -49,7 +49,7 @@
          </tr>
     </thead>
        <tbody>
-    
+        
         <tr>
             <td>{{$empresa->nombre}}</td>
            
@@ -58,11 +58,13 @@
                     <i class="fas fa-plus"></i>Balances General </button> </a>
                   </a>
             </td>
-           
+          
             <td width="">
                 <a href="{{ url('/resultados/'.$empresa->id) }}"> <button type="button" class="btn btn-info btn-xs">
                     <i class="fas fa-plus"></i>Estados de Resultados</button> </a>
             </td>
+           
+           
             
         </tr>
 

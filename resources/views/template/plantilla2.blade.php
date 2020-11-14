@@ -200,7 +200,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item">
                 <li><a href="{{ route ('empresas.index2', $id) }}" class="nav-link">
                 <i class="fas fa-money-check-alt"></i>
-                <p>Listado de Catalogos</p>
+                <p>Informes Financieros</p>
               </a></li>
             </li>
           

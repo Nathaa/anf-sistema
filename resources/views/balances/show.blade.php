@@ -6,7 +6,9 @@
  <div class="container-fluid">
     <div class="card">
       <div class="card-header">
-      
+        <a href="{{ url('/analisis/'.$empress) }}"> <button type="button" class="btn btn-info btn-xs">
+            <i class="fas fa-plus"></i>Analisis Horizontal y Vertical</button> </a>
+
           
       </div>
         <div class="card-body">
@@ -33,7 +35,7 @@
              
              <td width="10px">
     
-                <a href="{{ url('/balances/'.$empress .'|'.$balance->fecha_inicio .'|'.$balance->fecha_final.'/edit2') }}" class="btn btn-default btn-flat" title="Editar">
+                <a href="{{ url('/balancesedit2/'.$empress.'/edit2') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
                   

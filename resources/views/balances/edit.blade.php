@@ -104,7 +104,7 @@ document.onkeydown=checkKeyCode;
                <?php } if($cuenta->nombre == "PATRIMONIO"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spSubTotalC" name="monto[]" value="0" placeholder="0.00"><br></td>
-                 <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
+                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                 <?php }if($cuenta->codigo_padre ==3){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input type="float" class="form-control act7" id="monto" name="monto[]" value="0" onChange="suma3();" required placeholder="0.00"><br></td>
@@ -197,6 +197,14 @@ function validar(){
 
 var total_activo = 0;
 var total_pasivo = 0;
+//
+var f1 ; //31 de diciembre de 2015
+var f2 ; //30 de noviembre de 2014
+//
+f1=Date.parse(document.getElementById('fecha_inicio').value);
+
+f2=Date.parse(document.getElementById('fecha_final').value);
+//
 valor1 = parseFloat(document.getElementById('spTotal').value);
 valor2 = parseFloat(document.getElementById('spTotalP').value);
 valor3 = parseFloat(document.getElementById('spSubTotalC').value);
@@ -215,6 +223,17 @@ valor3 = parseFloat(document.getElementById('spSubTotalC').value);
       alert("El Balance General tiene una diferencia de: $ " + total +" favor verificar");
       event.preventDefault();
    }
+
+  if(f1 ==null || f1 == undefined || f1 == ""||f2 ==null || f2 == undefined || f2 == "") {
+    alert("Las fechas no púeden quedar vacias");
+    event.preventDefault();
+   }
+
+  if(f2 < f1){
+    alert("La fecha final no puede ser menor a la inicial");
+    event.preventDefault();
+  }
+
 
 };
 

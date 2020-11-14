@@ -26,7 +26,6 @@ Route::get('/', function(){
 
 Route::get('/principal', 'PrincipalController@index')->name('template.plantilla2');
 
-//Grupo de rutas que van a necesitar autentificacion
 //Route::middleware(['auth'])->group(function () {
 
 
@@ -72,8 +71,8 @@ Route::get('balancesh/{balance}', 'BalancesController@show1')->name('balances.sh
 Route::post('balances', 'BalancesController@store')->name('balances.store');
 Route::get('balances/{balance}/edit', 'BalancesController@edit')->name('balances.edit');
 Route::put('balances/{balance}', 'BalancesController@update')->name('balances.update');
-Route::get('balances/{balance}/edit2', 'BalancesController@edit2')->name('balances.edit2');
-Route::put('balancesup/{balanceup}', 'BalancesController@update2')->name('balances.update2');
+Route::get('balancesedit2/{balanceedit2}/edit2', 'BalancesController@edit2')->name('balances.edit2');
+Route::put('balancesup/{balancesup}', 'BalancesController@update2')->name('balances.update2');
 Route::delete('balances/{balance}', 'BalancesController@destroy')->name('balances.destroy');
 //Resultados
 
@@ -90,4 +89,16 @@ Route::put('resultadosup/{resultadoup}', 'ResultadosController@update2')->name('
 Route::delete('resultados/{resultado}', 'ResultadosController@destroy')->name('resultados.destroy');
 
 
-//});
+//ANALISIS
+Route::get('analisis/analisi', 'AnalisisController@create')->name('analisis.create');
+//estas 3 se estan utilizando nada mas
+Route::get('analisis/{analisi}', 'AnalisisController@show')->name('analisis.show');
+Route::get('analisish/{analisih}', 'AnalisisController@show1')->name('analisis.show1');
+Route::get('analisisv/{analisiv}', 'AnalisisController@show2')->name('analisis.show2');
+
+Route::post('analisis', 'AnalisisController@store')->name('analisis.store');
+Route::get('analisis/{analisi}/edit', 'AnalisisController@edit')->name('analisis.edit');
+Route::put('analisis/{analisi}', 'AnalisisController@update')->name('analisis.update');
+Route::get('analisis/{analisi}/edit2', 'AnalisisController@edit2')->name('analisis.edit2');
+Route::put('analisisup/{analisiup}', 'AnalisisController@update2')->name('analisis.update2');
+Route::delete('analisis/{analisi}', 'AnalisisController@destroy')->name('analisis.destroy');
