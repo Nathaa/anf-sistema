@@ -168,7 +168,7 @@ class BalancesController extends Controller
             DB::select("CALL micursor2($id)"); 
             DB::select("CALL micursor2($id)"); 
  
-            return redirect('principal')->compact('balance');
+            return redirect('principal');
 
 
     }
