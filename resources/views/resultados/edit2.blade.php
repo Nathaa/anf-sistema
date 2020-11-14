@@ -72,7 +72,7 @@ function suma() {
                 @endif
         <table class="table table-bordered thead-dark table-hover table-sm">
         
-          <form action="{{ url('/resultados/'.$id) }}"  method="POST" role="form">
+          <form action="{{ url('/resultadosup/'.$id) }}"  method="POST" role="form">
         
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
