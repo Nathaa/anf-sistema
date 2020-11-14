@@ -26,6 +26,7 @@
 
                 </tbody>
             </table>
+            <form action=""  method="POST" role="form">
             <div class="form-group">
                 <div class="row">
                     <div class="col">
@@ -52,7 +53,7 @@
             <div class="form-group">
                 <div align="center">
                     <div class="form-group">
-                        <a href="{{ url('/analisish/'.$empress.'|'.<?php $_GET['fecha_inicial'] ?>.) }}" > <button type="button" class="btn btn-warning btn-sm">
+                        <a href="{{ url('/analisish/'.$empress) }}" > <button type="button" class="btn btn-warning btn-sm">
                             <i class="fas fa-plus"></i>Generar Analisis Horizontal </button> </a>
                           </a>
                  
@@ -64,6 +65,7 @@
                    
                 </div>
             </div>
+            </form>
             </div>
       </div>
       </div>

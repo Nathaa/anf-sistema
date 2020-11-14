@@ -165,8 +165,8 @@ class BalancesController extends Controller
             $balance->update();
         }
     
-            DB::select("CALL micursor2($id)"); 
-            DB::select("CALL micursor2($id)"); 
+        DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
+        DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
  
             return redirect('principal');
 

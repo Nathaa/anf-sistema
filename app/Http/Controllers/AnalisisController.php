@@ -35,7 +35,7 @@ class AnalisisController extends Controller
     public function show1(Request $request,$id)
     {
         //
-     $fi= $request->fecha_inicial->get();
+     $fi= $request->fecha_inicial;
      //aqui ira analisis horizonal
 
      dd($fi);
