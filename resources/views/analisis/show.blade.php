@@ -29,11 +29,11 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col">
-                        <label for="fecha_final" class="control-label">{{'Años Analizar'}}:</label><br>
-                        <select class="form-control" id="fecha_final" name="fecha_final" >
+                        <label for="fecha_inicial" class="control-label">{{'Años Analizar'}}:</label><br>
+                        <select class="form-control" id="fecha_inicial" name="fecha_inicial" >
                           <option value="">Debe seleccionar año menor</option> 
                           @foreach ($balances as $balance)
-                         <option value="{{ $empress }}">{{$balance->fecha_inicio}}</option>
+                         <option value="{{$balance->fecha_inicio}}">{{$balance->fecha_inicio}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -42,7 +42,7 @@
                         <select class="form-control" id="fecha_final" name="fecha_final" >
                           <option value="">Debe seleccionar año mayor</option> 
                           @foreach ($balances as $balance)
-                         <option value="{{ $empress }}">{{$balance->fecha_final}}</option>
+                         <option value="{{$balance->fecha_final}}">{{$balance->fecha_final}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -52,7 +52,7 @@
             <div class="form-group">
                 <div align="center">
                     <div class="form-group">
-                        <a href="{{ url('/analisish/'.$empress) }}" > <button type="button" class="btn btn-warning btn-sm">
+                        <a href="{{ url('/analisish/'.$empress.'|'.<?php $_GET['fecha_inicial'] ?>.) }}" > <button type="button" class="btn btn-warning btn-sm">
                             <i class="fas fa-plus"></i>Generar Analisis Horizontal </button> </a>
                           </a>
                  
