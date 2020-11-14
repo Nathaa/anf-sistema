@@ -14,7 +14,7 @@
                 @endif
         <table class="table table-bordered thead-dark table-hover table-sm">
         
-          <form action="{{ url('/balances/'.$id) }}"  method="POST" role="form">
+          <form action="{{ url('/balancesup/'.$id) }}"  method="POST" role="form">
         
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -35,7 +35,7 @@
              
              <td width="10px">
     
-                <a href="{{ url('/balances/'.$empress .'|'.$balance->fecha_inicio .'|'.$balance->fecha_final.'/edit2') }}" class="btn btn-default btn-flat" title="Editar">
+                <a href="{{ url('/balancesedit2/'.$empress .'|'.$balance->fecha_inicio .'|'.$balance->fecha_final.'/edit2') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
                   
