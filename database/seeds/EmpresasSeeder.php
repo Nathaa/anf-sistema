@@ -15,9 +15,9 @@ class EmpresasSeeder extends Seeder
     {
         //
         Empresa::create([
-            'nombre' => 'caess',
+            'nombre' => 'Caess',
             'codigo' => '000A',
-            'descripcion' => 'empresa de luz',
+            'descripcion' => 'Empresa A',
             'rubro' => 'industrial',
             'user_id' => '1'
 
@@ -29,11 +29,11 @@ class EmpresasSeeder extends Seeder
             'codigo' => '000B',
             'descripcion' => 'TEXTILERA',
             'rubro' => 'mercantil',
-            'user_id' => '2'
+            'user_id' => '3'
 
 
            ]);
-
+/*
            Empresa::create([
             'nombre' => 'Tropigaz',
             'codigo' => '000C',
@@ -42,5 +42,6 @@ class EmpresasSeeder extends Seeder
             'user_id' => '3'
 
             ]);
+    */
     }
 }

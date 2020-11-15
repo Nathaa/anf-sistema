@@ -23,8 +23,10 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
+              @can('crear')
                 <a href="{{ route('empresas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
-                <i class="fas fa-plus"></i>Crear Empresa</button> </a>         
+                <i class="fas fa-plus"></i>Crear Empresa</button> </a>     
+             @endcan   
         </div>
 
       
@@ -54,29 +56,34 @@
             <td>{{$empresa->rubro}}</td>
            
             <td width="">
+             
             <a href="{{ url('/balances/'.$empresa->id.'/edit') }}"> <button type="button" class="btn btn-warning btn-xs">
                 <i class="fas fa-plus"></i>Crear Balance General </button> </a>
+
             </td>
             <td width="">
                 <a href="{{ url('/resultados/'.$empresa->id.'/edit') }}"> <button type="button" class="btn btn-info btn-xs">
                     <i class="fas fa-plus"></i>Crear Estado de Resultados</button> </a>
             </td>
                 <td width="10px">
-            
+
+            @can('edit') 
                 <a href="{{ url('/empresas/'.$empresa->id.'/edit') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
-        
+            @endcan
             </td>
             <td width="10px">
             
                     <a href="{{ route('empresas.show', $empresa->id) }}" class="btn btn-info btn-flat" title="Visualizar">
                         <i class="fas fa-eye" aria-hidden="true"></i>
                       </a>
-                    
+                  
             </td>
             <td width="10px">
 
+            @can('destroy')
+  
                 <form method="POST" action="{{ url('/empresas/'.$empresa->id) }}">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
@@ -84,7 +91,7 @@
                      <i class="fas fa-trash" aria-hidden="true"></i>
                    </button> 
                    </form>
-               
+            @endcan   
             </td>
         </tr>
 

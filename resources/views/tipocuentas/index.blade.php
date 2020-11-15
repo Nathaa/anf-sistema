@@ -14,10 +14,10 @@
  <div class="container-fluid">
     <div class="card">
       <div class="card-header">
-      
+      @can('create')
           <a href="{{ route('tipocuentas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
           <i class="fas fa-plus"></i>Crear Tipo de Cuenta </button> </a>
-       
+      @endcan 
       </div>
         <div class="card-body">
             <div class="form-group row">
@@ -40,9 +40,12 @@
              <td>{{$tc->descripcion}}</td>
              <td>{{$tc->subtipo}}</td>
              <td width="10px">
+
+              @can('edit')
                 <a href="{{ url('/tipocuentas/'.$tc->id.'/edit') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
+              @endcan    
             </td>
             <td width="10px">
                 <a href="{{ route('tipocuentas.show', $tc->id) }}" class="btn btn-info btn-flat" title="Visualizar">
@@ -50,6 +53,8 @@
                   </a>
             </td>
             <td width="10px">
+
+              @can('destroy')
               <form method="POST" action="{{ url('/tipocuentas/'.$tc->id) }}">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
@@ -57,6 +62,8 @@
                 <i class="fas fa-trash" aria-hidden="true"></i>
               </button> 
               </form>
+
+              @endcan
             </td>
           </tr>
 

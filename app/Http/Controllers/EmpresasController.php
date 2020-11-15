@@ -108,7 +108,7 @@ class EmpresasController extends Controller
             }
 
            
-            return redirect()->to('empresas/'.$user->id);
+            return redirect()->to('empresas/'.$user->empresa);
           
            
            
