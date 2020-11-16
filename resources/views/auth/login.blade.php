@@ -14,29 +14,16 @@
             <div class="card-body">
                  <h5 class="card-title text-center">Iniciar Sesión</h5>
 
-                
-
-
-
                      <div class="form-label-group">
 
                     <form class="form-signin" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-
-
-
-
-
-
-
-
-
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="control-label">E-Mail</label>
+                            <label for="email" class="control-label" style="text-align: center;">E-Mail</label>
 
                             <div class="form-label-group">
-                                <input id="email" type="email" class="form-control form-control-lg" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control form-control" style="text-align:center;" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -47,14 +34,12 @@
                         </div>
 
 
-                        <div class="form-label-group">
+                    <div class="form-label-group">
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="control-label">Contraseña</label>
-
-
+                            <label for="password" class="control-label" style="text-align: center;">Contraseña</label>
 
                             <div class="form-label-group">
-                                <input id="password" type="password" class="form-control form-control-lg" name="password" required>
+                                <input id="password" type="password" class="form-control form-control" style="text-align: center;" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -63,37 +48,22 @@
                                 @endif
                             </div>
                         </div>
-</div>
+                    </div>
 
+<br>
 
-
-
-
-                            <div class="form-label-group">
+                <div class="form-label-group">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Recordarme
                                     </label>
                                 </div>
                             </div>
-                     
-
-                                <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase">
+                  
+               <button type="submit" class="btn btn-primary btn-block ">
                                     Iniciar Sesión
-                                </button>
-
-                          <!--      <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    ¿Olvidaste tu contraseña?
-                               
-                                </a>
-                            -->
-                        
-
-
-
-
-
-
+               </button>
+                     
 
                     </form>
                 </div>

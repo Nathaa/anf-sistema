@@ -34,13 +34,9 @@ class AnalisisController extends Controller
 
     public function show1(Request $request,$id)
     {
+
         //
-        dd(Input::all());
-     //aqui ira analisis horizonal
-
-     //dd($fi);
-
-          return view('analisis.show1');
+          return view('analisis.show1')      
     }
 
     public function show2($id)
