@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Caffeinated\Shinobi\Models\Role;
+//use Caffeinated\Shinobi\Models\Role;
 
 class RoleTableSeeder extends Seeder
 {
@@ -13,7 +13,7 @@ class RoleTableSeeder extends Seeder
     public function run()
     {
         //
-        Role::create([
+  /*      Role::create([
 
         	'name'			=>	'Admin',
         	'slug'			=>	'admin',
@@ -21,6 +21,6 @@ class RoleTableSeeder extends Seeder
         	'special'		=>	'all-access'
 
         ]);
-
+*/
     }
 }

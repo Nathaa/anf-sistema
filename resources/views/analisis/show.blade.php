@@ -62,7 +62,7 @@
                  
                   
                    
-                        <a href="{{ url('/analisiv/'.$empress) }}"> <button type="button" class="btn btn-info btn-sm">
+                        <a href="{{ url('/analisisv/'.$empress) }}"> <button type="button" class="btn btn-info btn-sm">
                             <i class="fas fa-plus"></i>Generar Analisis Vertical</button> </a>
                     </div>
                    

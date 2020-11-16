@@ -11,7 +11,7 @@ class PivotTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        /*
          DB::table('permission_user')->insert(array(
          		array('permission_id' => 4, 'user_id' => 2),
                 array('permission_id' => 3, 'user_id' => 2),
@@ -34,6 +34,6 @@ class PivotTableSeeder extends Seeder
                 array('permission_id' => 7, 'user_id' => 3)
         ));
 
-
+        */
     }
 }

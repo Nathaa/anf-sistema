@@ -46,9 +46,13 @@ class AnalisisController extends Controller
     public function show2($id)
     {
         // aqui ira analisis vertical
-     
+   
+
+      return view('analisis.show2');
     
-          return view('analisis.show2');
+          
+
+
     }
 
 
