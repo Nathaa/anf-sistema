@@ -13,7 +13,7 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         
-        Permission::create ([
+     /**   Permission::create ([
 
         	'name'			=>	'Navegar cuentas',
         	'slug'			=>	'cuentas.index',
@@ -76,7 +76,7 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
 
-        
+        */
         
 
     }
