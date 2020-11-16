@@ -1,10 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+
+.container{
+    background-color: #000;
+}
+
+
+</style>    
+
+
+<br><br><br>
 <div class="container">
+    <div class="">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Iniciar Sesión</div>
 
                 <div class="panel-body">
@@ -65,5 +78,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
