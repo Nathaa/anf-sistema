@@ -26,7 +26,7 @@
               
         </div>
    @php
-      $id = Auth::user()->empresa;
+      $id = Auth::user()->id;
     @endphp
 
 
