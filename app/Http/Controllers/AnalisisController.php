@@ -34,21 +34,22 @@ class AnalisisController extends Controller
 
     public function show1(Request $request,$id)
     {
-        //
-        dd(Input::all());
-     //aqui ira analisis horizonal
-
-     //dd($fi);
-
-          return view('analisis.show1');
+      $valor2=$request->fecha_final;
+      $valor1=$request->fecha_inicio;
+      $sql = "SELECT c.nombre As nom,c.monto AS vact,b.monto As valor_ant, c.monto-b.monto AS variacion From balances c, balances b WHERE c.fecha_final=$valor2 AND b.fecha_inicio=$valor1 AND c.nombre=b.nombre";
+          return view('analisis.show1',compact('sql'));
     }
 
     public function show2($id)
     {
         // aqui ira analisis vertical
-     
+   
+
+      return view('analisis.show2');
     
-          return view('analisis.show2');
+          
+
+
     }
 
 

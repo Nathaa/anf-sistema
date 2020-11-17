@@ -126,12 +126,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
       </div>
 
-    @php
+  @php
       $id = Auth::user()->id;
     @endphp
 
+
       <!-- Sidebar Menu -->
       <nav class="mt-2">
+
+
+
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -143,13 +147,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+
             <ul class="nav nav-treeview">
+
+           
               <li class="nav-item">
                   <li><a href="{{ route ('cuentas.index') }}" class="nav-link">
                   <i class="fas fa-donate"></i>
                   <p>Añadir Cuentas a un catalogo</p>
                 </a></li>
               </li>
+
+     
+
               <li class="nav-item">
                 <li><a href="{{ route ('tipocuentas.index') }}" class="nav-link">
                   <i class="fas fa-file-invoice-dollar"></i>
@@ -157,10 +167,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               </li>
-              
+
+           
             </ul>
           </li>
         </ul>
+
+
+
+
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
@@ -170,23 +185,65 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+
+
             <ul class="nav nav-treeview">
+
+    
               <li class="nav-item">
                   <li><a href="{{ route ('empresas.index', $id) }}" class="nav-link">
                   <i class="fas fa-industry"></i>
                   <p>Empresas</p>
                 </a></li>
               </li>
+       
               <li class="nav-item">
                 <li><a href="{{ route ('empresas.index2', $id) }}" class="nav-link">
                 <i class="fas fa-money-check-alt"></i>
                 <p>Informes Financieros</p>
               </a></li>
             </li>
+          
+
             </ul>
             
     
           </ul>
+
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-building"></i>
+              <p>
+                Analisis Financiero
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+
+
+            <ul class="nav nav-treeview">
+
+    
+              <li class="nav-item">
+                  <li><a href="{{ route ('analisis.show', $id) }}" class="nav-link">
+                  <i class="fas fa-industry"></i>
+                  <p>Analisis Horizontal</p>
+                </a></li>
+              </li>
+       
+              <li class="nav-item">
+                <li><a href="{{ route ('analisis.show', $id) }}" class="nav-link">
+                <i class="fas fa-money-check-alt"></i>
+                <p>Analisis Vertical</p>
+              </a></li>
+            </li>
+          
+
+            </ul>
+            
+    
+          </ul>
+
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -248,5 +305,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+@yield('scripts')
 </body>
 </html>

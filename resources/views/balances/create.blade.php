@@ -14,7 +14,7 @@
                 @endif
         <table class="table table-bordered thead-dark table-hover table-sm">
         
-          <form action="{{route('balances.store') }}"  method="POST" role="form">
+          <form action="{{route('balances.store') }}"  method="POST" role="form" id="formulario">
         
 
                 {{ csrf_field() }}
@@ -24,11 +24,11 @@
                 
                 <div class="col">
                 <label for="fecha_inicio" class="control-label">{{'Fecha Inicio'}}:</label><br>
-                <input type="date" class="form-control"id="fecha_inicio" name="fecha_inicio" value=""><br>
+                <input type="date" class="form-control"id="fecha_inicio" name="fecha_inicio" value=""   onkeyup="fechas(this)", onblur="fechas(this)"><br>
                 </div>
                 <div class="col">
                 <label for="fecha_final" class="control-label">{{'Fecha Finalizacion'}}:</label><br>
-                <input type="date" class="form-control"id="fecha_final" name="fecha_final" value=""><br>
+                <input type="date" class="form-control"id="fecha_final" name="fecha_final" value="" onkeyup="fechas(this)", onblur="fechas(this)"><br>
                 </div>
                 </div>
                 </div>
@@ -276,3 +276,6 @@ valor3 = parseFloat(document.getElementById('spSubTotalC').value);
 </script>
 
 @endsection
+@section('scripts')
+<script src="{{ asset('js/validacion-balance.js') }}"></script>
+@stop

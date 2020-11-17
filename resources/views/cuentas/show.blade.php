@@ -32,6 +32,7 @@
                 <td style="font-weight:bold; font-family: cursive;">{{$cuenta->codigo_padre}}</td>
                 <td style="font-weight:bold; font-family: cursive;">{{$cuenta->nombre}}</td>
                 <td width="10px">
+
                     <a href="{{ url('/cuentas/'.$cuenta->id.'/edit') }}" class="btn btn-default btn-flat" title="Editar">
                         <i class="fa fa-wrench" aria-hidden="true"></i>
                       </a>

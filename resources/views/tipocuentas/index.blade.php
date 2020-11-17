@@ -14,10 +14,8 @@
  <div class="container-fluid">
     <div class="card">
       <div class="card-header">
-      
           <a href="{{ route('tipocuentas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
           <i class="fas fa-plus"></i>Crear Tipo de Cuenta </button> </a>
-       
       </div>
         <div class="card-body">
             <div class="form-group row">
@@ -40,6 +38,7 @@
              <td>{{$tc->descripcion}}</td>
              <td>{{$tc->subtipo}}</td>
              <td width="10px">
+
                 <a href="{{ url('/tipocuentas/'.$tc->id.'/edit') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
@@ -50,6 +49,7 @@
                   </a>
             </td>
             <td width="10px">
+
               <form method="POST" action="{{ url('/tipocuentas/'.$tc->id) }}">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
@@ -57,6 +57,7 @@
                 <i class="fas fa-trash" aria-hidden="true"></i>
               </button> 
               </form>
+
             </td>
           </tr>
 

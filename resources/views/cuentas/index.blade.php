@@ -7,9 +7,11 @@
  <div class="container-fluid">
     <div class="card">
       <div class="card-header">
-      
+
+
           <a href="{{ route('cuentas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
-          <i class="fas fa-plus"></i>Crear Catalogo </button> </a>
+
+            <i class="fas fa-plus"></i>Crear Catalogo </button> </a>
        
       </div>
 
@@ -19,6 +21,7 @@
                     <a href="{{ route('cuentas.index') }}"><i class="fa fa-align-justify"></i> Listado de Catalogos</a>
                 </div>
             </div>
+
             <table class="table table-bordered thead-dark table-hover table-sm" id="demo">
          <tr>
 
@@ -42,6 +45,7 @@
                   </a>
                 </td>
                 <td width="10px">
+
                 <form method="POST" action="{{ url('/cuentas/'.$cuenta->empresas_id) }}">
                {{ csrf_field() }}
                {{ method_field('DELETE') }}
@@ -49,7 +53,7 @@
                 <i class="fas fa-trash" aria-hidden="true"></i>
               </button> 
               </form>
-    
+              
                 </td>
            </tr>
 
@@ -57,6 +61,7 @@
 
        </tbody>
       </table>
+
       <div class="row">
         <div class="mr-auto">
           {{$cuentas->links()}}
