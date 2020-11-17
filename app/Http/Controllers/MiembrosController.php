@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Empresa;
+use Session;
 
 class MiembrosController extends Controller
 {
@@ -44,6 +45,18 @@ class MiembrosController extends Controller
             'user_id' => $request->admin
         ])->first();
         //
+
+        $validacion= User::where([
+            'email' => $request->email
+        ])->first();
+
+        if($validacion)
+        {
+            Session::flash('message', "Ya existe un usuario con ese correo.");
+            return redirect()->back();
+
+        }else{
+
         $miembro = User::create([
 
         'name'      => $request->nombre,
@@ -55,7 +68,16 @@ class MiembrosController extends Controller
 
         ]);
 
+        Session::flash('message', "Analista creado.");
+
+
         return redirect()->back();
+
+
+        }
+
+
+      
 
 
     }
@@ -92,7 +114,8 @@ class MiembrosController extends Controller
             }
             else{
 
-
+                Session::flash('message', "Debe crear un empresa para esta acción.");
+                
                 return view("empresas.create");
 
             }
@@ -135,5 +158,12 @@ class MiembrosController extends Controller
     public function destroy($id)
     {
         //
+
+        Session::flash('message', "Analista eliminado.");
+
+        User::destroy($id);
+
+        return redirect()->back();
+
     }
 }

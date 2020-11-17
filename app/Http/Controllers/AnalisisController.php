@@ -36,7 +36,7 @@ class AnalisisController extends Controller
     {
 
         //
-          return view('analisis.show1')      
+          return view('analisis.show1');      
     }
 
     public function show2($id)

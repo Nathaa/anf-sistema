@@ -5,6 +5,10 @@
 @section('content')
 
 <div class="container">
+
+@if (Session::has('message'))
+   <div class="alert alert-info">{{ Session::get('message') }}</div>
+@endif
     <div class="card">
 
     
@@ -35,7 +39,7 @@
             </div>
 
             <div class="form-group">
-                <label for="password">Contrasena</label>
+                <label for="password">Contraseña</label>
                 <input type="text" name="password" value="" class="form-control" placeholder="Contrasena" id="password" >
             </div>
 
@@ -53,7 +57,7 @@
                 <label for="admin">Administrador</label>
 
                <select name="admin" class="form-control">
-                       <option value="{{ Auth::user()->id }}">{{ Auth::user()->id }}</option>
+                       <option value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</option>
                        
                 </select>
              

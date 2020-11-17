@@ -5,6 +5,9 @@
  @if(!Auth::user()->rol == 'Analista')
   
 <div class="container">
+  @if (Session::has('message'))
+   <div class="alert alert-info">{{ Session::get('message') }}</div>
+@endif
  <div class="container-fluid">
     <div class="card">
       <div class="card-header">
@@ -40,7 +43,7 @@
 
             <td width="10px">
 
-              <form method="POST" action="#">
+              <form method="POST" action="{{ route('miembros.destroy', $a->id) }}">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                <button class="btn btn-danger" class="btn btn-info btn-flat" onclick="return confirm('¿Desea eliminar al analista?')" title="Eliminar">
