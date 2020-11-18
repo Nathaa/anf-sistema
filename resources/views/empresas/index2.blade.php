@@ -25,10 +25,17 @@
                 
               
         </div>
-   @php
-      $id = Auth::user()->id;
-    @endphp
 
+      @if(!Auth::user()->rol == 'Analista')
+        @php
+          $id = Auth::user()->id;
+        @endphp
+      @else
+
+        @php
+          $id = Auth::user()->empresa;
+        @endphp
+        @endif
 
         <div class="card-body">
             <div class="form-group row">
