@@ -7,14 +7,12 @@
  <div class="container-fluid">
     <div class="card">
       <div class="card-header">
- @if(!Auth::user()->rol == 'Analista')
-
 
 
           <a href="{{ route('cuentas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
 
             <i class="fas fa-plus"></i>Crear Catalogo </button> </a>
-  @endif     
+       
       </div>
 
         <div class="card-body">
@@ -47,8 +45,7 @@
                   </a>
                 </td>
                 <td width="10px">
- @if(!Auth::user()->rol == 'Analista')
- 
+
                 <form method="POST" action="{{ url('/cuentas/'.$cuenta->empresas_id) }}">
                {{ csrf_field() }}
                {{ method_field('DELETE') }}
@@ -56,7 +53,7 @@
                 <i class="fas fa-trash" aria-hidden="true"></i>
               </button> 
               </form>
-              @endif
+              
                 </td>
            </tr>
 

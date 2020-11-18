@@ -125,16 +125,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           </div>
       </div>
-      @if(!Auth::user()->rol == 'Analista')
-        @php
-          $id = Auth::user()->id;
-        @endphp
-      @else
 
-        @php
-          $id = Auth::user()->empresa;
-        @endphp
-        @endif
+  @php
+      $id = Auth::user()->id;
+    @endphp
+
+
       <!-- Sidebar Menu -->
       <nav class="mt-2">
 
@@ -154,14 +150,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <ul class="nav nav-treeview">
 
-   
+           
               <li class="nav-item">
                   <li><a href="{{ route ('cuentas.index') }}" class="nav-link">
                   <i class="fas fa-donate"></i>
                   <p>Añadir Cuentas a un catalogo</p>
                 </a></li>
               </li>
-          
+
      
 
               <li class="nav-item">
@@ -214,7 +210,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     
           </ul>
 
-           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-building"></i>
@@ -227,54 +223,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <ul class="nav nav-treeview">
 
-
+    
               <li class="nav-item">
                   <li><a href="{{ route ('analisis.show', $id) }}" class="nav-link">
                   <i class="fas fa-industry"></i>
                   <p>Analisis Horizontal</p>
                 </a></li>
               </li>
-
+       
               <li class="nav-item">
-                <li><a href="{{ route ('analisis.vertical', $id) }}" class="nav-link">
+                <li><a href="{{ route ('analisis.show', $id) }}" class="nav-link">
                 <i class="fas fa-money-check-alt"></i>
                 <p>Analisis Vertical</p>
               </a></li>
             </li>
-
+          
 
             </ul>
-
-
-          </ul>
-
-
-
-
-
-        @if(!Auth::user()->rol == 'Analista')
+            
     
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-building"></i>
-              <p>
-                Miembros
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                  <li><a href="{{ route ('miembros.show', $id) }}" class="nav-link">
-                  <i class="fas fa-user"></i>
-                  <p>Analistas</p>
-                </a></li>
-              </li>
-            </ul>
           </ul>
-
-        @endif  
-
 
       </nav>
       <!-- /.sidebar-menu -->
