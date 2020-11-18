@@ -71,7 +71,9 @@ class MiembrosController extends Controller
         Session::flash('message', "Analista creado.");
 
 
-        return redirect()->back();
+        
+
+         return redirect()->to('miembros/'.$request->admin);
 
 
         }

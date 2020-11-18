@@ -28,23 +28,25 @@
 
             <div class="form-group">
                 <label for="nombre">Nombre </label>
-                <input type="text" name="nombre" value="" class="form-control" placeholder="Nombre del analista" id="nombre">
+                <input type="text" name="nombre" value="" class="form-control" placeholder="Nombre del analista" id="nombre" required="true">
                
 
             </div>
 
             <div class="form-group">
                 <label for="correo">Correo</label>
-                <input type="email" name="email" value="" class="form-control" placeholder="Correo del analista" id="correo" >
+                <input type="email" name="email" value="" class="form-control" placeholder="Correo del analista" id="correo" required="true">
             </div>
 
             <div class="form-group">
                 <label for="password">Contraseña</label>
-                <input type="text" name="password" value="" class="form-control" placeholder="Contrasena" id="password" >
+                <input type="text" name="password" value="" class="form-control" placeholder="Contrasena" id="password" required="true">
             </div>
 
             <div class="form-group">
+                  <label for="rol">Rol</label>
                 <select name="rol" class="form-control">
+
                        <option value="Analista">Analista</option>
                        
                 </select>
