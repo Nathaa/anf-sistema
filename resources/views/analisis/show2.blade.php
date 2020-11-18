@@ -44,22 +44,39 @@
 								@if($b1->nombre==$b2->nombre)
 								<tr>
 									
+									@if($b1->nombre == 'ACTIVO')
+									<td class="font-weight-bold">{{$b1->nombre}}</td>
+
+									@php
+
+										$activo1 = $b1->monto;
+
+									@endphp
+
+
+									@elseif($b1->nombre == 'PASIVO')
+									<td class="font-weight-bold">{{$b1->nombre}}</td>
+									@elseif($b1->nombre == 'PATRIMONIO')
+									<td class="font-weight-bold">{{$b1->nombre}}</td>
+									@else
 									<td>{{$b1->nombre}}</td>
+									@endif
+									
 									<td>${{$b1->monto}}</td>
 									<td>${{$b2->monto}}</td>
 										
 									@php
-										$diferencia = $b2->monto - $b1->monto;
-
-										if($b1->monto>0){
-											$porcentaje = round((($diferencia/$b1->monto) * 100) ,2);
-										}else{
-											$porcentaje = 100;
-										}
+										
+										$vertical = round((($b1->monto/$activo1)*100), 2);
 
 									@endphp	
 
+									@if($b1->nombre == 'ACTIVO CORRIENTE')
+
+										<td>{{$vertical}}%</td>										
+									@else
 									<td>#</td>
+									@endif
 									<td>#</td>
 									
 								</tr>

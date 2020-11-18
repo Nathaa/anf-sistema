@@ -111,4 +111,14 @@ class AnalisisController extends Controller
     }
 
 
+
+
+    public function estados(){
+
+
+      return('ok');
+
+    }
+
+
 }
