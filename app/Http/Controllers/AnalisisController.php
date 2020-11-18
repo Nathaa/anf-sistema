@@ -43,15 +43,34 @@ class AnalisisController extends Controller
 
     }
 
-    public function show2($id)
+    public function show2(Request $request,$id)
     {
         // aqui ira analisis vertical
+
+
+      
    
 
-      return view('analisis.show2');
+      return ($request);
     
           
 
+
+    }
+
+    public function vertical($id)
+    {
+
+      $empress=($id);
+
+      $balances=DB::table('balances')
+      ->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
+      ->select('balances.fecha_inicio','balances.fecha_final')
+      ->where('cuentas.empresas_id', $id)
+      ->groupBy('balances.fecha_inicio','balances.fecha_final')
+      ->get();
+
+       return view('analisis.vertical',compact('balances','empress'));
 
     }
 
