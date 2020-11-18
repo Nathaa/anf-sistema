@@ -34,10 +34,21 @@ class AnalisisController extends Controller
 
     public function show1(Request $request,$id)
     {
-      $valor2=$request->fecha_final;
-      $valor1=$request->fecha_inicio;
-      $sql = "SELECT c.nombre As nom,c.monto AS vact,b.monto As valor_ant, c.monto-b.monto AS variacion From balances c, balances b WHERE c.fecha_final=$valor2 AND b.fecha_inicio=$valor1 AND c.nombre=b.nombre";
-          return view('analisis.show1',compact('sql'));
+      $val1='2020-10-01';
+      $val2='2020-11-30';
+
+      $sql=DB::table('balances')
+      ->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
+      ->select('balances.nombre')
+      ->where('balances.fecha_final', $val1)
+      ->get();
+
+      $sql2=DB::table('balances')
+      ->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
+      ->select('balances.monto')
+      ->where('balances.fecha_final', $val2)
+      ->get();
+       return view('analisis.show1',compact('sql','sql2','valor1','valor2'));
     }
 
     public function show2($id)
