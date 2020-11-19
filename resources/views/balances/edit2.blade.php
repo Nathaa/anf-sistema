@@ -20,22 +20,9 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
         
 
-                <div class="form-group">
-                <div class="row">
-                
-                <div class="col">
-                <label for="fecha_inicio" class="control-label">{{'Fecha Inicio'}}:</label><br>
-                <input type="date" class="form-control"id="fecha_inicio" name="fecha_inicio" value=""><br>
-                </div>
-                <div class="col">
-                <label for="fecha_final" class="control-label">{{'Fecha Finalizacion'}}:</label><br>
-                <input type="date" class="form-control"id="fecha_final" name="fecha_final" value=""><br>
-                </div>
-                </div>
-                </div>
             <tr>
    
-              <th scope="col">balances</th>
+              <th scope="col">Cuentas</th>
               <th scope="col"><label for="monto[]" class="control-label">{{'Monto'}}</label></th>
               <!--<th scope="col">Fecha Inicio</th>
               <th scope="col">Fecha Finalizacion</th>-->

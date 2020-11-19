@@ -102,7 +102,7 @@ class BalancesController extends Controller
           DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
 
           
-          return redirect()->route('cuentas.index',compact('balance'));
+          return redirect('principal');
          // return view('empresas.index',compact('balance'));
     }
 

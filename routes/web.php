@@ -84,7 +84,7 @@ Route::get('resultadosh/{resultado}', 'ResultadosController@show1')->name('resul
 Route::post('resultados', 'ResultadosController@store')->name('resultados.store');
 Route::get('resultados/{resultado}/edit', 'ResultadosController@edit')->name('resultados.edit');
 Route::put('resultados/{resultado}', 'ResultadosController@update')->name('resultados.update');
-Route::get('resultados/{resultado}/edit2', 'ResultadosController@edit2')->name('resultados.edit2');
+Route::get('resultadosedit2/{resultadoedit2}/edit2', 'ResultadosController@edit2')->name('resultados.edit2');
 Route::put('resultadosup/{resultadoup}', 'ResultadosController@update2')->name('resultados.update2');
 Route::delete('resultados/{resultado}', 'ResultadosController@destroy')->name('resultados.destroy');
 
