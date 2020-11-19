@@ -93,7 +93,7 @@ Route::delete('resultados/{resultado}', 'ResultadosController@destroy')->name('r
 Route::get('analisis/analisi', 'AnalisisController@create')->name('analisis.create');
 //estas 3 se estan utilizando nada mas
 Route::get('analisis/{analisi}', 'AnalisisController@show')->name('analisis.show');
-Route::get('analisish/{analisih}', 'AnalisisController@show1')->name('analisis.show1');
+Route::post('analisish/{analisih}', 'AnalisisController@show1')->name('analisis.show1');
 Route::get('analisisv/{analisiv}', 'AnalisisController@show2')->name('analisis.show2');
 
 Route::post('analisis', 'AnalisisController@store')->name('analisis.store');

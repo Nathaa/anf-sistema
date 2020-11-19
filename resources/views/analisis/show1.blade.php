@@ -1,15 +1,14 @@
 @extends('template.plantilla2')
 @section('content')
 <?php 
-$valor1='2020-10-31';
-$valor2='2020-11-30';
+$valor1=$valant;
+$valor2=$valact;
 $conexion=mysqli_connect('localhost','root','','sistema_academico');
 
 ?>
 
 <h1>Analisis Horizontal</h1>
-<h2>{{$val1}}</h2>
-<h3>xx</h3>
+
 <table class="table table-bordered thead-dark table-hover table-sm" id="demo">
 
 
@@ -34,6 +33,7 @@ $b=$mostrar['variacion'];
 $c=$b/$a;
 $d=$c*100;
 $e=round($d,2);
+//$e=1;
 ?>
 
 <tr>

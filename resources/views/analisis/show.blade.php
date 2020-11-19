@@ -29,7 +29,7 @@
             <option value="">Debe seleccionar año menor</option> 
             <outgroup label="yyy">
             @foreach ($balances as $balance)
-           <option value="{{$balance->fecha_inicio}}">{{$balance->fecha_final}}</option>
+           <option value="{{$balance->fecha_final}}">{{$balance->fecha_final}}</option>
               @endforeach
               </outgroup>
           </select>
