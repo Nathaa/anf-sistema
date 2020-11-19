@@ -41,6 +41,7 @@ class EmpresasController extends Controller
             }
             else{
 
+        Session::flash('message', "Debe crear un empresa para esta acción.");
 
                 return view("empresas.create");
 
@@ -74,6 +75,9 @@ class EmpresasController extends Controller
         
             }
             else{
+
+                  Session::flash('message', "Debe crear un empresa para esta acción.");
+
 
 
                 return view("empresas.create");
@@ -143,6 +147,15 @@ class EmpresasController extends Controller
      
         public function destroy($id)
         {
+            $miembros = User::where("empresa", $id)->get();
+
+
+           foreach ($miembros as $key => $user) {
+               # code...
+
+                DB::table('users')->delete($user->id);
+           }
+
         
            Empresa::destroy($id);
             return back();

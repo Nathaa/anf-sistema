@@ -102,3 +102,5 @@ Route::put('analisis/{analisi}', 'AnalisisController@update')->name('analisis.up
 Route::get('analisis/{analisi}/edit2', 'AnalisisController@edit2')->name('analisis.edit2');
 Route::put('analisisup/{analisiup}', 'AnalisisController@update2')->name('analisis.update2');
 Route::delete('analisis/{analisi}', 'AnalisisController@destroy')->name('analisis.destroy');
+
+Route::resource('miembros', 'MiembrosController');
