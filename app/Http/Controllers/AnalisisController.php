@@ -39,7 +39,7 @@ class AnalisisController extends Controller
       $valant=$request->fecha_inicial;
       $valact=$request->fecha_final;
        return view('analisis.show1',compact('valant','valact'));
-    }
+    }    
 
     public function show2(Request $request, $id)
     {
