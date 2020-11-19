@@ -126,9 +126,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
       </div>
 
-  @php
-      $id = Auth::user()->id;
-    @endphp
+ 
+       @if(!Auth::user()->rol == 'Analista')
+        @php
+          $id = Auth::user()->id;
+        @endphp
+      @else
+
+        @php
+          $id = Auth::user()->empresa;
+        @endphp
+        @endif
 
 
       <!-- Sidebar Menu -->
@@ -232,7 +240,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
        
               <li class="nav-item">
-                <li><a href="{{ route ('analisis.show', $id) }}" class="nav-link">
+                <li><a href="{{ route ('analisis.vertical', $id) }}" class="nav-link">
                 <i class="fas fa-money-check-alt"></i>
                 <p>Analisis Vertical</p>
               </a></li>
@@ -243,6 +251,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
             
     
           </ul>
+
+
+          
+ @if(!Auth::user()->rol == 'Analista')
+
+
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-building"></i>
+              <p>
+                Miembros
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <li><a href="{{ route ('miembros.show', $id) }}" class="nav-link">
+                  <i class="fas fa-user"></i>
+                  <p>Analistas</p>
+                </a></li>
+              </li>
+            </ul>
+          </ul>
+
+        @endif  
+
+
+          
 
       </nav>
       <!-- /.sidebar-menu -->

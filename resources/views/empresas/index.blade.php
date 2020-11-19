@@ -23,8 +23,11 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
+
+           @if(!Auth::user()->rol == 'Analista')
                 <a href="{{ route('empresas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
                 <i class="fas fa-plus"></i>Crear Empresa</button> </a>     
+ @endif 
         </div>
 
       
@@ -65,9 +68,11 @@
             </td>
                 <td width="10px">
 
+                   @if(!Auth::user()->rol == 'Analista')
                 <a href="{{ url('/empresas/'.$empresa->id.'/edit') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
+                   @endif 
             </td>
             <td width="10px">
             
@@ -77,7 +82,7 @@
                   
             </td>
             <td width="10px">
-
+ @if(!Auth::user()->rol == 'Analista')
   
                 <form method="POST" action="{{ url('/empresas/'.$empresa->id) }}">
                     {{ csrf_field() }}
@@ -86,6 +91,7 @@
                      <i class="fas fa-trash" aria-hidden="true"></i>
                    </button> 
                    </form>
+                   @endif
             </td>
         </tr>
 

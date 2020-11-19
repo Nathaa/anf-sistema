@@ -94,7 +94,9 @@ Route::get('analisis/analisi', 'AnalisisController@create')->name('analisis.crea
 //estas 3 se estan utilizando nada mas
 Route::get('analisis/{analisi}', 'AnalisisController@show')->name('analisis.show');
 Route::get('analisish/{analisih}', 'AnalisisController@show1')->name('analisis.show1');
-Route::get('analisisv/{analisiv}', 'AnalisisController@show2')->name('analisis.show2');
+Route::post('analisisv/{analisiv}', 'AnalisisController@show2')->name('analisis.show2');
+Route::get('vertical/{id}', 'AnalisisController@vertical')->name('analisis.vertical');
+
 
 Route::post('analisis', 'AnalisisController@store')->name('analisis.store');
 Route::get('analisis/{analisi}/edit', 'AnalisisController@edit')->name('analisis.edit');
@@ -102,3 +104,5 @@ Route::put('analisis/{analisi}', 'AnalisisController@update')->name('analisis.up
 Route::get('analisis/{analisi}/edit2', 'AnalisisController@edit2')->name('analisis.edit2');
 Route::put('analisisup/{analisiup}', 'AnalisisController@update2')->name('analisis.update2');
 Route::delete('analisis/{analisi}', 'AnalisisController@destroy')->name('analisis.destroy');
+
+Route::resource('miembros', 'MiembrosController');
