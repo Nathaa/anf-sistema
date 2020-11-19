@@ -41,6 +41,14 @@ class AnalisisController extends Controller
        return view('analisis.show1',compact('valant','valact'));
     }    
 
+    }
+    public function show11(Request $request,$id)
+    {
+      $valant=$request->fecha_inicial;
+      $valact=$request->fecha_final;
+       return view('analisis.show11',compact('valant','valact'));
+    }
+    
     public function show2(Request $request, $id)
     {
 

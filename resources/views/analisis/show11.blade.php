@@ -46,7 +46,7 @@ $e=round($d,2);
 if($mostrar['nom']=='UTILIDAD BRUTA'){
 $ut= $e;
 }
-if($mostrar['nom']=='UTILIDAD ANTES DE PART E IMP'){
+if($mostrar['nom']=='VENTAS NETAS'){
       $uti= $e;
       }
 
