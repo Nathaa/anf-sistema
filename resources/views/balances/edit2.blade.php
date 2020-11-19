@@ -1,8 +1,8 @@
 @extends('template.plantilla2')
 
+
+
 @section('content')
-
-
 <div class="container">
     <div class="card">
      <div class="card-body">
@@ -14,7 +14,7 @@
                 @endif
         <table class="table table-bordered thead-dark table-hover table-sm">
         
-          <form action="{{ url('/balancesup/'.$id) }}"  method="POST" role="form">
+          <form action="{{ url('/balancesup/'.$id) }}"  method="POST" role="form" id="formulario">
         
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -25,11 +25,14 @@
                 
                 <div class="col">
                 <label for="fecha_inicio" class="control-label">{{'Fecha Inicio'}}:</label><br>
-                <input type="date" class="form-control"id="fecha_inicio" name="fecha_inicio" value=""><br>
+                <input type="date" class="form-control"id="fecha_inicio" name="fecha_inicio" value="" required ><br>
+                 <div class="invalid-feedback" style="display:none">
+                 La fecha es requerida.
+              </div>
                 </div>
                 <div class="col">
                 <label for="fecha_final" class="control-label">{{'Fecha Finalizacion'}}:</label><br>
-                <input type="date" class="form-control"id="fecha_final" name="fecha_final" value=""><br>
+                <input type="date" class="form-control"id="fecha_final" name="fecha_final" value="" required><br>
                 </div>
                 </div>
                 </div>
@@ -63,7 +66,7 @@
                 <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->codigo_padre ==10){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
-                <td><input type="float" class="form-control" id="monto" name="monto[]" value="{{$balance->monto}}" onchange="sumar(this.value);sumar2();" required placeholder="0.00"><br></td>
+                <td><input type="float" class="form-control" id="monto" name="monto[]" value="{{$balance->monto}}" onchange="sumar(this.value);sumar2();" required placeholder="0.00" ><br></td>
                 <!--<td><input type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input type="text" class="form-control" id="" name="" value=""><br></td>-->
                 <td><input type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
@@ -140,7 +143,7 @@
          </table>
          <!--<span>El resultado es: </span> <span id="spTotal"></span>-->
          <div class="form-group">
-            <button class="btn btn-primary" type="submit" onclick="validar();"> Guardar </button>
+            <button class="btn btn-primary" type="submit" onclick="validar();" id="btn-submit"> Guardar </button>
             <a class="btn btn-primary" href="{{ url('balances') }}">Regresar</a>
           </div>
     
@@ -288,5 +291,5 @@ valor3 = parseFloat(document.getElementById('spSubTotalC').value);
 
 
 </script>
-
 @endsection
+

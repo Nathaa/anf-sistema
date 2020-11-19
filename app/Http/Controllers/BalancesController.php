@@ -7,6 +7,7 @@ use App\Balance;
 use Illuminate\Http\Request;
 use Session;
 use App\Http\Controllers\HomeController;
+use App\Http\Requests\BalanceRequest;
 use DB;
 Use Redirect;
 use Illuminate\Support\Facades;
@@ -80,6 +81,17 @@ class BalancesController extends Controller
         
         if(count($request->nombre)>0)
         {
+           /* $this->validate($request, [
+                'fecha_inicio' => 'required',
+                'fecha_final' => 'required',
+                'monto' => 'required|numeric',
+            ],
+            [
+                    'fecha_inicio.required' => 'La fecha inicial no debe quedar vacio',
+                    'fecha_final.required' => 'La fecha final no debe quedar vacio',
+                    'monto.required' => 'El monto es requerido',
+                    'monto.numeric' => 'No debe introducir letras o caracteres',
+            ]);*/
         
 
             foreach ($request->nombre as $key=>$value) {

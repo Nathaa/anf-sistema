@@ -1,5 +1,7 @@
 @extends('template.plantilla2')
 
+
+
 @section('content')
 
 <Script language="javascript">
@@ -40,11 +42,11 @@ document.onkeydown=checkKeyCode;
                 
                 <div class="col">
                 <label for="fecha_inicio" class="control-label">{{'Fecha Inicio'}}:</label><br>
-                <input type="date" class="form-control"id="fecha_inicio" name="fecha_inicio" value=""><br>
+                <input type="date" class="form-control"id="fecha_inicio" name="fecha_inicio" value="" required ><br>
                 </div>
                 <div class="col">
                 <label for="fecha_final" class="control-label">{{'Fecha Finalizacion'}}:</label><br>
-                <input type="date" class="form-control"id="fecha_final" name="fecha_final" value=""><br>
+                <input type="date" class="form-control"id="fecha_final" name="fecha_final" value="" required><br>
                 </div>
                 </div>
                 </div>
@@ -72,6 +74,9 @@ document.onkeydown=checkKeyCode;
                 <?php }if($cuenta->codigo_padre ==10){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input type="float" class="form-control act" id="monto" name="monto[]" value="0" onChange="suma();" required placeholder="0.00"><br></td>
+                <div class="invalid-feedback" style="display:none">
+                    En el monto no se debe ingresar letras ni caracteres especiales.
+                </div>
                 <td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                <?php } if($cuenta->nombre == "ACTIVO NO CORRIENTE"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
@@ -118,7 +123,7 @@ document.onkeydown=checkKeyCode;
          </table>
          <!--<span>El resultado es: </span> <span id="spTotal"></span>-->
          <div class="form-group">
-            <button class="btn btn-primary" type="submit" onclick="validar();"> Guardar </button>
+            <button class="btn btn-primary" type="submit" onclick="validar();" id="btn-submit"> Guardar </button>
             <a class="btn btn-primary" href="{{ url('cuentas') }}">Regresar</a>
         </div>
        
@@ -200,6 +205,23 @@ var total_pasivo = 0;
 //
 var f1 ; //31 de diciembre de 2015
 var f2 ; //30 de noviembre de 2014
+
+
+        const boton = document.getElementById('btn-submit');
+        const fi = document.getElementById('fecha_inicio');
+        const ff = document.getElementById('fecha_final');
+       
+
+            if(fi.value.trim() !== "" &&  ff.value.trim() !== "") {
+                    console.log("Se muestra habilitado el boton de guardar")
+                    $("input").prop('required',true);
+                }else {
+                    
+                    alertify.error("Las fechas no púeden quedar vacias", 10000);
+
+                }
+
+
 //
 f1=Date.parse(document.getElementById('fecha_inicio').value);
 
