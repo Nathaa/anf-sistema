@@ -103,7 +103,7 @@ class BalancesController extends Controller
 
           
           return redirect('principal');
-         // return view('empresas.index',compact('balance'));
+         
     }
 
     

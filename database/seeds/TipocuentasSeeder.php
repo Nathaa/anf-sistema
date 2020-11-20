@@ -48,5 +48,12 @@ class TipocuentasSeeder extends Seeder
                 'subtipo' => 'PATRIMONIO',
     
                 ]);
+
+                Tipocuenta::create([
+                    'nombre' => 'ESTADO DE RESULTADOS',
+                    'descripcion' => 'ER',
+                    'subtipo' => 'ESTADO DE RESULTADOS',
+        
+                    ]);
     }
 }
