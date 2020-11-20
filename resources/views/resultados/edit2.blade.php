@@ -59,6 +59,15 @@ function suma() {
       });
       $('#spTotal4').val(add);
   };
+
+  function justNumbers(e)
+        {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+        return true;
+         
+        return /\d/.test(String.fromCharCode(keynum));
+        };
 </script>
 
 <div class="container">
@@ -96,7 +105,7 @@ function suma() {
                 <td><input readonly type="hidden" name="resultados_id[]" value="{{$resultado->id}}"></td>
                <?php } if($resultado->codigo_padre == 8){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$resultado->nombre}}"></td>
-                <td><input type="float" class="solo-numero amt" id="monto" name="monto[]" value="{{$resultado->monto}}" onChange="suma();" required placeholder="0.00"><br></td>
+                <td><input type="float" class="solo-numero amt" onkeypress="return justNumbers(event);" id="monto" name="monto[]" value="{{$resultado->monto}}" onChange="suma();" required placeholder="0.00"><br></td>
                 <td><input type="hidden" name="resultados_id[]" value="{{$resultado->id}}"></td>
                <?php }  if($resultado->nombre == "UTILIDAD DE OPERACION"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$resultado->nombre}}"></td>
@@ -104,7 +113,7 @@ function suma() {
                 <td><input readonly type="hidden" name="resultados_id[]" value="{{$resultado->id}}"></td>
                <?php } if($resultado->codigo_padre == 9){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$resultado->nombre}}"></td>
-                <td><input type="float" class="solo-numero amt2" id="monto" name="monto[]" value="{{$resultado->monto}}" onChange="suma2();" required placeholder="0.00"><br></td>
+                <td><input type="float" class="solo-numero amt2" onkeypress="return justNumbers(event);" id="monto" name="monto[]" value="{{$resultado->monto}}" onChange="suma2();" required placeholder="0.00"><br></td>
                 <td><input type="hidden" name="resultados_id[]" value="{{$resultado->id}}"></td>
                <?php }  if($resultado->nombre == "UTILIDADES ANTES DE PART E IMP"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$resultado->nombre}}"></td>
@@ -112,7 +121,7 @@ function suma() {
                 <td><input readonly type="hidden" name="resultados_id[]" value="{{$resultado->id}}"></td>
                <?php } if($resultado->codigo_padre == 7){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$resultado->nombre}}"></td>
-                <td><input type="float" class="solo-numero amt3" id="monto" name="monto[]" value="{{$resultado->monto}}" onChange="suma3();" required placeholder="0.00"><br></td>
+                <td><input type="float" class="solo-numero amt3" onkeypress="return justNumbers(event);" id="monto" name="monto[]" value="{{$resultado->monto}}" onChange="suma3();" required placeholder="0.00"><br></td>
                 <td><input type="hidden" name="resultados_id[]" value="{{$resultado->id}}"></td>
                <?php }  if($resultado->nombre == "UTILIDAD (PERDIDA) NETA"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$resultado->nombre}}"></td>
@@ -120,7 +129,7 @@ function suma() {
                 <td><input readonly type="hidden" name="resultados_id[]" value="{{$resultado->id}}"></td>
                <?php }  if($resultado->codigo_padre == 6){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$resultado->nombre}}"></td>
-                <td><input type="float" class="solo-numero amt4" id="monto" name="monto[]" value="{{$resultado->monto}}" onChange="suma4();" required placeholder="0.00"><br></td>
+                <td><input type="float" class="solo-numero amt4" onkeypress="return justNumbers(event);" id="monto" name="monto[]" value="{{$resultado->monto}}" onChange="suma4();" required placeholder="0.00"><br></td>
                 <td><input type="hidden" name="resultados_id[]" value="{{$resultado->id}}"></td>
                <?php }?>                       
                              

@@ -24,7 +24,7 @@
                         <tbody>
                         </tbody>
                     </table>
-                    <form action="{{ url('/ratios1/'.$empress) }}"  method="GET" role="form">
+                    <form action="{{ url('/ratiosh/'.$empress) }}"  method="GET" role="form">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col">
