@@ -22,14 +22,14 @@
             <div class="row">
                 <div class="col">
                         <label for="codigo" class="control-label">{{'Codigo'}}:</label><br>
-                        <input type="text" class="form-control" id="codigo" name="codigo" value="{{ old('codigo') }}" placeholder="Codigo de la cuenta"  onkeyup="validar_numero(this)", onblur="validar_numero(this)" ><br>
+                        <input type="text" class="form-control" id="codigo" name="codigo" value="{{ old('codigo') }}" placeholder="Codigo de la cuenta"  onkeyup="validar_numero(this)", onblur="validar_numero(this)" required><br>
                         <div class="invalid-feedback" style="display:none">
                            El código debe estar conformado por números.
                         </div>
                 </div>
                 <div class="col">
                     <label for="codigo_padre" class="control-label">{{'Codigo Precedente'}}:</label><br>
-                    <input type="text" class="form-control" id="codigo_padre" name="codigo_padre" value="{{ old('codigo_padre') }}" placeholder="1->Activo"  onkeyup="validar_numero(this)", onblur="validar_numero(this)"><br>
+                    <input type="text" class="form-control" id="codigo_padre" name="codigo_padre" value="{{ old('codigo_padre') }}" placeholder="1->Activo"  onkeyup="validar_numero(this)", onblur="validar_numero(this)" required><br>
                     <div class="invalid-feedback" style="display:none">
                         El código precedente debe estar conformado por números.
                     </div>
@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col">
                     <label for="nombre" class="control-label">{{'Nombre'}}:</label><br>
-                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" placeholder="Nombre de la Cuenta" onkeyup="validar(this)", onblur="validar(this)"><br>
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" placeholder="Nombre de la Cuenta" onkeyup="validar(this)", onblur="validar(this)" required><br>
                     <div class="invalid-feedback" style="display:none">
                         El nombre de la cuenta no debe comenzar con números ni caracteres especiales.
                     </div>
@@ -48,7 +48,7 @@
                 
                 <div class="col">
                     <label for="tipocuentas_id" class="control-label">{{'Tipo de cuenta'}}:</label><br>
-                    <select class="form-control" id="tipocuentas_id" name="tipocuentas_id" onkeyup="validar_select(this)", onblur="validar_select(this)" >
+                    <select class="form-control" id="tipocuentas_id" name="tipocuentas_id" onkeyup="validar_select(this)", onblur="validar_select(this)" required>
                       <option value="">Debe seleccionar una opción</option> 
                       @foreach ($tipocuentas as $tp)
                      <option value="{{ $tp->id }}">{{$tp->subtipo}}</option>
@@ -65,14 +65,14 @@
             <div class="row">
                 <div class="col">
                     <label for="descripcion" class="control-label">{{'Catalogo'}}:</label><br>
-                    <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ old('descripcion') }}"  placeholder="Breve descripción de la cuenta" onkeyup="validar(this)", onblur="validar(this)"><br>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ old('descripcion') }}"  placeholder="Breve descripción de la cuenta" onkeyup="validar(this)", onblur="validar(this)" required><br>
                     <div class="invalid-feedback" style="display:none">
                         El descripcion de la cuenta no debe comenzar con números ni caracteres especiales.
                     </div>
                 </div>
                 <div class="col">
                     <label for="empresas_id"class="control-label">{{'Empresa'}}:</label><br>
-                    <select class="form-control" id="empresas_id" name="empresas_id" onkeyup="validar_select(this)", onblur="validar_select(this)">
+                    <select class="form-control" id="empresas_id" name="empresas_id" onkeyup="validar_select(this)", onblur="validar_select(this)" required>
                         @foreach ($empresa as $emp)
                     <option value="{{ $emp->id }}">{{$emp->nombre}}</option>
                         @endforeach

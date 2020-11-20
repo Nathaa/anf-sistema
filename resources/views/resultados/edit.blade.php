@@ -82,11 +82,11 @@ function suma() {
                 
                 <div class="col">
                 <label for="fecha_inicio" class="control-label">{{'Fecha Inicio'}}:</label><br>
-                <input type="date" class="form-control"id="fecha_inicio" name="fecha_inicio" value=""><br>
+                <input type="date" class="form-control"id="fecha_inicio" name="fecha_inicio" value="" required><br>
                 </div>
                 <div class="col">
                 <label for="fecha_final" class="control-label">{{'Fecha Finalizacion'}}:</label><br>
-                <input type="date" class="form-control"id="fecha_final" name="fecha_final" value=""><br>
+                <input type="date" class="form-control"id="fecha_final" name="fecha_final" value="" required><br>
                 </div>
                 </div>
                 </div>
@@ -105,19 +105,19 @@ function suma() {
                <?php   if($cuenta->nombre == "UTILIDAD BRUTA"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="solo-numero amt8" id="spTotal" name="monto[]" value="0" placeholder="0.00"><br></td>
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                <?php } if($cuenta->codigo_padre == 8){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input type="float" class="solo-numero amt" id="monto" name="monto[]" value="0" onChange="suma();" required placeholder="0.00"><br></td>
-                <!--<td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                <?php }  if($cuenta->nombre == "UTILIDAD DE OPERACION"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control;solo-numero amt3" id="spTotal2" name="monto[]" value="0" placeholder="0.00"><br></td>
-                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>-->
+                <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                <?php } if($cuenta->codigo_padre == 9){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input type="float" class="solo-numero amt2" id="monto" name="monto[]" value="0" onChange="suma2();" required placeholder="0.00"><br></td>
-                <!--<td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
+                <td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                <?php }  if($cuenta->nombre == "UTILIDADES ANTES DE PART E IMP"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control;solo-numero amt4" id="spTotal3" name="monto[]" value="0" placeholder="0.00"><br></td>
@@ -125,7 +125,7 @@ function suma() {
                <?php } if($cuenta->codigo_padre == 7){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input type="float" class="solo-numero amt3" id="monto" name="monto[]" value="0" onChange="suma3();" required placeholder="0.00"><br></td>
-                <!--<td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
+                <td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                <?php }  if($cuenta->nombre == "UTILIDAD (PERDIDA) NETA"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spTotal4" name="monto[]" value="0" placeholder="0.00"><br></td>

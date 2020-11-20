@@ -26,14 +26,14 @@
 
             <div class="form-group">
                 <label for="nombre">Nombre </label>
-                <input type="text" name="nombre" value="{{ old('nombre') }}" class="form-control" placeholder="Nombre del tipo de cuenta" id="nombre"  onkeyup="validar(this)", onblur="validar(this)">
+                <input type="text" name="nombre" value="{{ old('nombre') }}" class="form-control" placeholder="Nombre del tipo de cuenta" id="nombre"  onkeyup="validar(this)", onblur="validar(this)" required>
                 <div class="invalid-feedback" style="display:none">
                     El nombre del tipo de cuenta no debe empezar con números o carácteres especiales.
                 </div>
             </div>
             <div class="form-group">
                 <label for="descripcion">Descripción </label>
-                <input type="text" name="descripcion" value="{{ old('descripcion') }}" class="form-control" placeholder="Descripcion del Tipo de Cuenta" id="descripcion" onkeyup="validar(this)", onblur="validar(this)">
+                <input type="text" name="descripcion" value="{{ old('descripcion') }}" class="form-control" placeholder="Descripcion del Tipo de Cuenta" id="descripcion" onkeyup="validar(this)", onblur="validar(this)" required>
                 <div class="invalid-feedback" style="display:none">
                     La descripción no debe empezar con números o carácteres especiales.
                 </div>
@@ -41,7 +41,7 @@
 
             <div class="form-group">
                 <label for="rubro">Subtipo </label>
-                <input type="text" name="subtipo" value="{{ old('subtipo') }}" class="form-control" placeholder="Subtipo, por ejemplo: Activo no Corriente" id="subtipo" onkeyup="validar(this)", onblur="validar(this)">
+                <input type="text" name="subtipo" value="{{ old('subtipo') }}" class="form-control" placeholder="Subtipo, por ejemplo: Activo no Corriente" id="subtipo" onkeyup="validar(this)", onblur="validar(this)" required>
                 <div class="invalid-feedback" style="display:none">
                     El subtipo del tipo de cuenta no debe empezar con números o carácteres especiales.
                 </div>

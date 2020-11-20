@@ -7,6 +7,9 @@
 
 @section('content')
 <div class="container">
+    @if (Session::has('message'))
+   <div class="alert alert-info">{{ Session::get('message') }}</div>
+@endif
     <div class="card">
 
     
@@ -24,7 +27,7 @@
 
             <div class="form-group">
                 <label for="nombre">Nombre </label>
-                <input type="text" name="nombre" value="" class="form-control" placeholder="Nombre de la Empresa" id="nombre"  onkeyup="validar_nombre(this)", onblur="validar_nombre(this)">
+                <input type="text" name="nombre" value="" class="form-control" placeholder="Nombre de la Empresa" id="nombre"  onkeyup="validar_nombre(this)", onblur="validar_nombre(this)" required>
                 <div class="invalid-feedback" style="display:none">
                     El nombre de la Empresa no debe comenzar con números ni caracteres especiales.
                 </div>
@@ -33,7 +36,7 @@
 
             <div class="form-group">
                 <label for="codigo">Código </label>
-                <input type="text" name="codigo" value="" class="form-control" placeholder="Codigo de la Empresa" id="codigo"  onkeyup="validar_codigo(this)", onblur="validar_codigo(this)" >
+                <input type="text" name="codigo" value="" class="form-control" placeholder="Codigo de la Empresa" id="codigo"  onkeyup="validar_codigo(this)", onblur="validar_codigo(this)" required>
                 <div class="invalid-feedback" style="display:none">
                     El código no debe quedar vacío.
                 </div>
@@ -41,7 +44,7 @@
 
             <div class="form-group">
                 <label for="descripcion">Descripción </label>
-                <input type="text" name="descripcion" value="" class="form-control" placeholder="Descripcion de la Empresa" id="descripcion" onkeyup="validar_descripcion(this)", onblur="validar_descripcion(this)">
+                <input type="text" name="descripcion" value="" class="form-control" placeholder="Descripcion de la Empresa" id="descripcion" onkeyup="validar_descripcion(this)", onblur="validar_descripcion(this)" required>
                 <div class="invalid-feedback" style="display:none">
                     La descripcion no debe comenzar con números ni caracteres especiales.
                 </div>
