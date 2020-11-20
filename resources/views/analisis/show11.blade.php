@@ -2,7 +2,8 @@
 @section('content')
 
 <?php 
-
+$valor1=$valant;
+$valor2=$valact;
 $conexion=mysqli_connect('localhost','root','','sistema_academico');
 
 ?>
@@ -13,8 +14,8 @@ $conexion=mysqli_connect('localhost','root','','sistema_academico');
 
  <tr>
  <th>Cuenta</th>
- <th>Valor Anterior</th>
- <th>Valor Actual</th>
+ <th>{{$valor1}}</th>
+ <th>{{$valor2}}</th>
  <th>Variación Absoluta</th>
  <th>Variación relativa</th>
 </tr>
@@ -23,9 +24,8 @@ $conexion=mysqli_connect('localhost','root','','sistema_academico');
 
 
 <?php
-$valor1='2020-10-01';
-$valor2='2020-11-30';
- $sql = "SELECT c.nombre AS nom, c.monto AS valor_Actual, b.monto As valor_anterior, c.monto-b.monto AS variacion From resultados c, resultados b WHERE c.fecha_final='$valor2' AND b.fecha_inicio='$valor1' AND c.nombre=b.nombre";
+
+ $sql = "SELECT c.nombre AS nom, c.monto AS valor_Actual, b.monto As valor_anterior, c.monto-b.monto AS variacion From resultados c, resultados b WHERE c.fecha_final='$valor2' AND b.fecha_final='$valor1' AND c.nombre=b.nombre";
 $result=mysqli_query($conexion,$sql);
 while($mostrar=mysqli_fetch_array($result)){
 $a=$mostrar['valor_anterior'];
@@ -46,12 +46,12 @@ $e=round($d,2);
 if($mostrar['nom']=='UTILIDAD BRUTA'){
 $ut= $e;
 }
+if($mostrar['nom']=='UTILIDAD DE OPERACION'){
+      $utop= $e;
+}
 if($mostrar['nom']=='VENTAS NETAS'){
-      $uti= $e;
-      }
-
-
-
+      $vn= $e;
+}
 ?>
 
 </tr>
@@ -65,42 +65,39 @@ if($mostrar['nom']=='VENTAS NETAS'){
     
 </table>
 <h2>Resultados</h2>
-<table width="100%" border="0" cellspacing="0" cellpadding="4">
-<tr bgcolor="#FFFFFF">
-<?php
-if($ut>0){
+<table>
+      <tr bgcolor="#FFFFFF">
+      <?php    
+      if($ut>0){
 ?>
-<td><?php echo "";
+<td><?php 
+echo "La empresa tuvo un incremento favorable de $ut% en la utilidad bruta,lo cual indica que los cambios realizados en
+los precios de venta, los volumens de produccion  y los costos de compra han sido acertivos.";
 ?></td>
 <?php
-}elseif($ut==0){
+      }elseif($ut<0){
 ?>
-<td><?php echo "";
+<td><?php
+echo "La empresa tuvo un decrecimiento del $ut% respecto al periodo anteior, por lo que se recomienda evaluar los precios y el volumen de ventas
+para solventar el problema. ";
 ?></td>
 <?php
-}else{
-?>
-<td><?php echo "";
-?></td>
-<?php
-}
-?>
+  }?>
 </tr>
 <tr bgcolor="#FFFFFF">
 <?php
-if($uti>0){
+if($utop>0 && $utop>$vn){
 ?>
-<td><?php echo " ";
+<td><?php
+echo "El aumento en los gastos de operación no se refleja en las ventas obtenidas, por lo que es necesario reevaluar las politicas y los gasto de ventas. ";
 ?></td>
 <?php
-}elseif($uti<0){
+}elseif($utop>0 && $vn>0 && $utop<$vn){
 ?>
-<td><?php echo "";
-?></td>
-<?php
-}
-?>
-</tr>
-
+ <td><?php
+ echo "El incremento de $utop% en los gastos operativos fue acertivo, pues las ventas incrementaron un $vn%";
+ ?></td>
+ <?php
+}?></tr>
 </table>
 @endsection
