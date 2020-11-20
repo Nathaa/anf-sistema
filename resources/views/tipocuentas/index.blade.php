@@ -14,11 +14,11 @@
  <div class="container-fluid">
     <div class="card">
       <div class="card-header">
-        @if(!Auth::user()->rol == 'Analista')
-    
+                @if(!Auth::user()->rol == 'Analista')
+
           <a href="{{ route('tipocuentas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
           <i class="fas fa-plus"></i>Crear Tipo de Cuenta </button> </a>
-          @endif 
+          @endif
       </div>
         <div class="card-body">
             <div class="form-group row">
@@ -42,10 +42,11 @@
              <td>{{$tc->subtipo}}</td>
              <td width="10px">
 @if(!Auth::user()->rol == 'Analista')
+
                 <a href="{{ url('/tipocuentas/'.$tc->id.'/edit') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
-                   @endif 
+                  @endif
             </td>
             <td width="10px">
                 <a href="{{ route('tipocuentas.show', $tc->id) }}" class="btn btn-info btn-flat" title="Visualizar">
@@ -53,7 +54,9 @@
                   </a>
             </td>
             <td width="10px">
-@if(!Auth::user()->rol == 'Analista')
+
+              @if(!Auth::user()->rol == 'Analista')
+
 
               <form method="POST" action="{{ url('/tipocuentas/'.$tc->id) }}">
                     {{ csrf_field() }}
@@ -62,7 +65,9 @@
                 <i class="fas fa-trash" aria-hidden="true"></i>
               </button> 
               </form>
- @endif 
+
+              @endif
+
             </td>
           </tr>
 

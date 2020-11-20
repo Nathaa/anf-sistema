@@ -62,7 +62,7 @@
             <div class="form-group">
                 
                     <div class="form-group">                                  
-                        <button type="submit" class="btn btn-primary btn-sm">Generar Analisis Vertical</button> 
+                        <button type="submit" class="btn btn-primary btn-sm">Generar Análisis Vertical</button> 
                     </div>
                    
                
@@ -135,7 +135,7 @@
             <div class="form-group">
                 
                     <div class="form-group">                                  
-                        <button type="submit" class="btn btn-primary btn-sm">Generar Analisis Vertical</button> 
+                        <button type="submit" class="btn btn-primary btn-sm">Generar Análisis Vertical</button> 
                     </div>
                    
                

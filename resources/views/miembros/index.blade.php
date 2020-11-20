@@ -3,7 +3,7 @@
 
 
  @if(!Auth::user()->rol == 'Analista')
-  
+
 <div class="container">
   @if (Session::has('message'))
    <div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -32,14 +32,14 @@
        <tbody>
 
 @foreach($analistas as $a)
-          	<tr>
+            <tr>
 
             <td>{{$a->name}}</td>
              <td>{{$a->email}}</td>
              <td>{{$empresa->nombre}}</td>
-     		<td>{{Auth::user()->name}}</td>	
+        <td>{{Auth::user()->name}}</td> 
 
-        
+
 
             <td width="10px">
 
@@ -59,14 +59,14 @@
       </table>
       <div class="row">
         <div class="mr-auto">
-        
+
         </div>
       </div>
-         
+
         </div>
      </div>
   </div>
 </div>
 @endif
 
-@endsection
+@endsection 
