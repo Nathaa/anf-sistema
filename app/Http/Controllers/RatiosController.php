@@ -35,7 +35,6 @@ class RatiosController extends Controller
      * @return Factory|Application|Response|View
      */
     public function show1($id){
-        $fecha = $id;
         $str_arr = preg_split("/\|/", $id);
         $id = $str_arr[0];
         $inicio = $str_arr[1];
@@ -121,8 +120,7 @@ class RatiosController extends Controller
                 where cuentas.empresas_id = ? 
                 and cuentas.nombre like "EFECTIV%" 
                 and fecha_inicio >= ? 
-                and fecha_final <= ?) -
-                (select sum(monto) from balances inner join cuentas on cuentas.id = balances.cuentas_id 
+                and fecha_final <= ?) - (select sum(monto) from balances inner join cuentas on cuentas.id = balances.cuentas_id 
                 where cuentas.empresas_id = ? 
                 and cuentas.nombre like "VALORES CORTO PLAZO" 
                 and fecha_inicio >= ? 
@@ -143,7 +141,7 @@ class RatiosController extends Controller
                 where cuentas.empresas_id = ? 
                 and cuentas.nombre like "COSTO% VENTA%" 
                 and fecha_inicio >= ? 
-                and fecha_final <= ?) / (((select sum(monto) from balances 
+                and fecha_final <= ?) / ( ( (select sum(monto) from balances 
                 inner join cuentas on cuentas.id = balances.cuentas_id 
                 where cuentas.empresas_id = ? and cuentas.nombre like "INVENTARIO%" 
                 and fecha_inicio >= ? 
@@ -183,11 +181,11 @@ class RatiosController extends Controller
                 and fecha_inicio >= ? 
                 and fecha_final <= ?) / ( ( (select sum(monto) from balances inner join cuentas on cuentas.id = balances.cuentas_id 
                 where cuentas.empresas_id = ? 
-                and cuentas.nombre like "CUENTA% COBRAR" 
+                and cuentas.nombre like "CUENTA% %COBRAR" 
                 and fecha_inicio >= ? 
                 and fecha_final <= adddate(?, 365)) + (select sum(monto) from balances inner join cuentas on cuentas.id = balances.cuentas_id 
                 where cuentas.empresas_id = ? 
-                and cuentas.nombre like "CUENTA% COBRAR" 
+                and cuentas.nombre like "CUENTA% %COBRAR" 
                 and fecha_inicio >= subdate(?, 365) 
                 and fecha_final <= ?)) / 2)
                 as RazonRotacionCobros', [$id, $inicio, $final, $id, $inicio, $inicio, $id, $final, $final]
@@ -221,11 +219,11 @@ class RatiosController extends Controller
                 and fecha_inicio >= ? 
                 and fecha_final <= ?) / ( ( (select sum(monto) from balances inner join cuentas on cuentas.id = balances.cuentas_id 
                 where cuentas.empresas_id = ? 
-                and cuentas.nombre like "CUENTA% PAGAR" 
+                and cuentas.nombre like "CUENTA% %PAGAR" 
                 and fecha_inicio >= ? 
                 and fecha_final <= adddate(?, 365)) + (select sum(monto) from balances inner join cuentas on cuentas.id = balances.cuentas_id 
                 where cuentas.empresas_id = ? 
-                and cuentas.nombre like "CUENTA% PAGAR" 
+                and cuentas.nombre like "CUENTA% %PAGAR" 
                 and fecha_inicio >= subdate(?, 365) 
                 and fecha_final <= ?)) / 2)
                 as RazonRotacionPagos', [$id, $inicio, $final, $id, $inicio, $inicio, $id, $final, $final]
@@ -236,18 +234,18 @@ class RatiosController extends Controller
             ->selectRaw(
                 '( ( (select sum(monto) from balances inner join cuentas on cuentas.id = balances.cuentas_id 
                 where cuentas.empresas_id = ? 
-                and cuentas.nombre like "CUENTA% PAGAR" 
+                and cuentas.nombre like "CUENTA% %PAGAR" 
                 and fecha_inicio >= ? 
                 and fecha_final <= adddate(?, 365)) + (select sum(monto) from balances inner join cuentas on cuentas.id = balances.cuentas_id 
                 where cuentas.empresas_id = ? 
-                and cuentas.nombre like "CUENTA% PAGAR" 
+                and cuentas.nombre like "CUENTA% %PAGAR" 
                 and fecha_inicio >= subdate(?, 365) 
                 and fecha_final <= ?)) / 2) / (select sum(monto) from balances 
                 inner join cuentas on cuentas.id = balances.cuentas_id 
                 where cuentas.empresas_id = ? and cuentas.nombre like "COMPRA%" 
                 and fecha_inicio >= ? 
                 and fecha_final <= ?) * 365
-                as RazonPeriodoMedioPago', [$id, $inicio, $final, $id, $inicio, $final]
+                as RazonPeriodoMedioPago', [$id, $inicio, $inicio, $id, $final, $final, $id, $inicio, $final]
             )
             ->get('RazonPeriodoMedioPago');
         $RPMP = $this->converter($RazonPeriodoMedioPago);
@@ -293,7 +291,7 @@ class RatiosController extends Controller
             ->selectRaw(
                 '(select sum(monto) from balances inner join cuentas on cuentas.id = balances.cuentas_id 
                 where cuentas.empresas_id = ? 
-                and cuentas.nombre like "UTILIDAD% BRUTA_"
+                and cuentas.nombre like "UTILIDAD% BRUTA%"
                 and fecha_inicio >= ? 
                 and fecha_final <= ?) / (select sum(monto) from balances 
                 inner join cuentas on cuentas.id = balances.cuentas_id 
@@ -308,7 +306,7 @@ class RatiosController extends Controller
             ->selectRaw(
                 '(select sum(monto) from balances inner join cuentas on cuentas.id = balances.cuentas_id 
                 where cuentas.empresas_id = ? 
-                and cuentas.nombre like "UTILIDAD% OPERATIVA_"
+                and cuentas.nombre like "UTILIDAD% OPERATIVA%"
                 and fecha_inicio >= ? 
                 and fecha_final <= ?) / (select sum(monto) from balances 
                 inner join cuentas on cuentas.id = balances.cuentas_id 
@@ -373,7 +371,7 @@ class RatiosController extends Controller
                 and fecha_inicio >= ? 
                 and fecha_final <= ?) / (select sum(monto) from balances 
                 inner join cuentas on cuentas.id = balances.cuentas_id 
-                where cuentas.empresas_id = ? and cuentas.nombre like "GASTO% FINANCIERO%" 
+                where cuentas.empresas_id = ? and cuentas.nombre like "GASTO% %FINANCIERO%" 
                 and fecha_inicio >= ? 
                 and fecha_final <= ?)
                 as RazonCoberturaGastosFinancieros', [$id, $inicio, $final, $id, $inicio, $final]
