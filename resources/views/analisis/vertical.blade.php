@@ -5,151 +5,104 @@
     <div class="card">
       <div class="card-header">         
                 
-                 <h5 class="card-title font-weight-bold text-primary">Análisis por Balances de la Empresa </h5>
+        <h5 class="card-title font-weight-bold text-primary">Análisis por Balances de la Empresa </h5>
                 
       </div>
 
-        <div class="card-body">
+      <div class="card-body">
         
-
-
             <form action="{{ url('/analisisv/'.$empress) }}"  method="POST" role="form">
 
               {{ csrf_field() }}
-
-              
+      
             <div class="form-group">
-
 
                 <div class="row">
 
-
-
                     <div class="col">
                         <label for="fecha_inicial" class="control-label">Años Analizar</label><br>
-                        <select class="form-control" id="fecha_inicial" name="fecha_inicial" required="true">
-                          <option value="">Debe seleccionar año menor</option> 
-                          <outgroup label="yyy">
+                          <select class="form-control" id="fecha_inicial" name="fecha_inicial" required="true">
+                            <option value="">Debe seleccionar año menor</option> 
+                            <outgroup label="yyy">
+      
                           @foreach ($balances as $balance)
-                         <option value="{{$balance->fecha_inicio}}">{{$balance->fecha_inicio}}</option>
-                            @endforeach
+                             <option value="{{$balance->fecha_inicio}}">{{$balance->fecha_inicio}}</option>
+                          @endforeach
                             </outgroup>
                         </select>
-                        <input id="Tipo" name="Tipo" type="hidden" value=" ">
+                      <input id="Tipo" name="Tipo" type="hidden" value=" ">
                     </div>
 
-               
-
                     <div class="col">
-                        <label for="fecha_final" class="control-label">Años Analizar</label><br>
+                      <label for="fecha_final" class="control-label">Años Analizar</label><br>
                         <select class="form-control" id="fecha_final" name="fecha_final" required="true">
-                          <option value="">Debe seleccionar año mayor</option> 
-                          @foreach ($balances as $balance)
-                         <option value="{{$balance->fecha_final}}">{{$balance->fecha_final}}</option>
+                            <option value="">Debe seleccionar año mayor</option> 
+                            @foreach ($balances as $balance)
+                               <option value="{{$balance->fecha_final}}">{{$balance->fecha_final}}</option>
                             @endforeach
                         </select>
                     </div>
-
-
-                   
+  
                 </div>
 
-
             </div>
-
-
 
             <div class="form-group">
-                
-                    <div class="form-group">                                  
-                        <button type="submit" class="btn btn-primary btn-sm">Generar Análisis Vertical</button> 
-                    </div>
-                   
-               
+              <div class="form-group">                                  
+                <button type="submit" class="btn btn-primary btn-sm">Generar Análisis Vertical</button> 
+              </div>             
             </div>
-
-
             </form>
-            </div>
 
-      </div>
+        </div>
+    </div>
 
 
-          <div class="card">
-      <div class="card-header">         
-                
-                 <h5 class="card-title font-weight-bold text-primary">Análisis por Estados de Resultados de la Empresa </h5>
-                
+    <div class="card">
+      <div class="card-header">                     
+        <h5 class="card-title font-weight-bold text-primary">Análisis por Estados de Resultados de la Empresa </h5>
       </div>
 
         <div class="card-body">
-        
-
-
-            <form action="{{ url('/analisisv/'.$empress) }}"  method="POST" role="form">
-
-              {{ csrf_field() }}
-
-              
+          <form action="{{ url('/analisisv/'.$empress) }}"  method="POST" role="form">
+              {{ csrf_field() }}    
             <div class="form-group">
-
-
                 <div class="row">
-
-
-
                     <div class="col">
                         <label for="fecha_inicial" class="control-label">Años Analizar</label><br>
-                        <select class="form-control" id="fecha_inicial" name="fecha_inicial" required="true">
-                          <option value="">Debe seleccionar año menor</option> 
-                          <outgroup label="yyy">
-                          @foreach ($balances as $balance)
-                         <option value="{{$balance->fecha_inicio}}">{{$balance->fecha_inicio}}</option>
+                          <select class="form-control" id="fecha_inicial" name="fecha_inicial" required="true">
+                            <option value="">Debe seleccionar año menor</option> 
+                            <outgroup label="yyy">
+                            
+                            @foreach ($balances as $balance)
+                              <option value="{{$balance->fecha_inicio}}">{{$balance->fecha_inicio}}</option>
                             @endforeach
                             </outgroup>
                         </select>
-                        <input id="Tipo" name="Tipo" type="hidden" value=" ">
+                      <input id="Tipo" name="Tipo" type="hidden" value=" ">
                     </div>
-
-               
 
                     <div class="col">
-                        <label for="fecha_final" class="control-label">Años Analizar</label><br>
+                      <label for="fecha_final" class="control-label">Años Analizar</label><br>
                         <select class="form-control" id="fecha_final" name="fecha_final" required="true">
-                          <option value="">Debe seleccionar año mayor</option> 
-                          @foreach ($balances as $balance)
-                         <option value="{{$balance->fecha_final}}">{{$balance->fecha_final}}</option>
+                            <option value="">Debe seleccionar año mayor</option> 
+                            @foreach ($balances as $balance)
+                               <option value="{{$balance->fecha_final}}">{{$balance->fecha_final}}</option>
                             @endforeach
                         </select>
-                    </div>
-
-
-                   
+                    </div>         
                 </div>
-
-
             </div>
-
-
-
-            <div class="form-group">
+       <div class="form-group">
                 
-                    <div class="form-group">                                  
-                        <button type="submit" class="btn btn-primary btn-sm">Generar Análisis Vertical</button> 
-                    </div>
-                   
-               
-            </div>
-
-
-            </form>
-            </div>
-
-      </div>
-
-
-
-
+         <div class="form-group">                                  
+           <button type="submit" class="btn btn-primary btn-sm">Generar Análisis Vertical</button> 
+         </div>       
+            
+     </div>
+   </form>
+  </div>
+</div>
 
       </div>
       </div>

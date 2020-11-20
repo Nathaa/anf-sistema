@@ -90,11 +90,11 @@ class AnalisisController extends Controller
 
     }
 
-        public function vertical($id)
+    public function vertical($id)
     {
         
      
-     $empress=($id);
+      $empress=($id);
 
       $balances=DB::table('balances')
       ->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
