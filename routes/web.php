@@ -106,3 +106,7 @@ Route::put('analisisup/{analisiup}', 'AnalisisController@update2')->name('analis
 Route::delete('analisis/{analisi}', 'AnalisisController@destroy')->name('analisis.destroy');
 
 Route::resource('miembros', 'MiembrosController');
+
+//RATIOS
+Route::get('ratios/{ratio}', 'RatiosController@show')->name('ratios.show');
+Route::get('ratiosh/{ratio}', 'RatiosController@show1')->name('ratios.show1');
