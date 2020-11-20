@@ -2,7 +2,7 @@
 @section('content')
 <?php 
 
-$conexion=mysqli_connect('localhost','root','','sistema_academico');
+$conexion=mysqli_connect('localhost:33065','root','','analisis');
 
 ?>
 
@@ -22,8 +22,8 @@ $conexion=mysqli_connect('localhost','root','','sistema_academico');
 
 
 <?php
-$valor1='2020-10-01';
-$valor2='2020-11-30';
+$valor1='2020-11-01';
+$valor2='2020-12-31';
  $sql = "SELECT c.nombre AS nom, c.monto AS valor_Actual, b.monto As valor_anterior, c.monto-b.monto AS variacion From balances c, balances b WHERE c.fecha_final='$valor2' AND b.fecha_inicio='$valor1' AND c.nombre=b.nombre";
 $result=mysqli_query($conexion,$sql);
 while($mostrar=mysqli_fetch_array($result)){
