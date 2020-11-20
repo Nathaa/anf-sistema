@@ -52,10 +52,12 @@ class AnalisisController extends Controller
     public function show2(Request $request, $id)
     {
 
+      $activoCorriente = 0;
+      $activoNcorriente = 0;
+      $pasivoCorriente = 0;
+      $pasivoNcorriente = 0;
 
       $empresa = Empresa::where("id", $id)->first();
-
-      $inicial = $request->fecha_inicial;
 
       $final = $request->fecha_final;
 
@@ -64,37 +66,99 @@ class AnalisisController extends Controller
 
       ->select('balances.nombre', 'balances.monto')
 
-      ->where('balances.fecha_inicio', $inicial)
-
-      ->get();
-
-     // dd($sql);
-
-
-
-      $balance2=DB::table('balances')
-
-      ->select('balances.nombre', 'balances.monto')
-
       ->where('balances.fecha_final', $final)
 
       ->get();
 
+      foreach ($balance1 as $key => $value) {
+        # code...
+        if ($value->nombre=='ACTIVO CORRIENTE') {
+          # code...
+          $activoCorriente = $value->monto;
+        }
+        if ($value->nombre=='ACTIVO NO CORRIENTE') {
+          # code...
+          $activoNcorriente = $value->monto;
+        }
+        if ($value->nombre=='PASIVO CORRIENTE') {
+          # code...
+          $pasivoCorriente = $value->monto;
+        }
+        if ($value->nombre=='PASIVO NO CORRIENTE') {
+          # code...
+          $pasivoNcorriente = $value->monto;
+        }
 
-      $year1 = Carbon::createFromFormat('Y-m-d', $request->fecha_inicial)->year;
-      $year2 = Carbon::createFromFormat('Y-m-d', $request->fecha_final)->year;
+
+      }
+
+
+      $year1 = Carbon::createFromFormat('Y-m-d', $request->fecha_final)->year;
    
 
-      return view('analisis.show2', compact('year1','year2', 'balance1', 'balance2', 'empresa'));
+      return view('analisis.show2', compact('year1','balance1', 'empresa', 'activoCorriente', 'activoNcorriente', 'pasivoCorriente', 'pasivoNcorriente'));
+
+    }
+
+
+    public function verticalestados(Request $request, $id)
+    {
+
+      $ventas = 0;
+      $costoventas = 0;
+      $utilidadB = 0;
+
+      $empresa = Empresa::where("id", $id)->first();
+
+
+      $final = $request->fecha_final;
+
+      $balance1=DB::table('resultados')
+
+      ->select('resultados.nombre', 'resultados.monto')
+
+      ->where('resultados.fecha_final', $final)
+
+      ->get();
+
+
+      foreach ($balance1 as $key => $value) {
+        # code...
+        if ($value->nombre=='VENTAS NETAS') {
+          # code...
+          $ventas = $value->monto;
+        }
+
+        if ($value->nombre=='COSTO DE VENTAS') {
+          # code...
+          $costoventas = $value->monto;
+        }
+
+        if ($value->nombre=='UTILIDAD BRUTA') {
+          # code...
+          $utilidadB = $value->monto;
+        }
+
+      }
+
+
+    //  $year1 = Carbon::createFromFormat('Y-m-d', $request->fecha_inicial)->year;
+      $year1 = Carbon::createFromFormat('Y-m-d', $request->fecha_final)->year;
+   
+
+      return view('analisis.verticalestado', compact('year1','balance1', 'empresa', 'ventas', 'utilidadB', 'costoventas'));
 
 
     }
 
-        public function vertical($id)
+
+
+
+    public function vertical($id)
     {
         
      
-     $empress=($id);
+      $empress=($id);
 
       $balances=DB::table('balances')
       ->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
@@ -103,17 +167,15 @@ class AnalisisController extends Controller
       ->groupBy('balances.fecha_inicio','balances.fecha_final')
       ->get();
 
-       return view('analisis.vertical',compact('balances','empress'));
-    }
 
+      $estados=DB::table('resultados')
+      ->join('cuentas','cuentas.id','=', 'resultados.cuentas_id')
+      ->select('resultados.fecha_inicio','resultados.fecha_final')
+      ->where('cuentas.empresas_id', $id)
+      ->groupBy('resultados.fecha_inicio','resultados.fecha_final')
+      ->get();
 
-
-
-    public function estados(){
-
-
-      return('ok');
-
+       return view('analisis.vertical',compact('balances','empress', 'estados'));
     }
 
 
