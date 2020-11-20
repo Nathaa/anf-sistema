@@ -38,7 +38,7 @@
                 </div>
             <tr>
    
-              <th scope="col">balances</th>
+              <th scope="col">Cuentas</th>
               <th scope="col"><label for="monto[]" class="control-label">{{'Monto'}}</label></th>
               <!--<th scope="col">Fecha Inicio</th>
               <th scope="col">Fecha Finalizacion</th>-->
@@ -265,6 +265,9 @@ function sumar7 (valor) {
 };
 
 function validar(){
+
+  
+
 
 var total_activo = 0;
 var total_pasivo = 0;

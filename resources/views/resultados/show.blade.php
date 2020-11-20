@@ -33,7 +33,7 @@
              
              <td width="10px">
     
-                <a href="{{ url('/resultados/'.$empress .'|'.$resultado->fecha_inicio .'|'.$resultado->fecha_final.'/edit2') }}" class="btn btn-default btn-flat" title="Editar">
+                <a href="{{ url('/resultadosedit2/'.$empress .'|'.$resultado->fecha_inicio .'|'.$resultado->fecha_final.'/edit2') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
                   

@@ -2,6 +2,7 @@
 
 
 
+
 @section('content')
 
 <Script language="javascript">
@@ -74,9 +75,6 @@ document.onkeydown=checkKeyCode;
                 <?php }if($cuenta->codigo_padre ==10){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
                 <td><input type="float" class="form-control act" id="monto" name="monto[]" value="0" onChange="suma();" required placeholder="0.00"><br></td>
-                <div class="invalid-feedback" style="display:none">
-                    En el monto no se debe ingresar letras ni caracteres especiales.
-                </div>
                 <td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                <?php } if($cuenta->nombre == "ACTIVO NO CORRIENTE"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
@@ -258,7 +256,6 @@ valor3 = parseFloat(document.getElementById('spSubTotalC').value);
 
 
 };
-
 
 
 </script>

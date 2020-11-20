@@ -83,7 +83,7 @@ class ResultadosController extends Controller
           DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
           DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
 
-          return redirect('empresas2');
+          return redirect('principal');
           //return view('empresas2');
     }
 
@@ -96,29 +96,26 @@ class ResultadosController extends Controller
      */
     public function edit2($id)
     {
-        
-        //DB::select("CALL micursor()");  
+          //DB::select("CALL micursor()");  
 
         //$fechas=DB::table('resultados')->get();
  
        //$empresas=$id;
-        $str_arr = preg_split("/\|/", $id);
-        $id = $str_arr[0];
-        $inicio = $str_arr[1];
-        $final = $str_arr[2];
+       $str_arr = preg_split("/\|/", $id);
+       $x = $str_arr[0];
+       $inicio = $str_arr[1];
+       $final = $str_arr[2];
 
-        //dd($id,$inicio,$final);
+       //dd($id,$inicio,$final);
 
-       $resultados=DB::table('resultados')
-       ->join('cuentas','cuentas.id' ,'=', 'resultados.cuentas_id')
-       ->where('cuentas.empresas_id', $id)
-    ->where('resultados.fecha_inicio', $inicio)
-   ->where('resultados.fecha_final', $final)
-   ->get();
-        
- 
-
-       // $resultados=resultado::findOrFail($id);
+      $resultados=DB::table('resultados')
+      ->select('resultados.id','resultados.nombre','resultados.fecha_inicio','resultados.fecha_final','resultados.monto','resultados.cuentas_id','cuentas.codigo_padre')
+      ->join('cuentas','cuentas.id' ,'=', 'resultados.cuentas_id')
+      ->where('cuentas.empresas_id', $x)
+   ->where('resultados.fecha_inicio', $inicio)
+  ->where('resultados.fecha_final', $final)
+  ->get();
+         
         
         
         return view('resultados.edit2',["resultados"=>$resultados],["id"=>$id]);
@@ -133,24 +130,41 @@ class ResultadosController extends Controller
      */
     public function update2(Request $request, $id)
     {
-       
         
-        foreach ($request->get('resultados') as $key => $value) 
-        {
-            $resultado = resultado::find($request->get('id')[$key]);
-            $resultado->id = $request->get('id')[$key];
-            $resultado->monto = $value;
-            $resultado->fecha_inicial = $request->get('fecha_inicial')[$key];
-            $resultado->fecha_final = $request->get('fecha_final')[$key];
-            $resultado->cuentas_id = $request->get('cuentas_id')[$key];
-            $resultado->update();
+        //dd($id);
+
+        $str_arr = preg_split("/\|/", $id);
+        $emp = $str_arr[0];
+        $inicio = $str_arr[1];
+        $final = $str_arr[2];
+
+        if(count($request->nombre)>0)
+        { 
+            foreach ($request->monto as $key=>$value) 
+            {
+                $resultado = resultado::find($request->get('resultados_id')[$key]);
+                $resultado->id = $request->get('resultados_id')[$key];
+                $resultado->monto =  $request->get('monto')[$key];
+                $resultado->fecha_inicio = $inicio;
+                $resultado->fecha_final = $final;
+                //$resultado->cuentas_id = $request->get('cuentas_id')[$key];
+                $resultado->update();
+
+               
+                    /*$asistencia = resultado::find($request->get('id')[$key]);
+                    $asistencia->resultados_id = $request->get('id')[$key];
+                    $asistencia->monto = $value;
+                    $asistencia->fecha_inicial = $request->get('fecha_inicial')[$key];
+                    $asistencia->fecha_final = $request->get('fecha_final')[$key];
+                    $asistencia->update();*/
+                
+            }
         }
-    
-            DB::select("CALL micursor2($id)"); 
-            DB::select("CALL micursor2($id)"); 
+        /*DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
+        DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); */
  
-            return redirect()->back();
-        
+            return redirect('principal');
+
     }
 
 
