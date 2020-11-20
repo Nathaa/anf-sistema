@@ -17,8 +17,8 @@
 							<thead>
 
 								<tr>
-									<th class="table-primary" colspan="2">Balance</th>
-									<th class="table-info" colspan="1">Vertical</th>
+									<th class="table-primary" colspan="2">Balance General</th>
+									<th class="table-info" colspan="1">Análisis Vertical</th>
 								</tr>
 
 								<tr>
@@ -32,11 +32,6 @@
 
 							<tbody>
 
-								@php
-									$activo1 = 0;
-									$pasivo1 = 0;
-									$patrimonio = 0;
-								@endphp
 
 								@foreach($balance1 as $b1)
 								<tr>					
@@ -44,19 +39,28 @@
 									@if($b1->nombre == 'ACTIVO')
 									<td class="font-weight-bold">{{$b1->nombre}}</td>
 									@php
+										if($b1->monto>0)
 										$activo1 = $b1->monto;
+										else
+										$activo1 = 0.000001;
 									@endphp
 
 									@elseif($b1->nombre == 'PASIVO')
 									<td class="font-weight-bold">{{$b1->nombre}}</td>
 									@php
+										if($b1->monto>0)
 										$pasivo1 = $b1->monto;
+										else
+										$pasivo1 = 0.000001;
 									@endphp
 
 									@elseif($b1->nombre == 'PATRIMONIO')
 									<td class="font-weight-bold">{{$b1->nombre}}</td>
 									@php
+										if($b1->monto>0)
 										$patrimonio = $b1->monto;
+										else
+										$patrimonio = 0.000001;
 									@endphp
 
 									@else
@@ -87,6 +91,37 @@
 
 			</div>
 
+
+
+		<div class="card border-info">
+  			<div class="card-header border-info text-info font-weight-bold">Conclusión</div>
+  				<div class="card-body text-info">
+    				<h5 class="card-title">
+    				@if($activoCorriente>$pasivoCorriente)
+    				El ACTIVO CORRIENTE que representa el {{round((($activoCorriente/$activo1)*100),2)}}% del ACTIVO total supera al pasivo corriente que representa el {{round((($pasivoCorriente/$pasivo1)*100),3)}}% del total de pasivos.
+    				<br>
+    				En este año la proproción entre ambos es de {{round(($activoCorriente/$activo1)/($pasivoCorriente/$pasivo1),2)}}. 
+
+
+    				@elseif($activoCorriente<$pasivoCorriente)
+
+    				El ACTIVO CORRIENTE que representa el {{round((($activoCorriente/$activo1)*100),2)}}% del ACTIVO total NO supera al pasivo corriente que representa el {{round((($pasivoCorriente/$pasivo1)*100),3)}}% del total de pasivos.
+    				<br>
+    				En este año la proproción entre ambos es de {{round(($activoCorriente/$activo1)/($pasivoCorriente/$pasivo1),2)}}. 
+    				Se recomienda analizar las cuentas de pasivo.
+
+    				@elseif($activoCorriente == $pasivoCorriente)
+
+    				El ACTIVO CORRIENTE que representa el {{round((($activoCorriente/$activo1)*100),2)}}% del ACTIVO total es igual al pasivo corriente que representa el {{round((($pasivoCorriente/$pasivo1)*100),3)}}% del total de pasivos.
+    				<br>
+    				Se recomienda evaluar las inversiones de la empresa, no se reflejan activos superiores.
+
+    				@endif
+
+    			</h5>
+  				</div>
+		</div>
+		
 		</div>
 
 	</div>

@@ -19,10 +19,10 @@
 
                 <div class="row">
 
-                    <div class="col">
-                        <label for="fecha_inicial" class="control-label">Años Analizar</label><br>
-                          <select class="form-control" id="fecha_inicial" name="fecha_inicial" required="true">
-                            <option value="">Debe seleccionar año menor</option> 
+           <!--         <div class="col">
+                        <label for="fecha_inicial" class="control-label">Años a analizar</label><br>
+                          <select class="form-control" id="fecha_inicial" name="fecha_inicial">
+                            <option value="">Debe seleccionar un año</option> 
                             <outgroup label="yyy">
       
                           @foreach ($balances as $balance)
@@ -32,11 +32,11 @@
                         </select>
                       <input id="Tipo" name="Tipo" type="hidden" value=" ">
                     </div>
-
+-->
                     <div class="col">
-                      <label for="fecha_final" class="control-label">Años Analizar</label><br>
+                      <label for="fecha_final" class="control-label">Año a Analizar</label><br>
                         <select class="form-control" id="fecha_final" name="fecha_final" required="true">
-                            <option value="">Debe seleccionar año mayor</option> 
+                            <option value="">Debe seleccionar un año</option> 
                             @foreach ($balances as $balance)
                                <option value="{{$balance->fecha_final}}">{{$balance->fecha_final}}</option>
                             @endforeach
@@ -64,29 +64,29 @@
       </div>
 
         <div class="card-body">
-          <form action="{{ url('/analisisv/'.$empress) }}"  method="POST" role="form">
+          <form action="{{ url('/verticalestados/'.$empress) }}"  method="POST" role="form">
               {{ csrf_field() }}    
             <div class="form-group">
                 <div class="row">
-                    <div class="col">
+                <!--    <div class="col">
                         <label for="fecha_inicial" class="control-label">Años Analizar</label><br>
                           <select class="form-control" id="fecha_inicial" name="fecha_inicial" required="true">
                             <option value="">Debe seleccionar año menor</option> 
                             <outgroup label="yyy">
                             
-                            @foreach ($balances as $balance)
+                            @foreach ($estados as $balance)
                               <option value="{{$balance->fecha_inicio}}">{{$balance->fecha_inicio}}</option>
                             @endforeach
                             </outgroup>
                         </select>
                       <input id="Tipo" name="Tipo" type="hidden" value=" ">
-                    </div>
+                    </div>-->
 
                     <div class="col">
                       <label for="fecha_final" class="control-label">Años Analizar</label><br>
                         <select class="form-control" id="fecha_final" name="fecha_final" required="true">
                             <option value="">Debe seleccionar año mayor</option> 
-                            @foreach ($balances as $balance)
+                            @foreach ($estados as $balance)
                                <option value="{{$balance->fecha_final}}">{{$balance->fecha_final}}</option>
                             @endforeach
                         </select>

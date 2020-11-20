@@ -97,6 +97,8 @@ Route::post('analisish/{analisih}', 'AnalisisController@show1')->name('analisis.
 Route::post('analisishh/{analisihh}', 'AnalisisController@show11')->name('analisis.show11');
 Route::post('analisisv/{analisiv}', 'AnalisisController@show2')->name('analisis.show2');
 Route::get('vertical/{id}', 'AnalisisController@vertical')->name('analisis.vertical');
+Route::post('verticalestados/{id}', 'AnalisisController@verticalestados')->name('analisis.verticalestados');
+
 
 Route::post('analisis', 'AnalisisController@store')->name('analisis.store');
 Route::get('analisis/{analisi}/edit', 'AnalisisController@edit')->name('analisis.edit');
