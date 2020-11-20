@@ -19,7 +19,7 @@ class CreateRatiosTable extends Migration
             $table->string('monto');
             $table->date('fecha_ini');
             $table->date('fecha_fin');
-            $table->integer('empresa_id');
+            $table->integer('empresa');
 
            
            
