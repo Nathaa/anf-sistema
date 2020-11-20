@@ -1,8 +1,8 @@
 @extends('template.plantilla2')
 
+
+
 @section('content')
-
-
 <div class="container">
     <div class="card">
      <div class="card-body">
@@ -14,12 +14,25 @@
                 @endif
         <table class="table table-bordered thead-dark table-hover table-sm">
         
-          <form action="{{ url('/balancesup/'.$id) }}"  method="POST" role="form">
+          <form action="{{ url('/balancesup/'.$id) }}"  method="POST" role="form" id="formulario">
         
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
         
 
+                <div class="form-group">
+                <div class="row">
+                
+                <div class="col">
+                <label for="fecha_inicio" class="control-label">{{'Fecha Inicio'}}:</label><br>
+                <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" value="" required><br>
+                </div>
+                <div class="col">
+                <label for="fecha_final" class="control-label">{{'Fecha Finalizacion'}}:</label><br>
+                <input type="date" class="form-control"id="fecha_final" name="fecha_final" value="" required><br>
+                </div>
+                </div>
+                </div>
             <tr>
    
               <th scope="col">Cuentas</th>
@@ -127,7 +140,7 @@
          </table>
          <!--<span>El resultado es: </span> <span id="spTotal"></span>-->
          <div class="form-group">
-            <button class="btn btn-primary" type="submit" onclick="validar();"> Guardar </button>
+            <button class="btn btn-primary" type="submit" onclick="validar();" id="btn-submit"> Guardar </button>
             <a class="btn btn-primary" href="{{ url('balances') }}">Regresar</a>
           </div>
     
@@ -250,6 +263,9 @@ function sumar7 (valor) {
 
 function validar(){
 
+  
+
+
 var total_activo = 0;
 var total_pasivo = 0;
 valor1 = parseFloat(document.getElementById('spTotal').value);
@@ -283,5 +299,5 @@ function justNumbers(e)
         };
 
 </script>
-
 @endsection
+

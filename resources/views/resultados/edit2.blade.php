@@ -68,6 +68,34 @@ function suma() {
          
         return /\d/.test(String.fromCharCode(keynum));
         };
+
+function validar(){
+
+//
+var f1 ; //31 de diciembre de 2015
+var f2 ; //30 de noviembre de 2014
+
+
+        const boton = document.getElementById('btn-submit');
+        const fi = document.getElementById('fecha_inicio');
+        const ff = document.getElementById('fecha_final');
+       
+
+            if(fi.value.trim() !== "" &&  ff.value.trim() !== "") {
+                    console.log("Se muestra habilitado el boton de guardar")
+                    $("input").prop('required',true);
+                }else {
+                    
+                    alertify.error("La fecha inicio y finalización no pueden quedar vacias", 10000);
+
+
+  if(f2 < f1){
+    alert("La fecha final no puede ser menor a la inicial");
+    event.preventDefault();
+  }
+
+
+};
 </script>
 
 <div class="container">
@@ -141,7 +169,7 @@ function suma() {
          </table>
          <br>
          <div class="form-group">
-            <button class="btn btn-primary" type="submit" onclick="validar();"> Guardar </button>
+            <button class="btn btn-primary" type="submit" onclick="validar();" id="btn-submit"> Guardar </button>
             <a class="btn btn-primary" href="">Regresar</a>
         </div>
      </div>

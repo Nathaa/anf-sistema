@@ -60,7 +60,10 @@
                 <td><input readonly type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
                 <?php }if($cuenta->codigo_padre ==10){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$cuenta->nombre}}"></td>
-                <td><input type="float" class="form-control" id="monto" name="monto[]" value="0" onchange="sumar(this.value);sumar2();" required placeholder="0.00"><br></td>
+                <td><input type="float" class="form-control" id="monto" name="monto[]" value="0" onchange="sumar(this.value);sumar2();monto(this)" required placeholder="0.00"><br></td>
+                <div class="invalid-feedback" style="display:none">
+                  En el monto no se debe ingresar letras ni caracteres especiales.
+              </div>
                 <!--<td><input type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input type="text" class="form-control" id="" name="" value=""><br></td>-->
                 <td><input type="hidden" name="cuentas_id[]" value="{{$cuenta->id}}"></td>
@@ -127,7 +130,7 @@
          </table>
          <!--<span>El resultado es: </span> <span id="spTotal"></span>-->
          <div class="form-group">
-            <button class="btn btn-primary" type="submit" onclick="validar();"> Guardar </button>
+            <button class="btn btn-primary" type="submit" onclick="validar();" id="btn-submit" disabled> Guardar </button>
         </div>
          <input type="submit" class="btn btn-success" value="">
          <a class="btn btn-primary" href="{{ url('cuentas') }}">Regresar</a>
@@ -201,6 +204,7 @@ function sumar4 (valor) {
 
 function sumar6 (valor) {
   var total = 0;	
+  
   valor = parseFloat(valor); // Convertir el valor a un entero (número).
 
   total = document.getElementById('spSubTotalAP').innerHTML;
@@ -272,7 +276,64 @@ valor3 = parseFloat(document.getElementById('spSubTotalC').value);
 
 };
 
+    
+function fechas(input){
+    if(input.value != "")
+      {
+        valido(input); 
+        $(input).removeAttr("required");
+    }
+    else{
+        invalido(input);
+        $(input).prop("required", true);
+    }
+    submit_form();
+    
+};
 
+function monto(input) {
+    const RegExPattern = /^\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2})$/;
+    if (input.value.trim() != "" && input.value.match(RegExPattern)) {
+        valido(input);
+    } else {
+        invalido(input);
+    }
+    submit_form();
+};
+
+function valido(input) {
+   $(input).removeClass("is-invalid");
+   $(input).addClass("is-valid");
+   $(input).next().css("display", "none");
+};
+function invalido(input) {
+   $(input).removeClass("is-valid");
+   $(input).addClass("is-invalid");
+   $(input).next().css("display", "block");
+};
+
+
+function submit_form() {
+   if ($(".is-invalid").length == 0) {
+       $("#btn_submit").removeAttr('disabled');
+   } else {
+       $("#btn_submit").attr('disabled', 'disabled');
+   }
+};
+
+function desactivar(){
+
+    const boton = document.getElementById('btn-submit');
+    const  monto = document.getElementById("monto");
+          console.log(boton)
+          
+          if(monto.value.trim() !== "") {
+            console.log("Se muestra habilitado el boton de buscar")
+            boton.removeAttribute('disabled');
+          }else if(titulo.value.trim() == "" ){
+            boton.setAttribute('disabled', "true");
+          }
+}
 </script>
 
 @endsection
