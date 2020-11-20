@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Response;
+use  Illuminate\Support\Facades\Input ;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -35,14 +36,20 @@ class RatiosController extends Controller
      * @return Factory|Application|Response|View
      */
     public function show1($id){
-        $fecha = $id;
-        $str_arr = preg_split("/\|/", $id);
-        $id = $str_arr[0];
-        $inicio = $str_arr[1];
-        $final = $str_arr[2];
+        //$fecha = $id;
+        //$str_arr = preg_split("/\|/", $id);
+        //$id = $str_arr[0];
+        //$inicio = $str_arr[1];
+        //$final = $str_arr[2];
+
+        $emp = $id ;
+        $inicio = Input :: get ( 'fecha_inicial' );
+        $final = Input :: get ( 'fecha_final' );
 
         $ratiosInicio = $inicio;
         $ratiosFinal = $final;
+
+        dd($ratiosInicio,$ratiosFinal);
         //RAZONES FINANCIERAS DE LIQUIDEZ
         $RazonCirculante = DB::table('balances')
             ->selectRaw(

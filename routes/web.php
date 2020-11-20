@@ -109,4 +109,4 @@ Route::resource('miembros', 'MiembrosController');
 
 //RATIOS
 Route::get('ratios/{ratio}', 'RatiosController@show')->name('ratios.show');
-Route::get('ratiosh/{ratio}', 'RatiosController@show1')->name('ratios.show1');
+Route::get('ratiosh/{ratiosh}', 'RatiosController@show1')->name('ratios.show1');
