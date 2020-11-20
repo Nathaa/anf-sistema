@@ -93,7 +93,8 @@ Route::delete('resultados/{resultado}', 'ResultadosController@destroy')->name('r
 Route::get('analisis/analisi', 'AnalisisController@create')->name('analisis.create');
 //estas 3 se estan utilizando nada mas
 Route::get('analisis/{analisi}', 'AnalisisController@show')->name('analisis.show');
-Route::get('analisish/{analisih}', 'AnalisisController@show1')->name('analisis.show1');
+Route::post('analisish/{analisih}', 'AnalisisController@show1')->name('analisis.show1');
+Route::post('analisishh/{analisihh}', 'AnalisisController@show11')->name('analisis.show11');
 Route::post('analisisv/{analisiv}', 'AnalisisController@show2')->name('analisis.show2');
 Route::get('vertical/{id}', 'AnalisisController@vertical')->name('analisis.vertical');
 
@@ -104,5 +105,8 @@ Route::get('analisis/{analisi}/edit2', 'AnalisisController@edit2')->name('analis
 Route::put('analisisup/{analisiup}', 'AnalisisController@update2')->name('analisis.update2');
 Route::delete('analisis/{analisi}', 'AnalisisController@destroy')->name('analisis.destroy');
 
-
 Route::resource('miembros', 'MiembrosController');
+
+//RATIOS
+Route::get('ratios/{ratio}', 'RatiosController@show')->name('ratios.show');
+Route::get('ratiosh/{ratiosh}', 'RatiosController@show1')->name('ratios.show1');

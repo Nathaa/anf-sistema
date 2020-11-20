@@ -25,10 +25,7 @@
                 
                 <div class="col">
                 <label for="fecha_inicio" class="control-label">{{'Fecha Inicio'}}:</label><br>
-                <input type="date" class="form-control"id="fecha_inicio" name="fecha_inicio" value="" required ><br>
-                 <div class="invalid-feedback" style="display:none">
-                 La fecha es requerida.
-              </div>
+                <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" value="" required><br>
                 </div>
                 <div class="col">
                 <label for="fecha_final" class="control-label">{{'Fecha Finalizacion'}}:</label><br>
@@ -66,7 +63,7 @@
                 <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->codigo_padre ==10){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
-                <td><input type="float" class="form-control" id="monto" name="monto[]" value="{{$balance->monto}}" onchange="sumar(this.value);sumar2();" required placeholder="0.00" ><br></td>
+                <td><input type="float" class="form-control" id="monto" onkeypress="return justNumbers(event);" name="monto[]" value="{{$balance->monto}}" onchange="sumar(this.value);sumar2();" required placeholder="0.00"><br></td>
                 <!--<td><input type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input type="text" class="form-control" id="" name="" value=""><br></td>-->
                 <td><input type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
@@ -80,7 +77,7 @@
                 <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->codigo_padre ==11){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
-                <td><input type="float" class="form-control" id="monto" name="monto[]" value="{{$balance->monto}}" onchange="sumar3(this.value);sumar2();" required placeholder="0.00"><br></td>
+                <td><input type="float" class="form-control" id="monto" onkeypress="return justNumbers(event);" name="monto[]" value="{{$balance->monto}}" onchange="sumar3(this.value);sumar2();" required placeholder="0.00"><br></td>
                 <!--<td><input type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input type="text" class="form-control" id="" name="" value=""><br></td>-->
                 <td><input type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
@@ -94,14 +91,14 @@
                 <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->nombre == "PASIVO CORRIENTE"){ ?>
                 <td><input readonly type="text" style="font-weight:bold;" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
-                <td><input readonly type="float" style="font-weight:bold;" class="form-control" id="spSubTotalP" name="monto[]" value="{{$balance->monto}}" placeholder="0.00"><br></td>
+                <td><input readonly type="float" style="font-weight:bold;" class="form-control" onkeypress="return justNumbers(event);" id="spSubTotalP" name="monto[]" value="{{$balance->monto}}" placeholder="0.00"><br></td>
                 <!--<td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input readonly type="text" class="form-control" id="" name="" value=""><br></td>-->
                 <td><input readonly type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
                 <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->codigo_padre ==20){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
-                <td><input type="float" class="form-control" id="monto" name="monto[]" value="{{$balance->monto}}" onchange="sumar4(this.value);sumar5();" required placeholder="0.00"><br></td>
+                <td><input type="float" class="form-control" id="monto" onkeypress="return justNumbers(event);" name="monto[]" value="{{$balance->monto}}" onchange="sumar4(this.value);sumar5();" required placeholder="0.00"><br></td>
                 <!--<td><input type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input type="text" class="form-control" id="" name="" value=""><br></td>-->
                 <td><input type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
@@ -115,7 +112,7 @@
                 <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->codigo_padre ==21){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
-                <td><input type="float" class="form-control" id="monto" name="monto[]" value="{{$balance->monto}}" onchange="sumar6(this.value);sumar5();" required placeholder="0.00"><br></td>
+                <td><input type="float" class="form-control" id="monto" onkeypress="return justNumbers(event);" name="monto[]" value="{{$balance->monto}}" onchange="sumar6(this.value);sumar5();" required placeholder="0.00"><br></td>
                 <!--<td><input type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input type="text" class="form-control" id="" name="" value=""><br></td>-->
                 <td><input type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
@@ -129,7 +126,7 @@
                 <!--<td><input readonly type="hidden" name="cuentas_id[]" value="{{$balance->cuentas_id}}"></td>-->
                 <?php }if($balance->codigo_padre ==3){ ?>
                 <td><input readonly type="text" class="form-control" name="nombre[]" value="{{$balance->nombre}}"></td>
-                <td><input type="float" class="form-control" id="monto" name="monto[]" value="{{$balance->monto}}" onchange="sumar7(this.value);" required placeholder="0.00"><br></td>
+                <td><input type="float" class="form-control" id="monto" onkeypress="return justNumbers(event);" name="monto[]" value="{{$balance->monto}}" onchange="sumar7(this.value);" required placeholder="0.00"><br></td>
                 <!--<td><input type="text" class="form-control" id="" name="" value=""><br></td>
                 <td><input type="text" class="form-control" id="" name="" value=""><br></td>-->
                 <td><input type="hidden" id="balances_id" name="balances_id[]" value="{{$balance->id}}"></td>
@@ -292,6 +289,14 @@ valor3 = parseFloat(document.getElementById('spSubTotalC').value);
 
 };
 
+function justNumbers(e)
+        {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+        return true;
+         
+        return /\d/.test(String.fromCharCode(keynum));
+        };
 
 </script>
 @endsection

@@ -5,7 +5,6 @@
         $(input).removeAttr("required");
     }
     else{
-        invalido(input);
         $(input).prop("required", true);
     }
     submit_form();

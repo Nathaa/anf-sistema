@@ -81,16 +81,16 @@ class BalancesController extends Controller
         
         if(count($request->nombre)>0)
         {
-           /* $this->validate($request, [
-                'fecha_inicio' => 'required',
-                'fecha_final' => 'required',
-                'monto' => 'required|numeric',
+           /*$this->validate($request, [
+                #'fecha_inicio' => 'required',
+                #'fecha_final' => 'required',
+                'monto' => 'required',
             ],
             [
-                    'fecha_inicio.required' => 'La fecha inicial no debe quedar vacio',
-                    'fecha_final.required' => 'La fecha final no debe quedar vacio',
+                    #'fecha_inicio.required' => 'La fecha inicial no debe quedar vacio',
+                    #'fecha_final.required' => 'La fecha final no debe quedar vacio',
                     'monto.required' => 'El monto es requerido',
-                    'monto.numeric' => 'No debe introducir letras o caracteres',
+                    #'monto.numeric' => 'No debe introducir letras o caracteres',
             ]);*/
         
 
@@ -115,7 +115,7 @@ class BalancesController extends Controller
 
           
           return redirect('principal');
-         // return view('empresas.index',compact('balance'));
+         
     }
 
     
