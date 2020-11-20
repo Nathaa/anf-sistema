@@ -17,11 +17,11 @@ class CreateRatiosTable extends Migration
             $table->Bigincrements('id');
             $table->string('nombre');
             $table->string('monto');
-            $table->string('descripcion');
+            $table->date('fecha_ini');
+            $table->date('fecha_fin');
+            $table->integer('empresa_id');
 
-            $table->unsignedBigInteger('tiporatios_id')->unsigned();
-            $table->foreign('tiporatios_id')->references('id')->on('tiporatios')->onUpdate('cascade')->onDelete('cascade');
-
+           
            
             $table->timestamps();
         });
