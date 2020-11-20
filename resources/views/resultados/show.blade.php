@@ -32,11 +32,12 @@
           
              
              <td width="10px">
-    
+               @if(!Auth::user()->rol == 'Analista')
+
                 <a href="{{ url('/resultadosedit2/'.$empress .'|'.$resultado->fecha_inicio .'|'.$resultado->fecha_final.'/edit2') }}" class="btn btn-default btn-flat" title="Editar">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                   </a>
-                  
+                @endif  
                 </td>
                 <td width="10px">
                 <a href="{{ url('/resultadosh/'.$empress .'|'.$resultado->fecha_inicio .'|'.$resultado->fecha_final) }}" class="btn btn-info btn-flat" title="Visualizar">
@@ -44,6 +45,8 @@
                   </a>
                 </td>
                 <td width="10px">
+                   @if(!Auth::user()->rol == 'Analista')
+
                 <form method="POST" action="{{ url('/resultados/'.$empress .'|'. $resultado->fecha_inicio .'|'.$resultado->fecha_final) }}">
                {{ csrf_field() }}
                {{ method_field('DELETE') }}
@@ -51,7 +54,7 @@
                 <i class="fas fa-trash" aria-hidden="true"></i>
               </button> 
               </form>
-                
+              @endif
     
                 </td>
            </tr>
