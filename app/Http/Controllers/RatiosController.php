@@ -42,7 +42,7 @@ class RatiosController extends Controller
       $fini = Input::get('fecha_inicial');
       $ffin = Input::get('fecha_final');
       setlocale(LC_TIME, "spanish");
-      $mesanio1 = date("F",strtotime($fini)).' '.date("Y",strtotime($fini));       
+      $mesanio1 = date("F",strtotime($fini."+ 11 month")).' '.date("Y",strtotime($fini));       
       $mesanio2 = date("F",strtotime($ffin)).' '.date("Y",strtotime($ffin));  
       $anio = date("Y",strtotime($ffin)) - date("Y",strtotime($fini));
 
@@ -200,7 +200,7 @@ class RatiosController extends Controller
         // aqui ira calculo de ratios     
         $ratios=DB::select("select 'Razón de Rotación de Inventario' nombre, round(b.monto/(select a.monto 
                                 from balances a , cuentas d
-                            where a.nombre='INVENTARIOS' 
+                            where a.nombre='Inventarios' 
                             and a.cuentas_id =d.id
                             and d.empresas_id=c.empresas_id
                             and a.fecha_inicio = b.fecha_inicio
@@ -222,7 +222,7 @@ class RatiosController extends Controller
                             )/365),2)  resultado
                         from balances b, cuentas c
                         where  b.cuentas_id=c.id
-                        and b.nombre='INVENTARIOS'
+                        and b.nombre='Inventarios'
                         and c.empresas_id=".$emp."
                         and b.fecha_inicio ='".$fini."'
                         union  
@@ -341,7 +341,7 @@ class RatiosController extends Controller
 
             $ratios2=DB::select("select 'Razón de Rotación de Inventario' nombre, round(b.monto/(select sum(a.monto)/2 
                                     from balances a , cuentas d
-                                where a.nombre='INVENTARIOS' 
+                                where a.nombre='Inventarios' 
                                 and a.cuentas_id =d.id
                                 and d.empresas_id=c.empresas_id
                                 and ((a.fecha_inicio = b.fecha_inicio
@@ -364,8 +364,8 @@ class RatiosController extends Controller
                                     and a.fecha_final=b.fecha_final
 ),2)  resultado
                         from balances b
-                        inner join cuentas c on (b.cuentas_id=c.id and b.nombre='INVENTARIOS' and c.empresas_id=".$emp.")
-                        inner join balances e on (b.cuentas_id = e.cuentas_id and e.nombre='INVENTARIOS' and c.empresas_id=".$emp." and e.fecha_final = DATE_ADD('".$ffin."', INTERVAL -12 MONTH))
+                        inner join cuentas c on (b.cuentas_id=c.id and b.nombre='Inventarios' and c.empresas_id=".$emp.")
+                        inner join balances e on (b.cuentas_id = e.cuentas_id and e.nombre='Inventarios' and c.empresas_id=".$emp." and e.fecha_final = DATE_ADD('".$ffin."', INTERVAL -12 MONTH))
                         and b.fecha_final ='".$ffin."'
                             union  
                             select 'Razón de Rotación CXC' nombre, round(b.monto/(select sum(a.monto)/2 
