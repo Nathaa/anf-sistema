@@ -44,6 +44,9 @@ class RatiosController extends Controller
       setlocale(LC_TIME, "spanish");
       $mesanio1 = date("F",strtotime($fini)).' '.date("Y",strtotime($fini));       
       $mesanio2 = date("F",strtotime($ffin)).' '.date("Y",strtotime($ffin));  
+      $anio = date("Y",strtotime($ffin)) - date("Y",strtotime($fini));
+
+     
        
       
       $ratiosl=DB::select("select 'Razón de Circulante' nombre, round(b.monto/(select a.monto 
@@ -352,21 +355,18 @@ class RatiosController extends Controller
                             and c.empresas_id=".$emp."
                             and b.fecha_final  ='".$ffin."'
                             union  
-                            select 'Razón de Dias de Inventario' nombre, round(b.monto/((select sum(a.monto)/2 
-                                    from resultados a , cuentas d
-                                where a.nombre='COSTO DE VENTAS' 
-                                and a.cuentas_id =d.id
-                                and d.empresas_id=c.empresas_id
-                                and ((a.fecha_inicio = b.fecha_inicio
-                                and a.fecha_final=b.fecha_final)
-                                or (a.fecha_inicio = DATE_ADD(b.fecha_inicio, INTERVAL -12 MONTH)
-                                and a.fecha_final=DATE_ADD(b.fecha_final, INTERVAL -12 MONTH)))
-                                )/365) ,2) resultado
-                            from balances b, cuentas c
-                            where  b.cuentas_id=c.id
-                            and b.nombre='INVENTARIOS'
-                            and c.empresas_id=".$emp."
-                            and b.fecha_final  ='".$ffin."'
+                            select 'Razón de Dias de Inventario ' nombre, round((b.monto+e.monto)/2/(select a.monto/365 
+                                        from resultados a , cuentas d
+                                    where a.nombre='COSTO DE VENTAS' 
+                                    and a.cuentas_id =d.id
+                                    and d.empresas_id=c.empresas_id
+                                    and a.fecha_inicio = b.fecha_inicio
+                                    and a.fecha_final=b.fecha_final
+),2)  resultado
+                        from balances b
+                        inner join cuentas c on (b.cuentas_id=c.id and b.nombre='INVENTARIOS' and c.empresas_id=".$emp.")
+                        inner join balances e on (b.cuentas_id = e.cuentas_id and e.nombre='INVENTARIOS' and c.empresas_id=".$emp." and e.fecha_final = DATE_ADD('".$ffin."', INTERVAL -12 MONTH))
+                        and b.fecha_final ='".$ffin."'
                             union  
                             select 'Razón de Rotación CXC' nombre, round(b.monto/(select sum(a.monto)/2 
                                             from balances a , cuentas d
@@ -730,8 +730,8 @@ class RatiosController extends Controller
                                     and c.empresas_id=".$emp."
                                     and b.fecha_final ='".$ffin."'");          
         
-        //DB::select('CALL ratios(?,?,?)',[$emp,$fini,$ffin]);                                     
-        return view('ratios.show1',compact('ratiosl','ratiosl2','ratios','ratios2','ratiosr','ratiosr2','ratiose','ratiose2','mesanio1','mesanio2','empress'));
+       DB::select('CALL ratios(?,?,?)',[$emp,$fini,$ffin]);                                     
+        return view('ratios.show1',compact('ratiosl','ratiosl2','ratios','ratios2','ratiosr','ratiosr2','ratiose','ratiose2','mesanio1','mesanio2','empress','anio'));
     }
 
 }

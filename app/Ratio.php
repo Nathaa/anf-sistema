@@ -9,7 +9,7 @@ class Ratio extends Model
     //
 
     protected $fillable = [
-        'nombre','monto','fecha_ini', 'fecha_fin','empresa',
+        'nombre','monto','fecha','empresas',
         
             ];
 }

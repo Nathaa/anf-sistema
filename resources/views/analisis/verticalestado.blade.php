@@ -36,7 +36,7 @@
 								@foreach($balance1 as $b1)
 								<tr>					
 
-									@if($b1->nombre == 'VENTAS NETAS')
+									@if($b1->nombre == 'VENTAS NETAS' || $b1->nombre == 'UTILIDAD BRUTA' || $b1->nombre == 'UTILIDAD DE OPERACION' || $b1->nombre == 'UTILIDADES ANTES DE PART E IMP' || $b1->nombre == 'UTILIDAD (PERDIDA) NETA')
 									<td class="font-weight-bold">{{$b1->nombre}}</td>
 									<td class="font-weight-bold">${{$b1->monto}}</td>
 									<td class="font-weight-bold">{{ round((($b1->monto/$ventas)*100) ,2) }}%</td>

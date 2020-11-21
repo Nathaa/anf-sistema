@@ -249,6 +249,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <p>Analisis Vertical</p>
               </a></li>
             </li>
+
+            <li class="nav-item">
+              <li><a href="{{ route ('comparaciones.index') }}" class="nav-link">
+              <i class="fas fa-balance-scale"></i>
+              <p>Comparacion Ratios</p>
+            </a></li>
+          </li>
           
 
             </ul>
