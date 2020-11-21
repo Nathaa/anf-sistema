@@ -83,7 +83,7 @@
 
 									<td class="font-weight-bold">{{round((($b1->monto/$activo1)*100),2)}}%</td>	
 
-									@elseif($b1->nombre == 'CAJA Y BANCOS' || $b1->nombre == 'MAQUINARIA Y EQUIPO')
+									@elseif($b1->nombre == 'CAJA Y BANCOS' || $b1->nombre == 'MAQUINARIA Y EQUIPO' || $b1->nombre == 'Caja y Bancos' || $b1->nombre == 'Cuentas por cobrar' || $b1->nombre == 'Inventarios' || $b1->nombre == 'Gastos pagados por anticipado' || $b1->nombre == 'Inversiones en valores' || $b1->nombre == 'Cuentas por cobrar comerciales' || $b1->nombre == 'Otras cuentas por cobrar' || $b1->nombre == 'Cuentas por cobrar comerciales' || $b1->nombre == 'Activo Fijo Neto' || $b1->nombre == 'Activo fijo neto')
 
 									<td>{{round((($b1->monto/$activo1)*100),2)}}%</td>	
 
@@ -92,7 +92,7 @@
 									<td class="font-weight-bold">{{round((($b1->monto/$pasivo1)*100),2)}}%</td>
 
 
-									@elseif($b1->nombre == 'DEUDAS A CORTO PLAZO' || $b1->nombre == 'DEUDAS A LARGO PLAZO')	
+									@elseif($b1->nombre == 'DEUDAS A CORTO PLAZO' || $b1->nombre == 'DEUDAS A LARGO PLAZO' || $b1->nombre == 'Deudas a corto plazo' || $b1->nombre == 'Deudas a largo plazo' || $b1->nombre == 'Sobregiros y prestamos bancarios' || $b1->nombre == 'Cuentas por pagar comerciales' || $b1->nombre == 'Otras cuentas por pagar' || $b1->nombre == 'Parte corriente deuda largo plazo' || $b1->nombre == 'Provisión CTS' || $b1->nombre == 'Deuda a largo plazo')	
 
 									<td>{{round((($b1->monto/$pasivo1)*100),2)}}%</td>
 
@@ -100,7 +100,7 @@
 
 									<td class="font-weight-bold">{{round((($b1->monto/$patrimonio)*100),2)}}%</td>
 
-									@elseif($b1->nombre == 'CAPITAL')
+									@elseif($b1->nombre == 'CAPITAL' || $b1->nombre == 'Capital' || $b1->nombre == 'Capital Social' || $b1->nombre == 'Resultados Acumulados' || $b1->nombre == 'Capital en acciones' || $b1->nombre == 'Utilidades retenidas')
 
 									<td>{{round((($b1->monto/$patrimonio)*100),2)}}%</td>
 									@endif
