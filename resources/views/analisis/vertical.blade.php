@@ -85,7 +85,7 @@
                     <div class="col">
                       <label for="fecha_final" class="control-label">Años Analizar</label><br>
                         <select class="form-control" id="fecha_final" name="fecha_final" required="true">
-                            <option value="">Debe seleccionar año mayor</option> 
+                            <option value="">Debe seleccionar año</option> 
                             @foreach ($estados as $balance)
                                <option value="{{$balance->fecha_final}}">{{$balance->fecha_final}}</option>
                             @endforeach

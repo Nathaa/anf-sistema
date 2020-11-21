@@ -77,7 +77,9 @@
       </table>
       <div class="row">
         <div class="mr-auto">
-          {{$tipocuenta->links()}}
+        <br>
+        {{$tipocuenta->links("pagination::bootstrap-4")}}
+
         </div>
       </div>
          
