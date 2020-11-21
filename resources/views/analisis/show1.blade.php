@@ -1,5 +1,14 @@
 @extends('template.plantilla2')
 @section('content')
+<div class="container">
+
+		<div class="container-fluid">
+
+			<div class="card">
+
+				<div class="card-header"> <h6 class="card-title text-primary font-weight-bold">Análisis horizontal de la Empresa {{$empresa->nombre}}</h6></div>
+
+					<div class="card-body">
 <?php 
 $valor1=$valant;
 $valor2=$valact;
@@ -7,7 +16,7 @@ $conexion=mysqli_connect('localhost','root','','sistema_academico');
 
 ?>
 
-<h1>Analisis Horizontal</h1>
+<h2>Balance General</h2>
 
 <table class="table table-bordered thead-dark table-hover table-sm" id="demo">
 
@@ -77,7 +86,11 @@ if($mostrar['nom']=='PATRIMONIO'){
 
     
 </table>
-<h2>Resultados</h2>
+</div>
+</div>
+<div class="card border-info">
+  			<div class="card-header border-info text-info font-weight-bold">Resultados</div>
+  				<div class="card-body text-info">
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
 <tr bgcolor="#FFFFFF">
 <?php
@@ -134,5 +147,9 @@ if($pat>0){
 ?>
 </tr>
 </table>
+</div>
+</div>
+</div>
+</div>
       
 @endsection
