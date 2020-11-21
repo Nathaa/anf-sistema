@@ -11,7 +11,7 @@
 <?php if ($anio > 0) { ?>} 
 <!-- LIQUIDEZ -->
 <div align="center">
-<p> Calculo de Razones de Liquidez </p>
+  <h5><b><em><p> Calculo de Razones de Liquidez </p></em></b></h5>
 </div>
 
 
@@ -71,7 +71,7 @@
 
 <!-- EFICIENCIA-->
 <div align="center">
-<p> Calculo de razones de Eficiencia o Actividad </p>
+  <h5><b><em><p> Calculo de razones de Eficiencia o Actividad </p></em></b></h5>
 </div>
 
 
@@ -131,7 +131,7 @@
 
 <!-- RENTABILIDAD-->
 <div align="center">
-<p> Calculo de razones de Rentabilidad </p>
+  <h5><b><em><p> Calculo de razones de Rentabilidad </p></em></b></h5>
 </div>
 
 
@@ -192,7 +192,7 @@
 
 <!-- RENTABILIDAD-->
 <div align="center">
-<p> Calculo de Apalancamiento </p>
+  <h5><b><em><p> Calculo de Apalancamiento </p></em></b></h5>
 </div>
 
 
@@ -259,7 +259,7 @@
 <?php } else { ?>
 <!-- LIQUIDEZ -->
 <div align="center">
-<p> Calculo de Razones de Liquidez </p>
+  <h5><b><em><p> Calculo de Razones de Liquidez </p></em></b></h5>
 </div>
 
 
@@ -293,7 +293,7 @@
 
 <!-- EFICIENCIA-->
 <div align="center">
-<p> Calculo de razones de Eficiencia o Actividad </p>
+  <h5><b><em><p> Calculo de razones de Eficiencia o Actividad </p></em></b></h5>
 </div>
 
 
@@ -327,11 +327,11 @@
 
 <!-- RENTABILIDAD-->
 <div align="center">
-<p> Calculo de razones de Rentabilidad </p>
+  <h5><b><em><p> Calculo de razones de Rentabilidad </p></em></b></h5>
 </div>
 
 
-<div style="float:left;width:1000%;">
+<div style="float:left;width:100%;">
 <p align="center">{{$mesanio1}}</p> 
     <table class="table table-bordered thead-dark table-hover table-sm">
             
@@ -361,7 +361,7 @@
 
 <!-- RENTABILIDAD-->
 <div align="center">
-<p> Calculo de Apalancamiento </p>
+  <h5><b><em><p> Calculo de Apalancamiento </p></em></b></h5>
 </div>
 
 
