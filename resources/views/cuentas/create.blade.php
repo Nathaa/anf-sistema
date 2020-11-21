@@ -22,15 +22,15 @@
             <div class="row">
                 <div class="col">
                         <label for="codigo" class="control-label">{{'Codigo'}}:</label><br>
-                        <input type="text" class="form-control" id="codigo" name="codigo" value="{{ old('codigo') }}" placeholder="Codigo de la cuenta"  onkeyup="validar_numero(this)", onblur="validar_numero(this)" required><br>
-                        <div class="invalid-feedback" style="display:none">
+                        <input type="text" class="form-control" id="codigo" name="codigo" value="{{ old('codigo') }}" placeholder="Codigo de la cuenta"  onkeyup="validar_numero(this)", onblur="validar_numero(this)" required>
+                        <div class="invalid-feedback">
                            El código debe estar conformado por números.
                         </div>
                 </div>
                 <div class="col">
                     <label for="codigo_padre" class="control-label">{{'Codigo Precedente'}}:</label><br>
-                    <input type="text" class="form-control" id="codigo_padre" name="codigo_padre" value="{{ old('codigo_padre') }}" placeholder="1->Activo"  onkeyup="validar_numero(this)", onblur="validar_numero(this)" required><br>
-                    <div class="invalid-feedback" style="display:none">
+                    <input type="text" class="form-control" id="codigo_padre" name="codigo_padre" value="{{ old('codigo_padre') }}" placeholder="1->Activo"  onkeyup="validar_numero(this)", onblur="validar_numero(this)" required>
+                    <div class="invalid-feedback">
                         El código precedente debe estar conformado por números.
                     </div>
                 </div>
@@ -40,8 +40,8 @@
             <div class="row">
                 <div class="col">
                     <label for="nombre" class="control-label">{{'Nombre'}}:</label><br>
-                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" placeholder="Nombre de la Cuenta" onkeyup="validar(this)", onblur="validar(this)" required><br>
-                    <div class="invalid-feedback" style="display:none">
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" placeholder="Nombre de la Cuenta" onkeyup="validar(this)", onblur="validar(this)" required>
+                    <div class="invalid-feedback">
                         El nombre de la cuenta no debe comenzar con números ni caracteres especiales.
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                      <option value="{{ $tp->id }}">{{$tp->subtipo}}</option>
                         @endforeach
                     </select>
-                    <div class="invalid-feedback" style="display:none">
+                    <div class="invalid-feedback">
                         El tipo de cuenta no debe quedar vacío.
                      </div>
                 </div>
@@ -65,8 +65,8 @@
             <div class="row">
                 <div class="col">
                     <label for="descripcion" class="control-label">{{'Catalogo'}}:</label><br>
-                    <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ old('descripcion') }}"  placeholder="Breve descripción de la cuenta" onkeyup="validar(this)", onblur="validar(this)" required><br>
-                    <div class="invalid-feedback" style="display:none">
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ old('descripcion') }}"  placeholder="Breve descripción de la cuenta" onkeyup="validar(this)", onblur="validar(this)" required>
+                    <div class="invalid-feedback">
                         El descripcion de la cuenta no debe comenzar con números ni caracteres especiales.
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                     <option value="{{ $emp->id }}">{{$emp->nombre}}</option>
                         @endforeach
                     </select>
-                    <div class="invalid-feedback" style="display:none">
+                    <div class="invalid-feedback">
                             La empresa no debe quedar vacío.
                      </div>
                 </div>
