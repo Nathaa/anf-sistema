@@ -4,7 +4,7 @@
 <?php 
 $valor1=$valant;
 $valor2=$valact;
-$conexion=mysqli_connect('localhost','root','','sistema_academico');
+$conexion=mysqli_connect('localhost:33065','root','','analisis');
 
 ?>
 

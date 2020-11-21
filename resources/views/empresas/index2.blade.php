@@ -51,7 +51,7 @@
     
           
            
-           <th colspan="2">&nbsp;Informes Financieros</th>
+           <th colspan="3">&nbsp;Informes Financieros</th>
           
          </tr>
     </thead>
@@ -71,7 +71,7 @@
                     <i class="fas fa-plus"></i>Estados de Resultados</button> </a>
             </td>
             <td width="">
-                <a href="{{ url('/ratios/'.$empresa->id) }}"> <button type="button" class="btn btn-info btn-xs">
+                <a href="{{ url('/ratios/'.$empresa->id) }}"> <button type="button" class="btn btn-info btn-sm">
                         <i class="fas fa-plus"></i>Ratios</button> </a>
             </td>
            
