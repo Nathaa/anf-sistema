@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRatiosTable extends Migration
+class CreateResultadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateRatiosTable extends Migration
      */
     public function up()
     {
-        Schema::create('ratios', function (Blueprint $table) {
+        Schema::create('resultados', function (Blueprint $table) {
             $table->Bigincrements('id');
             $table->string('nombre');
-            $table->string('monto');
-            $table->date('fecha');
-            $table->integer('empresas');
-
-           
-           
+            $table->float('monto');
+            $table->date('fecha_inicio');
+            $table->date('fecha_final');
             $table->timestamps();
+
+            $table->unsignedBigInteger('cuentas_id')->unsigned();
+            $table->foreign('cuentas_id')->references('id')->on('cuentas')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -33,6 +33,6 @@ class CreateRatiosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ratios');
+        Schema::dropIfExists('resultados');
     }
 }
