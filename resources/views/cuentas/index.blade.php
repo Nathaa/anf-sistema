@@ -68,7 +68,12 @@
 
       <div class="row">
         <div class="mr-auto">
-          {{$cuentas->links()}}
+ 
+          <br> 
+
+          {{$cuentas->links("pagination::bootstrap-4")}}
+
+
         </div>
       </div>
   

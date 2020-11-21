@@ -68,6 +68,10 @@
 										$patrimonio = 0.000001;
 									@endphp
 
+									@elseif($b1->nombre == 'ACTIVO CORRIENTE' || $b1->nombre == 'ACTIVO NO CORRIENTE' || $b1->nombre == 'PASIVO NO CORRIENTE' || $b1->nombre == 'PASIVO CORRIENTE')
+									<td class="font-weight-bold">{{$b1->nombre}}</td>
+									<td class="font-weight-bold">${{$b1->monto}}</td>
+
 									@else
 									<td>{{$b1->nombre}}</td>
 									<td>${{$b1->monto}}</td>
@@ -75,20 +79,20 @@
 									@endif					
 
 
-									@if($b1->nombre == 'ACTIVO')
+									@if($b1->nombre == 'ACTIVO' || $b1->nombre == 'ACTIVO CORRIENTE' || $b1->nombre == 'ACTIVO NO CORRIENTE')
 
 									<td class="font-weight-bold">{{round((($b1->monto/$activo1)*100),2)}}%</td>	
 
-									@elseif($b1->nombre == 'ACTIVO CORRIENTE' || $b1->nombre == 'CAJA Y BANCOS' || $b1->nombre == 'ACTIVO NO CORRIENTE'|| $b1->nombre == 'MAQUINARIA Y EQUIPO')
+									@elseif($b1->nombre == 'CAJA Y BANCOS' || $b1->nombre == 'MAQUINARIA Y EQUIPO')
 
 									<td>{{round((($b1->monto/$activo1)*100),2)}}%</td>	
 
-									@elseif($b1->nombre == 'PASIVO')
+									@elseif($b1->nombre == 'PASIVO CORRIENTE' || $b1->nombre == 'PASIVO' || $b1->nombre == 'PASIVO NO CORRIENTE')
 
 									<td class="font-weight-bold">{{round((($b1->monto/$pasivo1)*100),2)}}%</td>
 
 
-									@elseif($b1->nombre == 'PASIVO CORRIENTE' || $b1->nombre == 'DEUDAS A CORTO PLAZO' || $b1->nombre == 'PASIVO NO CORRIENTE' || $b1->nombre == 'DEUDAS A LARGO PLAZO')	
+									@elseif($b1->nombre == 'DEUDAS A CORTO PLAZO' || $b1->nombre == 'DEUDAS A LARGO PLAZO')	
 
 									<td>{{round((($b1->monto/$pasivo1)*100),2)}}%</td>
 
