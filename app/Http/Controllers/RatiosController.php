@@ -730,6 +730,7 @@ class RatiosController extends Controller
                                     and c.empresas_id=".$emp."
                                     and b.fecha_final ='".$ffin."'");          
         
+       DB::select('CALL borrar_ratios(?,?,?)',[$emp,$fini,$ffin]);
        DB::select('CALL ratios(?,?,?)',[$emp,$fini,$ffin]);                                     
         return view('ratios.show1',compact('ratiosl','ratiosl2','ratios','ratios2','ratiosr','ratiosr2','ratiose','ratiose2','mesanio1','mesanio2','empress','anio'));
     }

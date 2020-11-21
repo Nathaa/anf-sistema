@@ -117,3 +117,4 @@ Route::get('ratiosh/{ratiosh}', 'RatiosController@show1')->name('ratios.show1');
 //COMPARACION
 Route::get('comparaciones', 'ComparacionesController@index')->name('comparaciones.index');
 Route::get('comparaciones/{comparacion}', 'ComparacionesController@show')->name('comparaciones.show');
+Route::get('comparaciones1/{comparacion1}', 'ComparacionesController@show1')->name('comparaciones.show1');
