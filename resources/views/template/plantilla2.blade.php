@@ -134,11 +134,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
        @if(!Auth::user()->rol == 'Analista')
         @php
           $id = Auth::user()->id;
+          $id_empresa = Auth::user()->emp->id;
         @endphp
       @else
 
         @php
-          $id = Auth::user()->empresa;
+          $id = Auth::user()->admin;
+          $id_empresa = Auth::user()->empresa;
         @endphp
         @endif
 
@@ -237,14 +239,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     
               <li class="nav-item">
-                  <li><a href="{{ route ('analisis.show', $id) }}" class="nav-link">
+                  <li><a href="{{ route ('analisis.show', $id_empresa) }}" class="nav-link">
                   <i class="fas fa-industry"></i>
                   <p>Analisis Horizontal</p>
                 </a></li>
               </li>
        
               <li class="nav-item">
-                <li><a href="{{ route ('analisis.vertical', $id) }}" class="nav-link">
+                <li><a href="{{ route ('analisis.vertical', $id_empresa) }}" class="nav-link">
                 <i class="fas fa-money-check-alt"></i>
                 <p>Analisis Vertical</p>
               </a></li>

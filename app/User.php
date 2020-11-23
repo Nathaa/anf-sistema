@@ -28,7 +28,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function empresa() {
+    public function emp() {
         return $this->hasOne(Empresa::class);
       }
 

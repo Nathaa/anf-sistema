@@ -52,10 +52,16 @@ class AnalisisController extends Controller
     public function show2(Request $request, $id)
     {
 
-      $activoCorriente = 0;
-      $activoNcorriente = 0;
-      $pasivoCorriente = 0;
-      $pasivoNcorriente = 0;
+      $activoCorriente = 1;
+      $activoNcorriente = 1;
+      $pasivoCorriente = 1;
+      $pasivoNcorriente = 1;
+
+      $pasivo1 = 1;
+      $activo1 = 1;
+      $patrimonio = 1;
+
+
 
       $empresa = Empresa::where("id", $id)->first();
 
@@ -64,11 +70,60 @@ class AnalisisController extends Controller
 
       $balance1=DB::table('balances')
 
-      ->select('balances.nombre', 'balances.monto')
+      ->join('cuentas','cuentas.id','=', 'balances.cuentas_id')
+
+
+      ->select('balances.nombre', 'balances.monto', 'cuentas.id')
 
       ->where('balances.fecha_final', $final)
 
+      ->where('cuentas.empresas_id', $id)
+
       ->get();
+
+      $a = 'ACTIVO';
+      $p = 'PASIVO';
+      $pt = 'PATRIMONIO';
+
+      $cuentasActivo = DB::table('cuentas')
+
+      ->join('tipocuentas', 'tipocuentas.id', '=', 'cuentas.tipocuentas_id')
+
+      ->select('cuentas.nombre')
+
+      ->where('tipocuentas.nombre', $a)
+
+      ->where('cuentas.empresas_id', $id)
+
+      ->get();
+
+      $cuentasPasivo = DB::table('cuentas')
+
+      ->join('tipocuentas', 'tipocuentas.id', '=', 'cuentas.tipocuentas_id')
+
+      ->select('cuentas.nombre')
+
+      ->where('tipocuentas.nombre', $p)
+
+      ->where('cuentas.empresas_id', $id)
+
+      ->get();
+
+      $cuentasPatrimonio = DB::table('cuentas')
+
+      ->join('tipocuentas', 'tipocuentas.id', '=', 'cuentas.tipocuentas_id')
+
+      ->select('cuentas.nombre')
+
+      ->where('tipocuentas.nombre', $pt)
+
+      ->where('cuentas.empresas_id', $id)
+
+      ->get();
+
+
+
+//      dd($cuentasActivo);
 
       foreach ($balance1 as $key => $value) {
         # code...
@@ -89,14 +144,36 @@ class AnalisisController extends Controller
           $pasivoNcorriente = $value->monto;
         }
 
+        if ($value->nombre == 'ACTIVO') {
+          # code...
+
+        //  return ($value->monto);
+          $activo1 = $value->monto;
+        }
+
+        if ($value->nombre == 'PASIVO') {
+          # code...
+          $pasivo1 = $value->monto;
+
+        }
+
+        if ($value->nombre == 'PATRIMONIO') {
+          # code...
+          $patrimonio = $value->monto;
+        }
+
+    
+
 
       }
+
+
 
 
       $year1 = Carbon::createFromFormat('Y-m-d', $request->fecha_final)->year;
    
 
-      return view('analisis.show2', compact('year1','balance1', 'empresa', 'activoCorriente', 'activoNcorriente', 'pasivoCorriente', 'pasivoNcorriente'));
+      return view('analisis.show2', compact('year1','balance1', 'empresa', 'activoCorriente', 'activoNcorriente', 'pasivoCorriente', 'pasivoNcorriente', 'activo1', 'pasivo1', 'patrimonio', 'cuentasActivo', 'cuentasPatrimonio', 'cuentasPasivo'));
 
     }
 
@@ -115,7 +192,14 @@ class AnalisisController extends Controller
 
       $balance1=DB::table('resultados')
 
+
+      ->join('cuentas','cuentas.id','=', 'resultados.cuentas_id')
+
       ->select('resultados.nombre', 'resultados.monto')
+
+
+      ->where('cuentas.empresas_id', $id)
+
 
       ->where('resultados.fecha_final', $final)
 

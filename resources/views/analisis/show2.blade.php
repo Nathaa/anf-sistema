@@ -22,7 +22,6 @@
 								</tr>
 
 								<tr>
-
 									<th>Cuenta</th>
 									<th>{{$year1}}</th>
 									<th>{{$year1}}</th>
@@ -32,43 +31,10 @@
 
 							<tbody>
 
-
 								@foreach($balance1 as $b1)
 								<tr>					
 
-									@if($b1->nombre == 'ACTIVO')
-									<td class="font-weight-bold">{{$b1->nombre}}</td>
-									<td class="font-weight-bold">${{$b1->monto}}</td>
-
-									@php
-										if($b1->monto>0)
-										$activo1 = $b1->monto;
-										else
-										$activo1 = 0.000001;
-									@endphp
-
-									@elseif($b1->nombre == 'PASIVO')
-									<td class="font-weight-bold">{{$b1->nombre}}</td>
-									<td class="font-weight-bold">${{$b1->monto}}</td>
-									@php
-										if($b1->monto>0)
-										$pasivo1 = $b1->monto;
-										else
-										$pasivo1 = 0.000001;
-									@endphp
-
-									@elseif($b1->nombre == 'PATRIMONIO')
-									<td class="font-weight-bold">{{$b1->nombre}}</td>
-									<td class="font-weight-bold">${{$b1->monto}}</td>
-
-									@php
-										if($b1->monto>0)
-										$patrimonio = $b1->monto;
-										else
-										$patrimonio = 0.000001;
-									@endphp
-
-									@elseif($b1->nombre == 'ACTIVO CORRIENTE' || $b1->nombre == 'ACTIVO NO CORRIENTE' || $b1->nombre == 'PASIVO NO CORRIENTE' || $b1->nombre == 'PASIVO CORRIENTE')
+									@if($b1->nombre == 'ACTIVO' || $b1->nombre == 'PASIVO' || $b1->nombre == 'PATRIMONIO' || $b1->nombre == 'ACTIVO CORRIENTE' || $b1->nombre == 'ACTIVO NO CORRIENTE' || $b1->nombre == 'PASIVO NO CORRIENTE' || $b1->nombre == 'PASIVO CORRIENTE')
 									<td class="font-weight-bold">{{$b1->nombre}}</td>
 									<td class="font-weight-bold">${{$b1->monto}}</td>
 
@@ -78,32 +44,60 @@
 
 									@endif					
 
+									@foreach($cuentasActivo as $ac)
 
-									@if($b1->nombre == 'ACTIVO' || $b1->nombre == 'ACTIVO CORRIENTE' || $b1->nombre == 'ACTIVO NO CORRIENTE')
+										@if($b1->nombre == $ac->nombre)
 
-									<td class="font-weight-bold">{{round((($b1->monto/$activo1)*100),2)}}%</td>	
+											@if($b1->nombre == 'ACTIVO' || $b1->nombre == 'ACTIVO CORRIENTE' || $b1->nombre == 'ACTIVO NO CORRIENTE')
 
-									@elseif($b1->nombre == 'CAJA Y BANCOS' || $b1->nombre == 'MAQUINARIA Y EQUIPO' || $b1->nombre == 'Caja y Bancos' || $b1->nombre == 'Cuentas por cobrar' || $b1->nombre == 'Inventarios' || $b1->nombre == 'Gastos pagados por anticipado' || $b1->nombre == 'Inversiones en valores' || $b1->nombre == 'Cuentas por cobrar comerciales' || $b1->nombre == 'Otras cuentas por cobrar' || $b1->nombre == 'Cuentas por cobrar comerciales' || $b1->nombre == 'Activo Fijo Neto' || $b1->nombre == 'Activo fijo neto')
+											<td class="font-weight-bold">{{round((($b1->monto/$activo1)*100),2)}}%</td>	
 
-									<td>{{round((($b1->monto/$activo1)*100),2)}}%</td>	
+											@else
 
-									@elseif($b1->nombre == 'PASIVO CORRIENTE' || $b1->nombre == 'PASIVO' || $b1->nombre == 'PASIVO NO CORRIENTE')
+											<td>{{round((($b1->monto/$activo1)*100),2)}}%</td>	
 
-									<td class="font-weight-bold">{{round((($b1->monto/$pasivo1)*100),2)}}%</td>
+											@endif
 
+										@endif
 
-									@elseif($b1->nombre == 'DEUDAS A CORTO PLAZO' || $b1->nombre == 'DEUDAS A LARGO PLAZO' || $b1->nombre == 'Deudas a corto plazo' || $b1->nombre == 'Deudas a largo plazo' || $b1->nombre == 'Sobregiros y prestamos bancarios' || $b1->nombre == 'Cuentas por pagar comerciales' || $b1->nombre == 'Otras cuentas por pagar' || $b1->nombre == 'Parte corriente deuda largo plazo' || $b1->nombre == 'Provisión CTS' || $b1->nombre == 'Deuda a largo plazo')	
+									@endforeach
 
-									<td>{{round((($b1->monto/$pasivo1)*100),2)}}%</td>
+									@foreach($cuentasPasivo as $ps)
 
-									@elseif($b1->nombre == 'PATRIMONIO')
+										@if($b1->nombre == $ps->nombre)
 
-									<td class="font-weight-bold">{{round((($b1->monto/$patrimonio)*100),2)}}%</td>
+											@if($b1->nombre == 'PASIVO' || $b1->nombre == 'PASIVO NO CORRIENTE' || $b1->nombre == 'PASIVO CORRIENTE')
 
-									@elseif($b1->nombre == 'CAPITAL' || $b1->nombre == 'Capital' || $b1->nombre == 'Capital Social' || $b1->nombre == 'Resultados Acumulados' || $b1->nombre == 'Capital en acciones' || $b1->nombre == 'Utilidades retenidas')
+											<td class="font-weight-bold">{{round((($b1->monto/$pasivo1)*100),2)}}%</td>
 
-									<td>{{round((($b1->monto/$patrimonio)*100),2)}}%</td>
-									@endif
+											@else
+
+											<td>{{round((($b1->monto/$pasivo1)*100),2)}}%</td>
+
+											@endif
+
+										@endif
+
+									@endforeach
+
+									@foreach($cuentasPatrimonio as $pt)
+
+										@if($b1->nombre == $pt->nombre)
+
+											@if($b1->nombre == 'PATRIMONIO')
+
+											<td class="font-weight-bold">{{round((($b1->monto/$patrimonio)*100),2)}}%</td>
+
+											@else
+
+											<td>{{round((($b1->monto/$patrimonio)*100),2)}}%</td>
+	
+											@endif
+
+										@endif
+
+									@endforeach
+
 								</tr>
 								@endforeach
 							</tbody>
@@ -120,11 +114,11 @@
   			<div class="card-header border-info text-info font-weight-bold">Conclusión</div>
   				<div class="card-body text-info">
     				<h5 class="card-title">
+
     				@if($activoCorriente>$pasivoCorriente)
     				El ACTIVO CORRIENTE que representa el {{round((($activoCorriente/$activo1)*100),2)}}% del ACTIVO total supera al pasivo corriente que representa el {{round((($pasivoCorriente/$pasivo1)*100),3)}}% del total de pasivos.
     				<br>
     				En este año la proproción entre ambos es de {{round(($activoCorriente/$activo1)/($pasivoCorriente/$pasivo1),2)}}. 
-
 
     				@elseif($activoCorriente<$pasivoCorriente)
 
@@ -140,6 +134,7 @@
     				Se recomienda evaluar las inversiones de la empresa, no se reflejan activos superiores.
 
     				@endif
+
 
     			</h5>
   				</div>
