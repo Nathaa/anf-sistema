@@ -34,7 +34,7 @@ $conexion=mysqli_connect('localhost:33065','root','','analisis');
 
 <?php
 
- $sql = "SELECT c.nombre AS nom, c.monto AS valor_Actual, b.monto As valor_anterior, c.monto-b.monto AS variacion From balances c, balances b WHERE c.fecha_final='$valor2' AND b.fecha_final='$valor1' AND c.nombre=b.nombre";
+ $sql = "SELECT c.nombre AS nom, c.monto AS valor_Actual, b.monto As valor_anterior, c.monto-b.monto AS variacion From balances c, balances b INNER JOIN cuentas d ON d.id=b.cuentas_id WHERE c.fecha_final='$valor2' AND b.fecha_final='$valor1' AND c.nombre=b.nombre";
 $result=mysqli_query($conexion,$sql);
 while($mostrar=mysqli_fetch_array($result)){
 $a=$mostrar['valor_anterior'];

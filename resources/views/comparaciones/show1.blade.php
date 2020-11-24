@@ -7,11 +7,7 @@
         <div class="card-body"> 
        
             <div align="center">
-@foreach ($empresas as $empresa)
-<h2 style="color:blue;"><b>Comparacion de empresa: {{$empresa->nombre}}</b></h2>
 
-
-@endforeach
             </div>
 
 
@@ -34,10 +30,12 @@
                         
                         <tr>
                         <th scope="col">Razon</th>
-              
-                       <th scope="col">Resultado</th>
+                       
+                       <th scope="col"><?php  if ($comparacion==1) { ?>Parametro Estandar de Empresas Comerciales<?php } else { ?> Promedio de Empresas Comerciales <?php } ?></th>
+                       
+                        <th scope="col">Se encuentra en el margen</th>
 
-                       <th scope="col">Resultado</th>
+                        <th scope="col">No se encuentra en el margen</th>
                
                         </tr>
                       </thead>
@@ -45,6 +43,7 @@
                         <tr>
                         
                         <td style="font-weight:bold;">{{$ratior->nombre}}</td>
+                        <td ><?php  if ($comparacion==1) {?>{{$ratior->valor}} <?php } else { ?> {{$ratior->promedio}} <?php } ?></th>
                         <td align="right"> {{$ratior->bueno}}</td>
                         <td align="right"> {{$ratior->malo}}</td>
                         
@@ -70,11 +69,15 @@
                     <table class="table table-bordered thead-dark table-hover table-sm">
                             
                     <tr>
-                        <th scope="col">Razon</th>
+                       <th scope="col">Razon</th>
+                       
+                       <th scope="col"><?php  if ($comparacion==1) { ?>Parametro Estandar de Empresas Comerciales<?php } else { ?> Promedio de Empresas Comerciales <?php } ?></th>
+                     
               
-                       <th scope="col">Resultado</th>
 
-                       <th scope="col">Resultado</th>
+                       <th scope="col">Se encuentra en el margen</th>
+
+                       <th scope="col">No se encuentra en el margen</th>
                
                         </tr>
                       </thead>
@@ -82,6 +85,8 @@
                         <tr>
                         
                         <td style="font-weight:bold;">{{$ratior->nombre}}</td>
+                        <td ><?php  if ($comparacion==1) {?>{{$ratior->valor}} <?php } else { ?> {{$ratior->promedio}} <?php } ?></th>
+                        
                         <td align="right"> {{$ratior->bueno}}</td>
                         <td align="right"> {{$ratior->malo}}</td>
                         
@@ -109,10 +114,13 @@
                                 
                         <tr>
                         <th scope="col">Razon</th>
+                        
+                        <th scope="col"><?php  if ($comparacion==1) { ?>Parametro Estandar de Empresas Comerciales<?php } else { ?> Promedio de Empresas Comerciales <?php } ?></th>
+                        
               
-                       <th scope="col">Resultado</th>
+                        <th scope="col">Se encuentra en el margen</th>
 
-                       <th scope="col">Resultado</th>
+                        <th scope="col">No se encuentra en el margen</th>
                
                         </tr>
                       </thead>
@@ -120,6 +128,8 @@
                         <tr>
                         
                         <td style="font-weight:bold;">{{$ratior->nombre}}</td>
+                        <td ><?php  if ($comparacion==1) {?>{{$ratior->valor}} <?php } else { ?> {{$ratior->promedio}} <?php } ?></th>
+                        
                         <td align="right"> {{$ratior->bueno}}</td>
                         <td align="right"> {{$ratior->malo}}</td>
                         
@@ -148,10 +158,13 @@
                                     
                             <tr>
                         <th scope="col">Razon</th>
+                        
+                        <th scope="col"><?php  if ($comparacion==1) { ?>Parametro Estandar de Empresas Comerciales<?php } else { ?> Promedio de Empresas Comerciales <?php } ?></th>
+                        
               
-                       <th scope="col">Resultado</th>
+                        <th scope="col">Se encuentra en el margen</th>
 
-                       <th scope="col">Resultado</th>
+                        <th scope="col">No se encuentra en el margen</th>
                
                         </tr>
                       </thead>
@@ -159,6 +172,8 @@
                         <tr>
                         
                         <td style="font-weight:bold;">{{$ratior->nombre}}</td>
+                        <td ><?php  if ($comparacion==1) {?>{{$ratior->valor}} <?php } else { ?> {{$ratior->promedio}} <?php } ?></th>
+                        
                         <td align="right"> {{$ratior->bueno}}</td>
                         <td align="right"> {{$ratior->malo}}</td>
                         
