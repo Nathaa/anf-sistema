@@ -96,10 +96,10 @@ class EmpresasController extends Controller
         public function store(Request $request)
         {
                 $user = Auth::user();
-                $empresa = $user->empresa;
+                $empresa = $user->emp;
                 if(!$empresa) {
             
-            $request->user()->empresa()->create([
+            $request->user()->emp()->create([
                 'nombre' => $request->nombre,
                 'codigo' => $request->codigo,
                 'descripcion' => $request->descripcion,
