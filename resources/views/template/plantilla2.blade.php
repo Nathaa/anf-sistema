@@ -134,7 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
        @if(!Auth::user()->rol == 'Analista')
         @php
           $id = Auth::user()->id;
-          $id_empresa = Auth::user()->emp->id;
+          $id_empresa = Auth::user()->id;
         @endphp
       @else
 

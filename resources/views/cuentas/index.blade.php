@@ -14,8 +14,9 @@
             <i class="fas fa-plus"></i>Crear Catalogo </button> </a>
             @endif         
               <div align="right">
-                <form action="{{ route('cuentas.import.excel') }}" method="POST" enctype="multipart/form-data"
-                  @csrf
+                <form action="{{ route('cuentas.import.excel') }}" method="POST" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+      
                   @if(Session::has('message'))
                     <p>{{ Session::get('message') }}</p>
                   @endif
