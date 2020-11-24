@@ -28,18 +28,16 @@
          </tr>
     </thead>
        <tbody>
-        @foreach ($empresas as $empresa)
-            
         
         <tr>
-            <td>{{$empresa->nombre}}</td>
+            <td>{{$empresas->nombre}}</td>
         </tr>
         <tr>
             
             <div align="left">
           
                 
-                <a href="{{ url('/comparaciones/'.$empresa->id) }}" > <button type="button" class="btn btn-primary btn-sm">
+                <a href="{{ url('/comparacione/'.$empresas->id) }}" > <button type="button" class="btn btn-primary btn-sm">
                     <i class="fas fa-plus"></i>Comparar ratios financieros de acuerdo al rubro perteneciente </button> </a>
                   </a>
                
@@ -48,7 +46,7 @@
             </div>
     
         </tr>
-        @endforeach
+      
             </tbody>
     </table>
       <br>

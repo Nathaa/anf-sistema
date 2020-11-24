@@ -8,12 +8,27 @@ use App\Cuenta;
 use App\Empresa;
 use App\Tipocuenta;
 use DB;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class CuentasController extends Controller
 {
     //
-   
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+   
+    public function importExcel(Request $request)
+    {
+
+      $file=$request->file('file');
+      Excel::import(new CuentasImport,$file);
+
+      return back()->with('message','Importancion de cuentas completadas');
+    }
 
     /**
      * Display a listing of the resource.

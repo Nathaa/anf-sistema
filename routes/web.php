@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('balances', function () {
     return view('balances.index');
 });
@@ -30,6 +31,9 @@ Route::get('/principal', 'PrincipalController@index')->name('template.plantilla2
 
 
 //cuentas
+
+Route::post('import-list-excel', 'CuentasController@importExcel')->name('cuentas.import.excel');
+
 Route::get('cuentas', 'CuentasController@index')->name('cuentas.index');
 
 Route::get('cuentas/cuenta', 'CuentasController@create')->name('cuentas.create');
@@ -115,6 +119,6 @@ Route::get('ratiosh/{ratiosh}', 'RatiosController@show1')->name('ratios.show1');
 
 
 //COMPARACION
-Route::get('comparaciones', 'ComparacionesController@index')->name('comparaciones.index');
-Route::get('comparaciones/{comparacion}', 'ComparacionesController@show')->name('comparaciones.show');
+Route::get('comparaciones/{user_id}', 'ComparacionesController@index')->name('comparaciones.index');
+Route::get('comparacione/{comparacion}', 'ComparacionesController@show')->name('comparaciones.show');
 Route::get('comparaciones1/{comparacion1}', 'ComparacionesController@show1')->name('comparaciones.show1');

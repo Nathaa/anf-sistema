@@ -163,6 +163,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -178,6 +179,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         //Yoeunes\Toastr\ToastrServiceProvider::class,
        // Caffeinated\Shinobi\ShinobiServiceProvider::class,
+       
 
 
     ],
@@ -231,7 +233,8 @@ return [
         'FORM' => 'Collective\Html\FormFacade',
         'Form' => 'Collective\Html\FormFacade',
         'Html' => Collective\Html\HtmlFacade::class,
-
+         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        
     ],
 
 ];

@@ -28,18 +28,28 @@
             </div>
             
             
-            <div style="float:left;width:50%;">
+            <div style="float:left;width:100%;">
             <p align="center"></p> 
                 <table class="table table-bordered thead-dark table-hover table-sm">
                         
                         <tr>
+                        <th scope="col">Razon</th>
+              
+                       <th scope="col">Resultado</th>
+
+                       <th scope="col">Resultado</th>
                
                         </tr>
                       </thead>
-                      <tbody>
-                         
-               
-                      </tbody>
+                      @foreach ($balances as $ratior)
+                        <tr>
+                        
+                        <td style="font-weight:bold;">{{$ratior->nombre}}</td>
+                        <td align="right"> {{$ratior->bueno}}</td>
+                        <td align="right"> {{$ratior->malo}}</td>
+                        
+                        </tr>
+                        @endforeach
                      </table>
             </div>
         </div>
@@ -55,18 +65,28 @@
                 </div>
                 
                 
-                <div style="float:left;width:50%;">
+                <div style="float:left;width:100%;">
                 <p align="center"></p> 
                     <table class="table table-bordered thead-dark table-hover table-sm">
                             
-                            <tr>
-                   
-                            </tr>
-                          </thead>
-                          <tbody>
-                             
-                   
-                          </tbody>
+                    <tr>
+                        <th scope="col">Razon</th>
+              
+                       <th scope="col">Resultado</th>
+
+                       <th scope="col">Resultado</th>
+               
+                        </tr>
+                      </thead>
+                      @foreach ($balances1 as $ratior)
+                        <tr>
+                        
+                        <td style="font-weight:bold;">{{$ratior->nombre}}</td>
+                        <td align="right"> {{$ratior->bueno}}</td>
+                        <td align="right"> {{$ratior->malo}}</td>
+                        
+                        </tr>
+                        @endforeach
                          </table>
                 </div>
 
@@ -83,18 +103,28 @@
                     </div>
                     
                     
-                    <div style="float:left;width:50%;">
+                    <div style="float:left;width:100%;">
                     <p align="center"></p> 
                         <table class="table table-bordered thead-dark table-hover table-sm">
                                 
-                                <tr>
-                       
-                                </tr>
-                              </thead>
-                              <tbody>
-                                 
-                       
-                              </tbody>
+                        <tr>
+                        <th scope="col">Razon</th>
+              
+                       <th scope="col">Resultado</th>
+
+                       <th scope="col">Resultado</th>
+               
+                        </tr>
+                      </thead>
+                      @foreach ($balances3 as $ratior)
+                        <tr>
+                        
+                        <td style="font-weight:bold;">{{$ratior->nombre}}</td>
+                        <td align="right"> {{$ratior->bueno}}</td>
+                        <td align="right"> {{$ratior->malo}}</td>
+                        
+                        </tr>
+                        @endforeach
                              </table>
                     </div>
 
@@ -112,18 +142,28 @@
                         </div>
                         
                         
-                        <div style="float:left;width:50%;">
+                        <div style="float:left;width:100%;">
                         <p align="center"></p> 
                             <table class="table table-bordered thead-dark table-hover table-sm">
                                     
-                                    <tr>
-                           
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                     
-                           
-                                  </tbody>
+                            <tr>
+                        <th scope="col">Razon</th>
+              
+                       <th scope="col">Resultado</th>
+
+                       <th scope="col">Resultado</th>
+               
+                        </tr>
+                      </thead>
+                      @foreach ($balances2 as $ratior)
+                        <tr>
+                        
+                        <td style="font-weight:bold;">{{$ratior->nombre}}</td>
+                        <td align="right"> {{$ratior->bueno}}</td>
+                        <td align="right"> {{$ratior->malo}}</td>
+                        
+                        </tr>
+                        @endforeach
                                  </table>
                         </div>
 

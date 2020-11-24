@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Empresa;
+use App\User;
 use Illuminate\Support\Facades\Input;
 use DB;
 use Illuminate\Http\Request;
@@ -16,19 +17,26 @@ class ComparacionesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $request)
+    public function index($user_id)
     {
 
       
-        $empresas = Empresa::get();
+        $empresas = Empresa::where("user_id", $user_id)->first();
+
+            if($empresas){
+
+            return view('comparaciones.index', compact('empresas'));
         
+            }
+            else{
 
-     
-        //dd($balan);
+                  Session::flash('message', "Debe crear un empresa para esta acción.");
 
-      
 
-        return view('comparaciones.index',compact('empresas'));
+
+                return view("empresas.create");
+
+            }
 
 
     }
@@ -66,11 +74,41 @@ class ComparacionesController extends Controller
         //
        
         $emp = $id;
-        $empresas = Empresa::get();
+        $empresas=DB::table('empresas')
+        ->join('users','users.id','=', 'empresas.user_id')
+        ->select('empresas.nombre')
+        ->where('empresas.id', $id)
+        ->get();
        
         $ffin = Input::get('fecha_final');
         $comparacion = Input::get('valor');
+
+        DB::select('CALL analisis_ratios(?,?)',[$ffin,$comparacion]);  
+
+        $balances=DB::table('comparaciones')
+        ->select('nombre','bueno','malo')
+        ->where('tipo','Razones de Liquidez')
+        ->get();
+
+        $balances1=DB::table('comparaciones')
+        ->select('nombre','bueno','malo')
+        ->where('tipo','Razones de Eficiencia o Actividad')
+        ->get();
+
+        $balances2=DB::table('comparaciones')
+        ->select('nombre','bueno','malo')
+        ->where('tipo','Razones de Rentabilidad')
+        ->get();
+
+        $balances3=DB::table('comparaciones')
+        ->select('nombre','bueno','malo')
+        ->where('tipo','Apalancamiento')
+        ->get();
+
+               
         
-      return view('comparaciones.show1',compact('empresas'));
+      return view('comparaciones.show1',compact('empresas','balances','balances1','balances2','balances3'));
     }
 }
+
+

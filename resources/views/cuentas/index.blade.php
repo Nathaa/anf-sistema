@@ -12,8 +12,18 @@
           <a href="{{ route('cuentas.create') }}"> <button type="button" class="btn btn-dark btn-xs">
 
             <i class="fas fa-plus"></i>Crear Catalogo </button> </a>
-              @endif     
-       
+            @endif         
+              <div align="right">
+                <form action="{{ route('cuentas.import.excel') }}" method="POST" enctype="multipart/form-data"
+                  @csrf
+                  @if(Session::has('message'))
+                    <p>{{ Session::get('message') }}</p>
+                  @endif
+                  <input type="file" name="file">
+                  <button>Importar Cuentas</button>
+                </form>
+                </div>
+                     
       </div>
 
         <div class="card-body">

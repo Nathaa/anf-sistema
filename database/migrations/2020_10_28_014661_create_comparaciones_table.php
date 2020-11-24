@@ -15,9 +15,13 @@ class CreateComparacionesTable extends Migration
     {
         Schema::create('comparaciones', function (Blueprint $table) {
             $table->Bigincrements('id');
-            $table->string('descripcion');
-            $table->unsignedBigInteger('ratios_id')->unsigned();
-            $table->foreign('ratios_id')->references('id')->on('ratios')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('nombre');
+            $table->string('bueno');
+            $table->string('malo');
+            $table->string('tipo');
+            $table->float('valor');
+            $table->float('promedio');
+           
             $table->timestamps();
         });
     }
