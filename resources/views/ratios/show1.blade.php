@@ -33,7 +33,7 @@
               <tr>
               
                <td style="font-weight:bold;">{{$ratiol->nombre}}</td>
-               <td align="right"> {{$ratiol->resultado}} %</td>
+               <td align="right"> {{$ratiol->resultado}}</td>
                
               </tr>
             @endforeach
@@ -59,7 +59,7 @@
               <tr>
               
                <td style="font-weight:bold;">{{$ratiol2->nombre}}</td>
-               <td align="right"> {{$ratiol2->resultado}} %</td>
+               <td align="right"> {{$ratiol2->resultado}} </td>
                
               </tr>
         @endforeach
@@ -192,7 +192,7 @@
 
 <!-- RENTABILIDAD-->
 <div align="center">
-  <h5><b><em><p> Calculo de Apalancamiento </p></em></b></h5>
+  <h5><b><em><p> Calculo de Razones de Endeudamiento </p></em></b></h5>
 </div>
 
 
@@ -214,7 +214,7 @@
               <tr>
               
                <td style="font-weight:bold;">{{$ratioe->nombre}}</td>
-               <td align="right"> {{$ratioe->resultado}} %</td>
+               <td align="right"> {{$ratioe->resultado}} </td>
                
               </tr>
             @endforeach
@@ -240,7 +240,7 @@
               <tr>
               
                <td style="font-weight:bold;">{{$ratioe2->nombre}}</td>
-               <td align="right"> {{$ratioe2->resultado}} %</td>
+               <td align="right"> {{$ratioe2->resultado}} </td>
                
               </tr>
         @endforeach
@@ -361,7 +361,7 @@
 
 <!-- RENTABILIDAD-->
 <div align="center">
-  <h5><b><em><p> Calculo de Apalancamiento </p></em></b></h5>
+  <h5><b><em><p> Calculo de Razones de Endeudamiento </p></em></b></h5>
 </div>
 
 
@@ -383,7 +383,7 @@
               <tr>
               
                <td style="font-weight:bold;">{{$ratioe->nombre}}</td>
-               <td align="right"> {{$ratioe->resultado}} %</td>
+               <td align="right"> {{$ratioe->resultado}} </td>
                
               </tr>
             @endforeach

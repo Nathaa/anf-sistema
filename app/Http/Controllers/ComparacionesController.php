@@ -41,7 +41,7 @@ class ComparacionesController extends Controller
 
     }
 
-     /**
+      /**
      * Display the specified resource. 
      *
      * @param  int  $id
@@ -74,41 +74,37 @@ class ComparacionesController extends Controller
         //
        
         $emp = $id;
-        $empresas=DB::table('empresas')
-        ->join('users','users.id','=', 'empresas.user_id')
-        ->select('empresas.nombre')
-        ->where('empresas.id', $id)
-        ->get();
+        $empresas = Empresa::get();
        
         $ffin = Input::get('fecha_final');
         $comparacion = Input::get('valor');
 
         DB::select('CALL analisis_ratios(?,?)',[$ffin,$comparacion]);  
 
+        
         $balances=DB::table('comparaciones')
-        ->select('nombre','bueno','malo')
+        ->select('nombre','bueno','malo','valor','promedio')
         ->where('tipo','Razones de Liquidez')
         ->get();
 
         $balances1=DB::table('comparaciones')
-        ->select('nombre','bueno','malo')
+        ->select('nombre','bueno','malo','valor','promedio')
         ->where('tipo','Razones de Eficiencia o Actividad')
         ->get();
 
         $balances2=DB::table('comparaciones')
-        ->select('nombre','bueno','malo')
+        ->select('nombre','bueno','malo','valor','promedio')
         ->where('tipo','Razones de Rentabilidad')
         ->get();
 
         $balances3=DB::table('comparaciones')
-        ->select('nombre','bueno','malo')
+        ->select('nombre','bueno','malo','valor','promedio')
         ->where('tipo','Apalancamiento')
         ->get();
 
                
         
-      return view('comparaciones.show1',compact('empresas','balances','balances1','balances2','balances3'));
+      return view('comparaciones.show1',compact('empresas','balances','balances1','balances2','balances3','comparacion'));
     }
 }
-
 

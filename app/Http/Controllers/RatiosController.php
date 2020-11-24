@@ -56,7 +56,7 @@ class RatiosController extends Controller
                         and d.empresas_id=c.empresas_id
                         and a.fecha_inicio = b.fecha_inicio
                         and a.fecha_final=b.fecha_final
-                        ) *100,2) resultado
+                        ) *1,2) resultado
                         from balances b, cuentas c
                         where  b.cuentas_id=c.id
                         and b.nombre='ACTIVO CORRIENTE'
@@ -76,7 +76,7 @@ class RatiosController extends Controller
                         and d.empresas_id=c.empresas_id
                         and a.fecha_inicio = b.fecha_inicio
                         and a.fecha_final=b.fecha_final
-                    ) *100,2) resultado
+                    ) *1,2) resultado
                         from balances b, cuentas c
                         where  b.cuentas_id=c.id
                         and b.nombre='ACTIVO CORRIENTE'
@@ -96,7 +96,7 @@ class RatiosController extends Controller
                         and d.empresas_id=c.empresas_id
                         and a.fecha_inicio = b.fecha_inicio
                         and a.fecha_final=b.fecha_final
-                ) *100 ,2) resultado
+                ) *1,2) resultado
                         from balances b, cuentas c
                         where  b.cuentas_id=c.id
                         and b.nombre='ACTIVO CORRIENTE'
@@ -116,7 +116,7 @@ class RatiosController extends Controller
                         and d.empresas_id=c.empresas_id
                         and a.fecha_inicio = b.fecha_inicio
                         and a.fecha_final=b.fecha_final
-            ) *100,2) resultado
+            ) *1,2) resultado
                         from balances b, cuentas c
                         where  b.cuentas_id=c.id
                         and b.nombre='EFECTIVO'
@@ -130,7 +130,7 @@ class RatiosController extends Controller
                     and d.empresas_id=c.empresas_id
                     and a.fecha_inicio = b.fecha_inicio
                     and a.fecha_final=b.fecha_final
-                    ) *100,2) resultado
+                    ) *1,2) resultado
                     from balances b, cuentas c
                     where  b.cuentas_id=c.id
                     and b.nombre='ACTIVO CORRIENTE'
@@ -150,7 +150,7 @@ class RatiosController extends Controller
                     and d.empresas_id=c.empresas_id
                     and a.fecha_inicio = b.fecha_inicio
                     and a.fecha_final=b.fecha_final
-                    ) *100,2) resultado
+                    ) *1,2) resultado
                     from balances b, cuentas c
                     where  b.cuentas_id=c.id
                     and b.nombre='ACTIVO CORRIENTE'
@@ -170,7 +170,7 @@ class RatiosController extends Controller
                         and d.empresas_id=c.empresas_id
                         and a.fecha_inicio = b.fecha_inicio
                         and a.fecha_final=b.fecha_final
-                        ) *100 ,2) resultado
+                        ) *1 ,2) resultado
                         from balances b, cuentas c
                         where  b.cuentas_id=c.id
                         and b.nombre='ACTIVO CORRIENTE'
@@ -190,7 +190,7 @@ class RatiosController extends Controller
                         and d.empresas_id=c.empresas_id
                         and a.fecha_inicio = b.fecha_inicio
                         and a.fecha_final=b.fecha_final
-                        ) *100,2) resultado
+                        ) *1,2) resultado
                         from balances b, cuentas c
                         where  b.cuentas_id=c.id
                         and b.nombre='EFECTIVO'
@@ -617,7 +617,7 @@ class RatiosController extends Controller
                             and d.empresas_id=c.empresas_id
                             and a.fecha_inicio = b.fecha_inicio
                             and a.fecha_final=b.fecha_final
-                            ) *100,2) resultado,c.empresas_id
+                            ) *1,2) resultado,c.empresas_id
                             from balances b, cuentas c
                             where  b.cuentas_id=c.id
                             and b.nombre='PASIVO'
@@ -631,7 +631,7 @@ class RatiosController extends Controller
                         and d.empresas_id=c.empresas_id
                         and a.fecha_inicio = b.fecha_inicio
                         and a.fecha_final=b.fecha_final
-                        ) *100,2) resultado,c.empresas_id
+                        ) *1,2) resultado,c.empresas_id
                         from balances b, cuentas c
                         where  b.cuentas_id=c.id
                         and b.nombre='PATRIMONIO'
@@ -645,7 +645,7 @@ class RatiosController extends Controller
                         and d.empresas_id=c.empresas_id
                         and a.fecha_inicio = b.fecha_inicio
                         and a.fecha_final=b.fecha_final
-                        ) *100,2) resultado,c.empresas_id
+                        ) *1,2) resultado,c.empresas_id
                         from balances b, cuentas c
                         where  b.cuentas_id=c.id
                         and b.nombre='PATRIMONIO'
@@ -659,7 +659,7 @@ class RatiosController extends Controller
                         and d.empresas_id=c.empresas_id
                         and a.fecha_inicio = b.fecha_inicio
                         and a.fecha_final=b.fecha_final
-                        ) *100,2) resultado,c.empresas_id
+                        ) *1,2) resultado,c.empresas_id
                         from resultados b, cuentas c
                         where  b.cuentas_id=c.id
                         and b.nombre='UTILIDADES ANTES DE PART E IMP'
@@ -675,7 +675,7 @@ class RatiosController extends Controller
                                 and a.fecha_final=b.fecha_final)
                                 or (a.fecha_inicio = DATE_ADD(b.fecha_inicio, INTERVAL -12 MONTH)
                                 and a.fecha_final=DATE_ADD(b.fecha_final, INTERVAL -12 MONTH)))
-                                 ) *100,2) resultado,c.empresas_id
+                                 ) *1,2) resultado,c.empresas_id
                                  from balances b, cuentas c
                                  where  b.cuentas_id=c.id
                                  and b.nombre='PASIVO'
@@ -691,7 +691,7 @@ class RatiosController extends Controller
                                 and a.fecha_final=b.fecha_final)
                                 or (a.fecha_inicio = DATE_ADD(b.fecha_inicio, INTERVAL -12 MONTH)
                                 and a.fecha_final=DATE_ADD(b.fecha_final, INTERVAL -12 MONTH)))
-                                    ) *100,2) resultado,c.empresas_id
+                                    ) *1,2) resultado,c.empresas_id
                                     from balances b, cuentas c
                                     where  b.cuentas_id=c.id
                                     and b.nombre='PATRIMONIO'
@@ -707,7 +707,7 @@ class RatiosController extends Controller
                                 and a.fecha_final=b.fecha_final)
                                 or (a.fecha_inicio = DATE_ADD(b.fecha_inicio, INTERVAL -12 MONTH)
                                 and a.fecha_final=DATE_ADD(b.fecha_final, INTERVAL -12 MONTH)))
-                                    ) *100,2) resultado,c.empresas_id
+                                    ) *1,2) resultado,c.empresas_id
                                     from balances b, cuentas c
                                     where  b.cuentas_id=c.id
                                     and b.nombre='PATRIMONIO'
@@ -723,7 +723,7 @@ class RatiosController extends Controller
                                 and a.fecha_final=b.fecha_final)
                                 or (a.fecha_inicio = DATE_ADD(b.fecha_inicio, INTERVAL -12 MONTH)
                                 and a.fecha_final=DATE_ADD(b.fecha_final, INTERVAL -12 MONTH)))
-                                    ) *100,2) resultado,c.empresas_id
+                                    ) *1,2) resultado,c.empresas_id
                                     from resultados b, cuentas c
                                     where  b.cuentas_id=c.id
                                     and b.nombre='UTILIDADES ANTES DE PART E IMP'

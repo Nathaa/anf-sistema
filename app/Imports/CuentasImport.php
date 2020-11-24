@@ -16,6 +16,13 @@ class CuentasImport implements ToModel
     {
         return new Cuenta([
             //
+            'codigo' => $row['codigo'],
+            'codigo_padre' => $row['codigo_padre'],
+            'nombre' => $row['nombre'],
+            'descripcion' => $row['descripcion'],
+            'empresas_id' => $row['empresas_id'],
+            'tipocuentas_id' => $row['tipocuentas_id'],
+
         ]);
     }
 }
