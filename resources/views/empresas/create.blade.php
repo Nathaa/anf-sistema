@@ -64,7 +64,7 @@
             
             <div class="form-group">
             <button class="btn btn-primary" type="submit" id="btn_submit"> Guardar </button>
-            <a class="btn btn-primary" href="{{ url('cuentas') }}">Regresar</a>
+           
         </div>
 
     </form>

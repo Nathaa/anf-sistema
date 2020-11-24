@@ -251,7 +251,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
 
             <li class="nav-item">
-              <li><a href="{{ route ('comparaciones.index') }}" class="nav-link">
+              <li><a href="{{ route ('comparaciones.index',$id) }}" class="nav-link">
               <i class="fas fa-balance-scale"></i>
               <p>Comparacion de Ratios</p>
             </a></li>
