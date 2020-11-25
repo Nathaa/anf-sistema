@@ -134,13 +134,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
        @if(!Auth::user()->rol == 'Analista')
         @php
           $id = Auth::user()->id;
-          $id_empresa = Auth::user()->id;
         @endphp
       @else
 
         @php
           $id = Auth::user()->admin;
-          $id_empresa = Auth::user()->empresa;
         @endphp
         @endif
 
@@ -237,7 +235,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <ul class="nav nav-treeview">
 
+              @if(!Auth::user()->rol)
+
+
+              @if(Auth::user()->emp)
+
+              @php
+
+              $id_empresa = Auth::user()->emp->id;
     
+              @endphp
+
               <li class="nav-item">
                   <li><a href="{{ route ('analisis.show', $id_empresa) }}" class="nav-link">
                   <i class="fas fa-industry"></i>
@@ -251,6 +259,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <p>Analisis Vertical</p>
               </a></li>
             </li>
+
+            @endif
+
+            @endif
+
+
+              
+
+            @if(Auth::user()->rol == 'Analista')
+
+            @php
+
+              $id_empresa = Auth::user()->empresa;
+
+            @endphp
+
+
+            <li class="nav-item">
+                  <li><a href="{{ route ('analisis.show', $id_empresa) }}" class="nav-link">
+                  <i class="fas fa-industry"></i>
+                  <p>Analisis Horizontal</p>
+                </a></li>
+              </li>
+       
+              <li class="nav-item">
+                <li><a href="{{ route ('analisis.vertical', $id_empresa) }}" class="nav-link">
+                <i class="fas fa-money-check-alt"></i>
+                <p>Analisis Vertical</p>
+              </a></li>
+            </li>
+
+
+            @endif
+
+
+
+
+
 
             <li class="nav-item">
               <li><a href="{{ route ('comparaciones.index',$id) }}" class="nav-link">

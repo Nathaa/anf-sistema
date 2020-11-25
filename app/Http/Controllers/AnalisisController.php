@@ -36,17 +36,19 @@ class AnalisisController extends Controller
 
     public function show1(Request $request,$id)
     { $empresa = Empresa::where("id", $id)->first();
+      $ide=$id;
       $valant=$request->fecha_inicial;
       $valact=$request->fecha_final;
-       return view('analisis.show1',compact('valant','valact','empresa'));
+       return view('analisis.show1',compact('valant','valact','empresa','ide'));
     }    
 
     
     public function show11(Request $request,$id)
     { $empresa = Empresa::where("id", $id)->first();
+      $ide=$id;
       $valant=$request->fecha_inicial;
       $valact=$request->fecha_final;
-       return view('analisis.show11',compact('valant','valact','empresa'));
+       return view('analisis.show11',compact('valant','valact','empresa','ide'));
     }
     
     public function show2(Request $request, $id)
