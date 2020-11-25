@@ -22,14 +22,43 @@ class CuentasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
+
     public function importExcel(Request $request)
     {
 
-      $file=$request->file('file');
-      Excel::import(new CuentasImport,$file);
+        //$file=$request->file('pruebaexcel.xlsx');
 
-      return back()->with('message','Importancion de cuentas completadas');
+        Excel::import(new CuentasImport, request()->file('file'));
+
+        // $path = $request->file('file')->getRealPath();
+
+        ///$data = Excel::import(new CuentasImport,$path)->get();
+
+        // if($data->count() > 0)
+        //{
+        //foreach($data->toArray() as $key => $value)
+        // {
+        //  foreach($value as $row)
+        // {
+        // $insert_data[] = array(
+        //  'codigo'  => $row['codigo'],
+        //  'codigo_padre'   => $row['codigo_padre'],
+        // 'nombre'   => $row['nombre'],
+        // 'descripcion'    => $row['descripcion'],
+        // 'empresas_id'  => $row['empresas_id'],
+        // 'tipocuentas_id'   => $row['tipocuentas_id']
+        //  );
+        //  }
+        // }
+        //   dd($insert_data);
+        // if(!empty($insert_data))
+        //  {
+        //  DB::table('cuentas')->insert($insert_data);
+        // }
+        //}
+
+
+        return back()->with('message', 'Importancion de cuentas completadas');
     }
 
     /**
@@ -38,35 +67,59 @@ class CuentasController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $request)
+    public function index($user_id)
     {
+        //$empresaas = Empresa::get();
+        $cuentas=Cuenta::get();
+        
+        $empresas = Empresa::where("user_id", $user_id)->first();
 
-        $cuentas=Cuenta::paginate(4);
-        $empresas = Empresa::get();
+        if($empresas){
+
+        return view('cuentas.index', compact('empresas'));
+    
+        }
+        else{
+
+              Session::flash('message', "Debe crear un empresa para esta acción.");
 
 
-     
-        //dd($balan);
 
-      
+            return view("empresas.create");
 
-        return view('cuentas.index',compact('cuentas','empresas'));
+        }
+
 
 
     }
 
-
+ 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($user_id)
     {
-        $empresa = Empresa::get();
+      
         $tipocuentas = Tipocuenta::get();
-        return view('cuentas.create', ["empresa"=>$empresa, "tipocuentas" => $tipocuentas]);
+        $empresa = Empresa::where("user_id", $user_id)->first();
+
+        if($empresa){
+
+        return view('cuentas.create', compact('empresa','tipocuentas'));
     
+        }
+        else{
+
+              Session::flash('message', "Debe crear un empresa para esta acción.");
+
+
+
+            return view("empresas.create");
+
+        }
+        //return view('cuentas.create', ["empresa" => $empresa, "tipocuentas" => $tipocuentas]);
     }
 
     /**
@@ -80,7 +133,7 @@ class CuentasController extends Controller
         $cuentas = Cuenta::create($request->all());
         $cuentas->save();
 
-        return redirect()->route('cuentas.index', ["cuentas" => $cuentas]);
+        return back();
     }
 
     /**
@@ -92,17 +145,19 @@ class CuentasController extends Controller
     public function show($id)
     {
         //
-        
-        $empresas=$id;
-   
-      $cuentas=DB::table('cuentas')
-      ->join('empresas','cuentas.empresas_id','=', 'empresas.id')
-      ->select('cuentas.nombre','cuentas.codigo','cuentas.codigo_padre','cuentas.id')
-      ->where('cuentas.empresas_id', $empresas)
-      ->get();
 
-        
-      return view('cuentas.show',["cuentas"=>$cuentas],["empresas"=>$empresas]);
+        $empresas = $id;
+
+        //dd($empresas);
+
+        $cuentas = DB::table('cuentas')
+            ->join('empresas', 'cuentas.empresas_id', '=', 'empresas.id')
+            ->select('cuentas.nombre', 'cuentas.codigo', 'cuentas.codigo_padre', 'cuentas.id')
+            ->where('cuentas.empresas_id', $empresas)
+            ->get();
+
+       // return view('cuentas.show',compact('cuentas','empresas'));
+        return view('cuentas.show', ["cuentas" => $cuentas], ["empresas" => $empresas]);
     }
 
     /**
@@ -113,11 +168,11 @@ class CuentasController extends Controller
      */
     public function edit($id)
     {
-        $cuentas=Cuenta::findOrFail($id);
+        $cuentas = Cuenta::findOrFail($id);
         $empresa = Empresa::get();
         $tipocuentas = Tipocuenta::get();
-      
-        return view('cuentas.edit',['cuentas'=> $cuentas,'tipocuentas' => $tipocuentas, 'empresa' => $empresa]);
+
+        return view('cuentas.edit', ['cuentas' => $cuentas, 'tipocuentas' => $tipocuentas, 'empresa' => $empresa]);
     }
 
     /**
@@ -127,10 +182,10 @@ class CuentasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
 
-        $cuentas=Cuenta::findOrFail($id);
+        $cuentas = Cuenta::findOrFail($id);
         $cuentas->codigo = $request->input('codigo');
         $cuentas->codigo_padre = $request->input('codigo_padre');
         $cuentas->nombre = $request->input('nombre');
@@ -138,10 +193,9 @@ class CuentasController extends Controller
         $cuentas->empresas_id = $request->get('empresas_id');
         $cuentas->tipocuentas_id = $request->get('tipocuentas_id');
         $cuentas->update();
-        return redirect()->route('cuentas.index',['cuentas'=> $cuentas]);
 
-            
-        
+        return redirect()->to('cuentash/'.$cuentas->empresas_id);
+       // return redirect()->route('cuentas.show');
     }
 
     /**
@@ -153,16 +207,14 @@ class CuentasController extends Controller
     public function destroy($id)
     {
         //
-  // $Cuenta=Cuenta::findOrFail($id);
-  $empresas=$id;
+        // $Cuenta=Cuenta::findOrFail($id);
+        $ids = $id;
    
-   $cuentas = cuenta::where('cuentas.empresas_id', $empresas);
-   $cuentas->delete();
-   
-
- 
-  return redirect('cuentas');
- }
+        $cuentas = cuenta::where('cuentas.id', $ids);
+        $cuentas->delete();
 
 
+
+        return back();
+    }
 }

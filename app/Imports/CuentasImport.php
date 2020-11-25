@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Imports;
-
+use Maatwebsite\Excel\Concerns\Importable;
 use App\Cuenta;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+
 
 class CuentasImport implements ToModel
 {
@@ -12,16 +14,18 @@ class CuentasImport implements ToModel
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
+
+    
     public function model(array $row)
     {
         return new Cuenta([
             //
-            'codigo' => $row['codigo'],
-            'codigo_padre' => $row['codigo_padre'],
-            'nombre' => $row['nombre'],
-            'descripcion' => $row['descripcion'],
-            'empresas_id' => $row['empresas_id'],
-            'tipocuentas_id' => $row['tipocuentas_id'],
+            'codigo' => $row[0],
+            'codigo_padre' => $row[1],
+            'nombre' => $row[2],
+            'descripcion' => $row[3],
+            'empresas_id' => $row[4],
+            'tipocuentas_id' => $row[5],
 
         ]);
     }

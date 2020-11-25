@@ -58,10 +58,13 @@
             </div>
         </div>
 
-        <div class="form-group">
-        <button class="btn btn-primary" type="submit" id="btn_submit">Guardar </button>
-        <a class="btn btn-primary" href="{{ url('cuentas') }}">Regresar</a>
-    </div>
+        <form>
+            <div align="left">
+              <button class="btn btn-primary" type="submit" id="btn_submit"> Guardar </button>
+              <input type="button" class="btn btn-primary" value="VOLVER ATRÁS" name="Back2" onclick="history.back()" />
+              </div>
+             </form>
+      
 
 </form>
 

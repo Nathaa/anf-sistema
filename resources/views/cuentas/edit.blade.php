@@ -88,9 +88,18 @@
         </div>
       </div>
   
+
+      <form>
+        <div align="left">
+          <button class="btn btn-primary" type="submit" id="btn_submit"> Guardar </button>
+          <button class="btn btn-primary" href="{{ url('/cuentash/'.$cuentas->empresas_id) }}"> Regresar </button>
+        
+          </a>
+          </div>
+         </form>
   
-              <button class="btn btn-primary" type="submit" id="btn_submit"> Guardar </button>
-              <a class="btn btn-primary" href="{{ url('cuentas') }}">Regresar</a>
+             
+         
   
     </div>
   </div>

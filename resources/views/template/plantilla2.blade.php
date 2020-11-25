@@ -166,7 +166,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
            
               <li class="nav-item">
-                  <li><a href="{{ route ('cuentas.index') }}" class="nav-link">
+                  <li><a href="{{ route ('cuentas.index',$id)}}" class="nav-link">
                   <i class="fas fa-donate"></i>
                   <p>Añadir Cuentas a un catalogo</p>
                 </a></li>

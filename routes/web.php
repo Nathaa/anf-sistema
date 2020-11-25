@@ -34,11 +34,11 @@ Route::get('/principal', 'PrincipalController@index')->name('template.plantilla2
 
 Route::post('import-list-excel', 'CuentasController@importExcel')->name('cuentas.import.excel');
 
-Route::get('cuentas', 'CuentasController@index')->name('cuentas.index');
+Route::get('cuentasi/{user_id}', 'CuentasController@index')->name('cuentas.index');
 
-Route::get('cuentas/cuenta', 'CuentasController@create')->name('cuentas.create');
+Route::get('cuentascrear/{cuentacrear}', 'CuentasController@create')->name('cuentas.create');
 
-Route::get('cuentas/{cuenta}', 'CuentasController@show')->name('cuentas.show');
+Route::get('cuentash/{cuentah}', 'CuentasController@show')->name('cuentas.show');
 Route::post('cuentas', 'CuentasController@store')->name('cuentas.store');
 
 Route::get('cuentas/{cuenta}/edit', 'CuentasController@edit')->name('cuentas.edit');

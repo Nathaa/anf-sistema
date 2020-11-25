@@ -5,6 +5,7 @@ use App\Empresa;
 use App\User;
 use Illuminate\Support\Facades\Input;
 use DB;
+use Session;
 use Illuminate\Http\Request;
 
 class ComparacionesController extends Controller

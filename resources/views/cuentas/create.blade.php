@@ -73,9 +73,9 @@
                 <div class="col">
                     <label for="empresas_id"class="control-label">{{'Empresa'}}:</label><br>
                     <select class="form-control" id="empresas_id" name="empresas_id" onkeyup="validar_select(this)", onblur="validar_select(this)" required>
-                        @foreach ($empresa as $emp)
-                    <option value="{{ $emp->id }}">{{$emp->nombre}}</option>
-                        @endforeach
+                       
+                    <option value="{{$empresa->id}}">{{$empresa->nombre}}</option>
+                       
                     </select>
                     <div class="invalid-feedback">
                             La empresa no debe quedar vacío.
@@ -84,8 +84,14 @@
             </div>
         
         
-                    <button class="btn btn-primary" type="submit" id="btn_submit"> Guardar </button>
-                    <a class="btn btn-primary" href="{{ url('cuentas') }}">Regresar</a>
+                    
+                    <form>
+                        <br>
+                        <div align="left">
+                            <button class="btn btn-primary" href="{{ url('/cuentascrear/'.$empresa) }}" type="submit" id="btn_submit"> Guardar </button>
+                          <input type="button" class="btn btn-primary" value="VOLVER ATRÁS" name="Back2" onclick="history.back()" />
+                          </div>
+                         </form>
         
           </div>
         </div>
