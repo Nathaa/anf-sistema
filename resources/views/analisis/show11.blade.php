@@ -10,9 +10,12 @@
 
 					<div class="card-body">
 <?php 
+$ut=1;
+$utop=0;
+$vn=0;
 $valor1=$valant;
 $valor2=$valact;
-$conexion=mysqli_connect('localhost:33065','root','','analisis');
+$conexion=mysqli_connect('localhost:3306','root','','anf');
 
 ?>
 
@@ -33,7 +36,7 @@ $conexion=mysqli_connect('localhost:33065','root','','analisis');
 
 <?php
 
-$sql = "SELECT c.nombre AS nom, c.monto AS valor_Actual, b.monto As valor_anterior, c.monto-b.monto AS variacion From balances c, balances b,cuentas d WHERE c.fecha_final='$valor2' AND b.fecha_final='$valor1' AND c.nombre=b.nombre AND b.cuentas_id=d.id AND d.empresas_id='$ide'";
+$sql = "SELECT c.nombre AS nom, c.monto AS valor_Actual, b.monto As valor_anterior, c.monto-b.monto AS variacion From resultados c, resultados b,cuentas d WHERE c.fecha_final='$valor2' AND b.fecha_final='$valor1' AND c.nombre=b.nombre AND b.cuentas_id=d.id AND d.empresas_id='$ide'";
 $result=mysqli_query($conexion,$sql);
 while($mostrar=mysqli_fetch_array($result)){
 $a=$mostrar['valor_anterior'];
@@ -51,7 +54,15 @@ $e=round($d,2);
 <td style="font-weight:bold;"><?php echo $mostrar['valor_Actual']?></td>
 <td style="font-weight:bold;"><?php echo $mostrar['variacion']?></td>
 <td style="font-weight:bold;"><?php echo $e?>%</td>
-              <?php }else{ ?>
+<?php
+                  if($mostrar['nom']=='UTILIDAD BRUTA'){
+                        $ut= $e;
+                        }
+                  if($mostrar['nom']=='UTILIDAD DE OPERACION'){
+                        $utop= $e;
+                        }
+
+               }else{ ?>
 <td><?php echo $mostrar['nom']?></td>
 <td><?php echo $mostrar['valor_anterior']?></td>
 <td><?php echo $mostrar['valor_Actual']?></td>
@@ -59,16 +70,10 @@ $e=round($d,2);
 <td><?php echo $e?>%</td>
 
 <?php
-              }
-if($mostrar['nom']=='UTILIDAD BRUTA'){
-$ut= $e;
-}
-if($mostrar['nom']=='UTILIDAD DE OPERACION'){
-      $utop= $e;
-}
-if($mostrar['nom']=='VENTAS NETAS'){
+ if($mostrar['nom']=='VENTAS NETAS'){
       $vn= $e;
-}
+      }
+              }
 ?>
 
 </tr>

@@ -80,8 +80,8 @@ class ResultadosController extends Controller
             
         } 
         
-          DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
-          DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
+          //DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
+          //DB::select('CALL micursor2(?,?,?)',[$id,$fini,$ffin]); 
 
           return redirect('principal');
           //return view('empresas2');

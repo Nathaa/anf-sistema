@@ -12,7 +12,7 @@
 <?php 
 $valor1=$valant;
 $valor2=$valact;
-$conexion=mysqli_connect('localhost:33065','root','','analisis');
+$conexion=mysqli_connect('localhost:3306','root','','anf');
 
 ?>
 
