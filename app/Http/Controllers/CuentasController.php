@@ -28,7 +28,7 @@ class CuentasController extends Controller
 
         //$file=$request->file('pruebaexcel.xlsx');
 
-        Excel::import(new CuentasImport, request()->file('file'));
+       // Excel::import(new CuentasImport, request()->file('file'));
 
         // $path = $request->file('file')->getRealPath();
 
@@ -56,6 +56,11 @@ class CuentasController extends Controller
         //  DB::table('cuentas')->insert($insert_data);
         // }
         //}
+
+        $file = $request->file('file');
+        Excel::import(new CuentasImport, $file);
+
+
 
 
         return back()->with('message', 'Importancion de cuentas completadas');

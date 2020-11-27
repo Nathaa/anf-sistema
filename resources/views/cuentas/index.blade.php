@@ -13,7 +13,8 @@
 
             <i class="fas fa-plus"></i>Crear Catalogo </button> </a>
             @endif         
-             <!-- <div align="right">
+             
+             <div align="right">
                 <form action="{{ route('cuentas.import.excel') }}" method="POST" enctype="multipart/form-data">
                   {{ csrf_field() }}
       
@@ -23,7 +24,7 @@
                   <input type="file" name="file">
                   <button>Importar Cuentas</button>
                 </form>
-                </div>-->
+                </div>
                      
       </div>
       <div class="card-body">
