@@ -29,7 +29,7 @@
                 </div>
                 <div class="col">
                     <label for="codigo_padre" class="control-label">{{'Codigo Precedente'}}:</label><br>
-                    <input type="text" class="form-control" id="codigo_padre" name="codigo_padre" value="{{ old('codigo_padre') }}" placeholder="1->Activo"  onkeyup="validar_numero(this)", onblur="validar_numero(this)" required>
+                    <input type="text" class="form-control" id="codigo_padre" name="codigo_padre" value="{{ old('codigo_padre') }}" placeholder="1->Activo">
                     <div class="invalid-feedback">
                         El código precedente debe estar conformado por números.
                     </div>
