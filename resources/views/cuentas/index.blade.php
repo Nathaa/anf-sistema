@@ -13,8 +13,7 @@
 
             <i class="fas fa-plus"></i>Crear Catalogo </button> </a>
             @endif         
-             
-             <div align="right">
+              <div align="right">
                 <form action="{{ route('cuentas.import.excel') }}" method="POST" enctype="multipart/form-data">
                   {{ csrf_field() }}
       
@@ -34,7 +33,7 @@
         <table class="table table-bordered thead-dark table-hover table-sm">
      <tr>
        <th scope="col">Empresa</th>
-       <th colspan="1">&nbsp;Opciones</th>
+       <th colspan="">&nbsp;Opciones</th>
       
      </tr>
 

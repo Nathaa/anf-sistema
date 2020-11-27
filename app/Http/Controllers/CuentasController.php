@@ -106,25 +106,21 @@ class CuentasController extends Controller
      */
     public function create($user_id)
     {
+        $user=($user_id);
       
         $tipocuentas = Tipocuenta::get();
-        $empresa = Empresa::where("user_id", $user_id)->first();
+       // $empresa = Empresa::where("user_id", $user_id)->first();
 
-        if($empresa){
-
-        return view('cuentas.create', compact('empresa','tipocuentas'));
-    
-        }
-        else{
-
-              Session::flash('message', "Debe crear un empresa para esta acción.");
+        $empresa = DB::table('empresas')
+        ->join('users', 'users.id', '=', 'empresas.user_id')
+        ->select('empresas.nombre','empresas.id')
+        ->where('empresas.id', $user)
+        ->get();
 
 
 
-            return view("empresas.create");
 
-        }
-        //return view('cuentas.create', ["empresa" => $empresa, "tipocuentas" => $tipocuentas]);
+        return view('cuentas.create', ["empresa" => $empresa, "tipocuentas" => $tipocuentas,"user" => $user]);
     }
 
     /**

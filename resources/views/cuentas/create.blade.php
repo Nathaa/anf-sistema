@@ -29,7 +29,7 @@
                 </div>
                 <div class="col">
                     <label for="codigo_padre" class="control-label">{{'Codigo Precedente'}}:</label><br>
-                    <input type="text" class="form-control" id="codigo_padre" name="codigo_padre" value="{{ old('codigo_padre') }}" placeholder="1->Activo"  onkeyup="validar_numero(this)", onblur="validar_numero(this)">
+                    <input type="text" class="form-control" id="codigo_padre" name="codigo_padre" value="{{ old('codigo_padre') }}" placeholder="1->Activo"  onkeyup="validar_numero(this)", onblur="validar_numero(this)" required>
                     <div class="invalid-feedback">
                         El código precedente debe estar conformado por números.
                     </div>
@@ -73,9 +73,9 @@
                 <div class="col">
                     <label for="empresas_id"class="control-label">{{'Empresa'}}:</label><br>
                     <select class="form-control" id="empresas_id" name="empresas_id" onkeyup="validar_select(this)", onblur="validar_select(this)" required>
-                       
-                    <option value="{{$empresa->id}}">{{$empresa->nombre}}</option>
-                       
+                        @foreach ($empresa as $emp)
+                    <option value="{{$emp->id}}">{{$emp->nombre}}</option>
+                    @endforeach 
                     </select>
                     <div class="invalid-feedback">
                             La empresa no debe quedar vacío.
